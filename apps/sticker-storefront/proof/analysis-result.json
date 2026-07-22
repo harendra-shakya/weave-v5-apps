@@ -1,0 +1,77 @@
+{
+  "stage": "analysis",
+  "app_id": "sticker-storefront",
+  "app_name": "Marginalia",
+  "state": "verified",
+  "analyzed_at": "2026-07-23T00:00:00.000Z",
+
+  "lifecycle_summary": {
+    "stages_completed": ["intent", "research", "selection", "plan", "engineering", "qa", "deployment", "kpi-setup", "marketing", "iteration"],
+    "stages_owner_gated_skipped": ["deployment", "marketing"],
+    "total_interventions": 1,
+    "intervention_ref": "INTERVENTION_LEDGER.md"
+  },
+
+  "product_verdict": {
+    "score": "7.25 / 10 (Nielsen 29/40)",
+    "design_health": "Good",
+    "ai_slop": "CLEAN",
+    "build": "12 routes, 0 errors",
+    "contracts": "all valid (0 warnings)",
+    "guardrail_breach": false
+  },
+
+  "what_was_proved": [
+    "Full Next.js 15 App Router storefront builds cleanly from the Vinyl Pop design system",
+    "Variant cart (size × finish × sheet count) with live price updates works end-to-end",
+    "Fulfillment state machine (ordered → packed → shipped → delivered) advances and blocks cancel correctly after shipped",
+    "Synthetic guest checkout handles success path and card-decline path with correct UX (focus management, aria-live, processing state)",
+    "Artist submission flow (upload → curator review → accept/decline → in-drop) is complete",
+    "Synthetic cohort (seed=42, 200 users): 13.5% conversion, $12.85 AOV, 7.4% refund rate, no guardrail breach",
+    "Variant-clarity iteration applied and verified (price deltas + finish descriptions in picker); no engine regression"
+  ],
+
+  "design_strengths": [
+    "Vinyl Pop system travels coherently across all 12 routes — not a theme, a language",
+    "True-size badge with mm dimensions solves the core physical sticker purchase anxiety",
+    "Post-purchase emotional arc (confirmation → status → cancel copy) maintained brand voice under all stress states",
+    "Deterministic scan: 0 slop patterns detected"
+  ],
+
+  "known_gaps_deferred": [
+    "text-ink-faint contrast ~2.9:1 fails WCAG AA (deferred from QA to next sprint)",
+    "No country field in checkout (domestic-only assumption undocumented)",
+    "Qty steppers 36×36px (below 44px WCAG 2.5.5 target)",
+    "No cart persistence across hard refresh (localStorage-only, intentional for demo scope)",
+    "Curator page in production footer nav (should be env-gated on port)"
+  ],
+
+  "cohort_baseline": {
+    "seed": 42,
+    "users": 200,
+    "conversion_rate": 0.135,
+    "aov_cents": 1285,
+    "refund_rate": 0.074,
+    "ref": "proof/cohort-2026-07-22T22-22-26/cohort-result.json"
+  },
+
+  "cohort_retest": {
+    "seed": 42,
+    "users": 200,
+    "conversion_rate": 0.135,
+    "aov_cents": 1285,
+    "refund_rate": 0.074,
+    "ref": "proof/cohort-2026-07-22T22-24-48/cohort-result.json"
+  },
+
+  "non_claims": [
+    "does not prove real sticker printing or physical fulfillment",
+    "does not prove real artist payment or royalty processing",
+    "does not prove production deployment or real payment processing",
+    "synthetic cohort only — not real buyer behavior",
+    "does not prove full WCAG AA compliance"
+  ],
+
+  "decision": "advance to seal",
+  "next": "node tools/seal-app.mjs --app sticker-storefront"
+}

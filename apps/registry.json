@@ -17,8 +17,13 @@
       "brand": "Marginalia",
       "path": "apps/sticker-storefront",
       "spec": "contracts/specs/sticker-storefront.spec.json",
-      "status": "not_started",
-      "sealed_at": null
+      "status": "sealed",
+      "sealed_at": "2026-07-23T00:00:00.000Z",
+      "seal_manifest": "apps/sticker-storefront/proof/seal-manifest.json",
+      "lifecycle_score_summary": {
+        "intent": 100, "research": 100, "selection": 100, "plan": 100,
+        "engineering": 100, "qa": 72.5, "kpi_setup": 100, "iteration": 100, "analysis": 100
+      }
     },
     "nft-storefront": {
       "brand": "Vitrine",

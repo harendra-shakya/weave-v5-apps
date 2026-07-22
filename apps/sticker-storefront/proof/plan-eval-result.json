@@ -1,0 +1,192 @@
+{
+  "stage": "plan",
+  "app_id": "sticker-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-23T00:00:00.000Z",
+
+  "task_list": [
+    {
+      "id": "T1",
+      "task": "Install npm dependencies",
+      "command": "cd apps/sticker-storefront && npm install",
+      "done_when": "node_modules/ present, no install errors",
+      "dependency": "package.json already written (scaffold)"
+    },
+    {
+      "id": "T2",
+      "task": "Port lib layer verbatim from docs/atm-415/ui/marginalia/lib/",
+      "files": [
+        "lib/types.ts",
+        "lib/packs.ts (6 synthetic packs with variant pricing, all public-safe)",
+        "lib/cart.tsx (CartProvider + useCart hook)",
+        "lib/orders.ts (createOrder, getOrder, advanceOrder, cancelOrder)",
+        "lib/format.ts (formatCents, formatDate)",
+        "lib/submissions.ts (artist submission flow)"
+      ],
+      "done_when": "Files exist, TypeScript compiles",
+      "dependency": "T1"
+    },
+    {
+      "id": "T3",
+      "task": "Port components verbatim from docs/atm-415/ui/marginalia/components/",
+      "files": [
+        "components/Wordmark.tsx",
+        "components/PageHeader.tsx",
+        "components/PageFooter.tsx",
+        "components/PackCard.tsx",
+        "components/ArtistCredit.tsx",
+        "components/PriceTag.tsx",
+        "components/StickerPlaceholder.tsx",
+        "components/VariantSelector.tsx",
+        "components/AddToCartButton.tsx",
+        "components/CartLineItem.tsx",
+        "components/FulfillmentStatus.tsx",
+        "components/EmptyState.tsx",
+        "components/PaymentForm.tsx",
+        "components/StepTracker.tsx"
+      ],
+      "done_when": "Files exist, no import errors",
+      "dependency": "T2"
+    },
+    {
+      "id": "T4",
+      "task": "Port app pages verbatim from docs/atm-415/ui/marginalia/app/",
+      "files": [
+        "app/globals.css (Vinyl Pop tokens)",
+        "app/layout.tsx (CartProvider, Baloo 2 font, PageHeader/Footer)",
+        "app/page.tsx (catalog hero + pack grid)",
+        "app/not-found.tsx",
+        "app/about/page.tsx",
+        "app/packs/[packId]/page.tsx (variant selector, add to cart)",
+        "app/cart/page.tsx (line items, summary, checkout link)",
+        "app/checkout/page.tsx (PaymentForm, order creation)",
+        "app/orders/[orderId]/page.tsx (confirmation)",
+        "app/orders/[orderId]/status/page.tsx (fulfillment tracker + advance demo)",
+        "app/orders/[orderId]/cancel/page.tsx (cancel + refund)",
+        "app/sell/page.tsx (artist upload form)",
+        "app/sell/submissions/page.tsx (submission tracker)",
+        "app/curator/page.tsx (review queue demo)"
+      ],
+      "done_when": "All routes present; Next.js can resolve all imports",
+      "dependency": "T3"
+    },
+    {
+      "id": "T5",
+      "task": "Verify TypeScript and build",
+      "commands": [
+        "cd apps/sticker-storefront && npm run test  # tsc --noEmit",
+        "cd apps/sticker-storefront && npm run build"
+      ],
+      "done_when": "Both commands exit 0, zero type errors, zero build errors",
+      "dependency": "T4"
+    },
+    {
+      "id": "T6",
+      "task": "Verify contracts",
+      "command": "node tools/validate-contracts.mjs",
+      "done_when": "PASS — 0 failures, public-safe scan green",
+      "dependency": "T5"
+    },
+    {
+      "id": "T7",
+      "task": "Manual golden-path verification via dev server",
+      "flow": [
+        "/ → catalog renders, hero copy matches locked baseline, packs visible",
+        "/packs/field-notes-botanical → variant selector, true-size badge, Add pack CTA",
+        "Add pack → cart count increments in header",
+        "/cart → line items render, variant labels correct, shipping calc correct",
+        "/checkout → PaymentForm renders; submit with valid card → /orders/[id]",
+        "/orders/[id] → confirmation, 'Your pack is on the way.'",
+        "/orders/[id]/status → FulfillmentStatus at 'ordered'; advance demo button works",
+        "/orders/[id]/cancel → cancel + refund confirmation renders",
+        "/about, /sell, /sell/submissions, /curator → render without errors",
+        "/not-found → EmptyState renders",
+        "Empty cart (/cart with no items) → EmptyState renders",
+        "Invalid pack (/packs/does-not-exist) → EmptyState renders"
+      ],
+      "done_when": "All flows work, zero console errors, no unhandled exceptions",
+      "dependency": "T6"
+    },
+    {
+      "id": "T8",
+      "task": "Write INTERVENTION_LEDGER.md",
+      "done_when": "File exists; every hand-edit vs tool-driven action recorded",
+      "dependency": "T4"
+    }
+  ],
+
+  "acceptance_criteria": [
+    { "id": "AC1", "criterion": "npm run build exits 0 with 0 TypeScript errors" },
+    { "id": "AC2", "criterion": "node tools/validate-contracts.mjs PASS (public-safe scan green, 0 failures)" },
+    { "id": "AC3", "criterion": "Variant selector renders size/finish/sheet options for all 6 packs; pricing updates on selection" },
+    { "id": "AC4", "criterion": "Cart: add, remove, quantity change, multi-line, shipping threshold ($30 free) all work" },
+    { "id": "AC5", "criterion": "Checkout: valid card → order confirmation → status tracker renders; card ending 0002 → decline error" },
+    { "id": "AC6", "criterion": "Fulfillment: ordered → packed → shipped → delivered state machine advances; cancel allowed before shipped, blocked after" },
+    { "id": "AC7", "criterion": "Empty states: empty cart, empty catalog, unknown pack ID, unknown order ID all show correct EmptyState" },
+    { "id": "AC8", "criterion": "Hero copy on / matches locked baseline exactly: 'A few sticker packs worth the page. Not ten thousand you'll scroll past.'" },
+    { "id": "AC9", "criterion": "Artist credit visible on every PackCard and pack detail page" },
+    { "id": "AC10", "criterion": "INTERVENTION_LEDGER.md committed with all hand-edits recorded" }
+  ],
+
+  "dependencies": [
+    { "id": "D1", "dep": "Scaffold files (package.json, next.config.ts, tailwind.config.ts, tsconfig.json, postcss.config.js) already written in step 0" },
+    { "id": "D2", "dep": "contracts/specs/sticker-storefront.spec.json already frozen (ATM-416)" },
+    { "id": "D3", "dep": "packages/commerce-core engine and tools/ already frozen (ATM-416)" },
+    { "id": "D4", "dep": "docs/atm-415/ui/marginalia — provided UI tree available at this path; port is verbatim" },
+    { "id": "D5", "dep": "No external credentials, APIs, or payments required — all synthetic/localStorage" }
+  ],
+
+  "verification_commands": {
+    "typecheck": "cd apps/sticker-storefront && npm run test",
+    "build": "cd apps/sticker-storefront && npm run build",
+    "contracts": "node tools/validate-contracts.mjs",
+    "dev": "cd apps/sticker-storefront && npm run dev"
+  },
+
+  "proof_surface": {
+    "target": "proof/engineering-eval-result.json after T7 passes",
+    "claim_boundary": "Proves the app builds, TypeScript compiles, contracts pass, and all flows are manually verified on localhost. Does NOT claim: real payment processing, real physical fulfillment, real sticker buyer behavior, production deployment."
+  },
+
+  "approval_gates_in_plan": [
+    { "gate": "OWNER_GATE", "trigger": "Any change to frozen contracts/schemas/seeds/KPI after baseline — stop and surface" },
+    { "gate": "ENGINEERING_REQUIRED", "trigger": "If CartLine schema cannot represent variant tuple (size × finish × sheet count) without schema change" }
+  ],
+
+  "hard_gates": [
+    {
+      "id": "acceptance_criteria_present",
+      "result": "passed",
+      "evidence": "10 acceptance criteria (AC1–AC10), each binary pass/fail"
+    },
+    {
+      "id": "verification_surface_present",
+      "result": "passed",
+      "evidence": "4 verification commands named (typecheck, build, contracts, dev); golden-path manual flow in T7"
+    }
+  ],
+
+  "rubric": {
+    "task_granularity": {
+      "score": 4, "max": 4,
+      "evidence": "8 tasks, each scoped to a single executable action (install, port lib, port components, port pages, build+typecheck, contracts, manual verify, ledger). Each has a single 'done_when' condition."
+    },
+    "path_specificity": {
+      "score": 4, "max": 4,
+      "evidence": "Every task names specific file paths and exact CLI commands. UI source path (docs/atm-415/ui/marginalia/) and destination paths (apps/sticker-storefront/lib/, components/, app/) are explicit."
+    },
+    "dependency_awareness": {
+      "score": 4, "max": 4,
+      "evidence": "Task dependencies chained (T2→T3→T4→T5→T6). External dependencies listed (D1–D5). No external credentials required. Approval gates named."
+    },
+    "proof_quality": {
+      "score": 4, "max": 4,
+      "evidence": "Proof surface targets engineering-eval-result.json after manual golden-path pass. Claim boundary explicitly excludes real payment, real fulfillment, production deployment. Cannot overclaim."
+    }
+  },
+
+  "score": { "earned": 16, "possible": 16, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to engineering stage — execute T1–T8"
+}

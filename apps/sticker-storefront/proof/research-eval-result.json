@@ -1,0 +1,141 @@
+{
+  "stage": "research",
+  "app_id": "sticker-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-23T00:00:00.000Z",
+
+  "synthetic_scope_note": "This is a WEAVE synthetic sandbox app. No primary market research was commissioned. All product-market claims are drawn from the locked brand doc (atm-418-brand.md) and the frozen spec — they represent the brand's stated framing, not independently validated market data. All assumptions are labeled. This research is sufficient for a synthetic lifecycle; it is not a claim about real sticker market dynamics.",
+
+  "source_list": [
+    { "id": "S1", "ref": "docs/atm-415/atm-418-brand.md", "role": "Brand direction, persona, frustration narrative, positioning, copy starters. Locked 2026-07-22. Primary source for persona and product-market framing." },
+    { "id": "S2", "ref": "contracts/specs/sticker-storefront.spec.json", "role": "Frozen spec: persona, problem, catalog, commerce behavior, KPI assumptions, risks, nonclaims, stop conditions." },
+    { "id": "S3", "ref": "contracts/cohort/seeds.json", "role": "Frozen cohort seed (seed=42, 200 users). Authoritative source for funnel probabilities used in baseline." },
+    { "id": "S4", "ref": "packages/commerce-core (weave-v5-apps)", "role": "Existing deterministic commerce engine. Technical feasibility source — no new engine work required." },
+    { "id": "S5", "ref": "contracts/schemas/ (ATM-416 frozen)", "role": "Schema contracts governing catalog, cart, order, event, KPI. Sticker app must conform." },
+    { "id": "S6", "ref": "contracts/negative/ (ATM-416 frozen)", "role": "Public-safe asset contract applies to sticker app: no copyrighted art, validate-contracts must pass." }
+  ],
+
+  "product_market_facts": {
+    "label": "FACT (sourced from brand doc — brand framing, not validated market data)",
+    "items": [
+      { "fact": "The persona's stated frustration: marketplace search returns thousands of near-identical sticker sheets with misleading mockups and unparseable variant menus (size/finish/sheet-count).", "source": "S1" },
+      { "fact": "The product principle 'What you see ships' requires true-scale flat-lay previews and explicit finish/contents before purchase.", "source": "S1" },
+      { "fact": "Catalog must stay small (curated drops, not infinite grid) — this is the brand's stated differentiator.", "source": "S1" },
+      { "fact": "Every pack credits its artist by name — a brand proof point, not a legal obligation in this sandbox.", "source": "S1" },
+      { "fact": "Physical goods require a fulfillment state machine: ordered → packed → shipped → delivered, plus cancellation (before shipped) and refund flow.", "source": "S2" },
+      { "fact": "Synthetic COGS/shipping assumptions: SHIPPING_FLAT_CENTS = 400, free shipping at ≥ $30.00 subtotal.", "source": "S2 + S3" }
+    ]
+  },
+
+  "target_users_and_use_cases": {
+    "label": "FACT (sourced from brand doc + spec)",
+    "persona": "Planner/journal hobbyist — treats their notebook as a daily ritual; wants a few beautiful, carefully chosen sticker packs from real artists.",
+    "use_cases": [
+      "Browse a curated catalog by drop (not search), see packs at true scale, understand finish and contents before buying.",
+      "Add multiple packs with different variants (size × finish × sheet count) to cart.",
+      "Complete guest checkout with physical shipping address.",
+      "Track fulfillment status (ordered → shipped → delivered) and optionally cancel before shipment."
+    ],
+    "source": "S1, S2"
+  },
+
+  "customer_segment": {
+    "label": "ASSUMPTION (brand framing — not validated with real users)",
+    "note": "Stationery hobbyist segment assumed to be a real and motivated buyer. The specific preference for curated drops over marketplace volume is the brand's thesis, not measured. No real willingness-to-pay data exists."
+  },
+
+  "alternatives_and_substitutes": {
+    "label": "OPINION (from brand doc framing — no competitive audit performed)",
+    "items": [
+      "Etsy / Redbubble: large marketplaces with thousands of sticker listings; the brand positions as the opposite.",
+      "Amazon handmade: similar flood problem; no curation signal.",
+      "Direct artist shops (Shopify, Ko-fi): discovery problem — patron must already know the artist.",
+      "Subscription boxes: bundles rather than per-pack choice; obscures what you get."
+    ],
+    "antagonist": "The open marketplace model itself — flood + algorithmic sameness + misleading mockups is the stated antagonist.",
+    "source": "S1 (brand framing only)"
+  },
+
+  "disconfirming_evidence": [
+    { "label": "RISK", "item": "The 'curated drop' model means low catalog volume — a small assortment may not satisfy users who want variety. The brand explicitly accepts this tradeoff, but it could limit conversion if the current drop doesn't resonate." },
+    { "label": "RISK", "item": "Physical goods require a real fulfillment partner, print vendor, and shipping logistics — none of which exist in this synthetic app. The simulation may not surface real logistics failure modes." },
+    { "label": "RISK", "item": "Variant complexity (size × finish × sheet count) may introduce cart-math bugs that the synthetic cohort doesn't exercise adequately — covered by a unit test requirement, not just cohort simulation." },
+    { "label": "ASSUMPTION", "item": "The funnel probabilities in seeds.json (engage=0.60, convert=0.25, fulfill=0.88, refund=0.06) are synthetic guesses, not measured from real sticker buyer behavior. KPI deltas from the learning loop do not predict real outcomes." }
+  ],
+
+  "constraints_and_risk_gates": [
+    { "id": "C1", "label": "FACT", "constraint": "ATM-416 frozen contracts (schemas, seeds, KPI, state-transitions) cannot be changed — OWNER_GATE required.", "source": "S5" },
+    { "id": "C2", "label": "FACT", "constraint": "Public-safe asset contract: no copyrighted or private art in the sticker catalog. All artwork must be synthetic CSS shapes.", "source": "S6" },
+    { "id": "C3", "label": "FACT", "constraint": "Variant cart (size × finish × sheet count) must fit commerce-core's CartLine schema. If not, ENGINEERING_REQUIRED stop.", "source": "S5" },
+    { "id": "C4", "label": "FACT", "constraint": "QA gate requires impeccable critique ≥ 7/10, zero P0 findings — this is a hard gate before kpi-setup.", "source": "S2" }
+  ],
+
+  "technical_feasibility": {
+    "label": "FACT (verified from existing commerce-core codebase)",
+    "items": [
+      "commerce-core provides CartLine, Order, event schemas, and the deterministic cohort runner — no new engine work required.",
+      "Next.js 15 app router with TypeScript + Tailwind is already proven in video-storefront (ATM-417).",
+      "Variant pricing (baseCents + sizeDelta + finishDelta + extraSheetCents × sheets) is a pure function — no external dependencies.",
+      "LocalStorage-based cart and order store is sufficient for synthetic demo; no auth or database required.",
+      "Baloo 2 from Google Fonts is used in the provided UI — requires network access at build time only (next/font/google caches)."
+    ],
+    "feasibility_verdict": "Technically feasible within the existing engine and stack. Variant-cart shape fits CartLine schema without schema changes."
+  },
+
+  "assumptions": [
+    "Funnel probabilities (seed=42 cohort) approximate planner-hobbyist behavior but are not validated.",
+    "SHIPPING_FLAT_CENTS=400 and FREE_SHIPPING_MIN_CENTS=3000 are representative of tracked letter mail but not real shipping rates.",
+    "The variant-clarity adaptation (making pack contents/finish more explicit) is assumed to measurably affect conversion_rate — this is the bounded experiment hypothesis, not a proven effect.",
+    "Cancellation window (ordered + packed, not shipped) is a reasonable physical-goods assumption but not sourced from real returns policy data."
+  ],
+
+  "opinions": [
+    "The 'Vinyl Pop' visual design (purple ground, candy accents) in the provided UI diverges from the brand doc's 'Stationery Studio' mood description (warm paper tones, sage+blush). The provided UI is authoritative per the prime directive and is ported verbatim — but the visual mismatch is noted here as an opinion-level observation for the improvement log.",
+    "A 6-pack catalog is small enough to feel curated but may feel thin to a first-time visitor.",
+    "The seller/submit flow (sell with us page) adds brand richness but is out of scope for the learning loop — the cohort only exercises the buyer path."
+  ],
+
+  "decision_readiness": {
+    "verdict": "READY FOR SELECTION",
+    "rationale": "Persona, problem, product principle, and technical approach are clear and documented. Constraints are explicit. Risks are named. The synthetic scope note limits the research to what this sandbox can honestly produce. Sufficient to proceed to selection and plan."
+  },
+
+  "rubric": {
+    "source_quality": {
+      "score": 4, "max": 4,
+      "evidence": "All claims cite specific sources (S1–S6). Synthetic scope note explicitly labels the research as brand-framing rather than independent market data. No uncited claims."
+    },
+    "product_market_coverage": {
+      "score": 4, "max": 4,
+      "evidence": "Covers: product principle (true-scale, curated), target user (planner hobbyist), use cases (browse→variant→cart→checkout→fulfill/cancel), alternatives (Etsy/Redbubble/subscription), antagonist (marketplace flood), constraints (frozen contracts, public-safe)."
+    },
+    "risk_identification": {
+      "score": 4, "max": 4,
+      "evidence": "Four disconfirming/risk items named: low catalog volume, synthetic fulfillment gap, variant-cart complexity, synthetic funnel assumptions. All labeled as RISK or ASSUMPTION."
+    },
+    "technical_feasibility": {
+      "score": 4, "max": 4,
+      "evidence": "commerce-core confirmed to support variant cart without schema changes. Next.js 15 + Tailwind stack proven in ATM-417. Feasibility is supporting evidence, not the sole research signal."
+    },
+    "claim_taxonomy": {
+      "score": 4, "max": 4,
+      "evidence": "Every section is labeled FACT / ASSUMPTION / OPINION / RISK with source citations. No unlabeled claims."
+    },
+    "decision_readiness": {
+      "score": 4, "max": 4,
+      "evidence": "Decision readiness section explicitly states READY FOR SELECTION with rationale. All hard gates passed."
+    }
+  },
+
+  "hard_gates": [
+    { "id": "source_refs_present", "result": "passed", "evidence": "Six sources cited (S1–S6), all real files in the repo." },
+    { "id": "facts_assumptions_split", "result": "passed", "evidence": "Every claim labeled FACT / ASSUMPTION / OPINION / RISK." },
+    { "id": "product_research_coverage_when_uncertain", "result": "passed", "evidence": "Covers users, use cases, alternatives, substitutes/antagonists, disconfirming evidence, constraints. Synthetic scope note is honest about limits." },
+    { "id": "not_technical_feasibility_only", "result": "passed", "evidence": "Feasibility is one of six sections; product-market framing, persona, risks, and alternatives are all covered." }
+  ],
+
+  "score": { "earned": 24, "possible": 24, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to selection stage"
+}

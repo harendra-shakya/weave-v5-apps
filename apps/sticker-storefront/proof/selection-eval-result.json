@@ -1,0 +1,128 @@
+{
+  "stage": "selection",
+  "app_id": "sticker-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-23T00:00:00.000Z",
+
+  "selected_option": "OPT-A",
+  "selected_option_label": "Port provided UI verbatim + wire to frozen commerce-core engine",
+
+  "options_matrix": {
+    "criteria": [
+      "Fits intent (distinct sticker storefront with variant cart + fulfillment)",
+      "Validates quality gate (impeccable ≥ 7/10, QA pass)",
+      "Technical risk (engine changes needed?)",
+      "Sprint cost (days to working build)",
+      "Reversibility (can we pivot without losing work?)",
+      "Compliance (public-safe, validate-contracts pass, not a reskin)"
+    ],
+    "options": [
+      {
+        "id": "OPT-A",
+        "label": "Port docs/atm-415/ui/marginalia verbatim → wire to commerce-core",
+        "scores": {
+          "fits_intent": "HIGH — provided UI implements all required flows: catalog, variant selector, multi-item cart, checkout, fulfillment tracker, cancellation, sell/curator pages",
+          "quality_gate": "HIGH — UI was authored to the brand; faithful port minimizes design deviation risk",
+          "technical_risk": "LOW — commerce-core CartLine/Order schema fits variant-cart shape without modification; proven in ATM-417 for same stack",
+          "sprint_cost": "LOW — no design decisions; only wiring and data layer",
+          "reversibility": "HIGH — local-only, no deployment; can be iterated at any stage",
+          "compliance": "PASS — prime directive mandates verbatim port; no copyrighted assets; validate-contracts must pass"
+        },
+        "verdict": "SELECTED"
+      },
+      {
+        "id": "OPT-B",
+        "label": "Build custom Marginalia UI from scratch (ignoring provided design)",
+        "scores": {
+          "fits_intent": "MEDIUM — could implement correct flows but visual outcome is unpredictable",
+          "quality_gate": "RISK — without a provided design, visual quality depends on design decisions in this session; QA gate may not pass",
+          "technical_risk": "LOW — same stack",
+          "sprint_cost": "HIGH — requires design decisions, component design, visual QA iteration",
+          "reversibility": "MEDIUM — code can be changed but design rework is expensive",
+          "compliance": "FAIL — prime directive explicitly prohibits redesign; 'no improvements, no restyling' is a hard rule"
+        },
+        "verdict": "REJECTED — violates prime directive (provided UI must be ported verbatim)"
+      },
+      {
+        "id": "OPT-C",
+        "label": "Reskin video-storefront (OneReel) for sticker domain",
+        "scores": {
+          "fits_intent": "FAIL — OneReel has no variant selector, cart, fulfillment tracker, or cancel flow; sticker mechanics are structurally distinct",
+          "quality_gate": "FAIL — same template would not pass 'not a reskin' gate",
+          "technical_risk": "LOW — same codebase",
+          "sprint_cost": "LOW — least code to write",
+          "reversibility": "LOW — hard to un-merge two apps' concerns",
+          "compliance": "FAIL — spec explicitly requires distinct mechanics (variants, cart, fulfillment, physical economics); 'not a reskin' is a hard acceptance-matrix gate"
+        },
+        "verdict": "REJECTED — fails distinctness contract and mechanics requirements"
+      },
+      {
+        "id": "OPT-D",
+        "label": "Simplified single-product checkout (no variants, no cart)",
+        "scores": {
+          "fits_intent": "LOW — brand requires 'what you see ships' variant clarity; physical goods require multi-item cart",
+          "quality_gate": "FAIL — QA would flag missing variant selector and cart as P0 defects",
+          "technical_risk": "NONE",
+          "sprint_cost": "LOWEST",
+          "reversibility": "MEDIUM",
+          "compliance": "FAIL — spec and brand doc explicitly require variant selection, cart, fulfillment tracking, and cancellation"
+        },
+        "verdict": "REJECTED — incomplete mechanics relative to spec requirements"
+      }
+    ]
+  },
+
+  "decision_rationale": "OPT-A is the only compliant option: the prime directive mandates verbatim port of the provided UI, and the spec requires variant cart + physical fulfillment mechanics. commerce-core supports the required CartLine schema without changes. ATM-417 (OneReel) demonstrated the same stack works cleanly. The provided UI (docs/atm-415/ui/marginalia) implements all required flows and was authored to the Marginalia brand — porting it faithfully minimizes design risk and satisfies the QA gate.",
+
+  "reversibility": {
+    "reversible": true,
+    "rollback_means": "This is a local build only. If QA fails (< 7/10 or any P0), we fix the implementation and rerun QA — no frozen contracts are touched and no external commitments are made. OWNER_GATE is required only if a frozen contract needs to change, which OPT-A does not require."
+  },
+
+  "architecture_decisions": {
+    "framework": "Next.js 15, App Router, TypeScript — same as ATM-417",
+    "styling": "Tailwind CSS 3.4 + CSS variables (Vinyl Pop token system from provided UI)",
+    "data_layer": "packages/commerce-core + localStorage (synthetic, no DB, no auth)",
+    "font": "Baloo 2 via next/font/google (used in provided layout.tsx)",
+    "ui_source": "docs/atm-415/ui/marginalia — ported verbatim, wiring-only edits permitted",
+    "catalog": "lib/packs.ts — 6 synthetic packs with variant pricing, public-safe shape art",
+    "commerce": "lib/cart.tsx (CartProvider), lib/orders.ts — localStorage-backed synthetic store"
+  },
+
+  "hard_gates": [
+    {
+      "id": "alternatives_compared",
+      "result": "passed",
+      "evidence": "Four options compared (OPT-A through OPT-D) on six criteria each. Three explicitly rejected with reasons."
+    },
+    {
+      "id": "reversibility_labeled",
+      "result": "passed",
+      "evidence": "Reversibility section: yes, local-only build, rollback = fix implementation and rerun QA, no frozen-contract touch required."
+    }
+  ],
+
+  "rubric": {
+    "option_fairness": {
+      "score": 4, "max": 4,
+      "evidence": "All four options scored on the same six criteria. OPT-B and OPT-C rejected for compliance violations; OPT-D rejected for missing mechanics — not for subjective reasons."
+    },
+    "tradeoff_clarity": {
+      "score": 4, "max": 4,
+      "evidence": "OPT-A tradeoffs: sprint cost is lowest but requires faithful port discipline (no visual deviations). Verbal-port rigidity is the constraint, not a hidden cost. OPT-B cost is design rework risk. OPT-C cost is non-distinctness."
+    },
+    "fit_to_intent": {
+      "score": 4, "max": 4,
+      "evidence": "Selected option directly satisfies: distinct sticker domain, variant cart, physical fulfillment, curated catalog, impeccable gate, deterministic cohort, frozen engine compliance."
+    },
+    "anti_overbuild": {
+      "score": 4, "max": 4,
+      "evidence": "No new engine, no new schema, no new auth system. Plain Next.js + Tailwind + localStorage. The seller/curator pages from the provided UI are included only because they are in the provided UI tree (prime directive) — no additional features added beyond what the UI provides."
+    }
+  },
+
+  "score": { "earned": 16, "possible": 16, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to plan stage"
+}

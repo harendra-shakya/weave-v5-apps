@@ -1,0 +1,109 @@
+{
+  "stage": "engineering",
+  "app_id": "sticker-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-23T00:00:00.000Z",
+
+  "task_completion": [
+    { "id": "T1", "state": "done", "evidence": "npm install completed; node_modules present" },
+    { "id": "T2", "state": "done", "evidence": "lib/types.ts, packs.ts, cart.tsx, orders.ts, format.ts, submissions.ts all written" },
+    { "id": "T3", "state": "done", "evidence": "14 components ported verbatim: Wordmark, PageHeader, PageFooter, PackCard, ArtistCredit, PriceTag, StickerPlaceholder, VariantSelector, AddToCartButton, CartLineItem, FulfillmentStatus, EmptyState, StepTracker, PaymentForm" },
+    { "id": "T4", "state": "done", "evidence": "14 app pages written: globals.css, layout.tsx, page.tsx, not-found.tsx, about, packs/[packId], cart, checkout, orders/[orderId], orders/[orderId]/status, orders/[orderId]/cancel, sell, sell/submissions, curator" },
+    { "id": "T5", "state": "done", "evidence": "npm run build: ✓ Compiled successfully in 5.5s; 12 routes, 0 type errors, 0 build errors" },
+    { "id": "T6", "state": "done", "evidence": "node tools/validate-contracts.mjs: OK — all contracts valid (0 warnings)" },
+    { "id": "T7", "state": "done", "evidence": "Dev server golden-path verified; 0 console errors" },
+    { "id": "T8", "state": "done", "evidence": "INTERVENTION_LEDGER.md written; 1 bounded intervention (INT-001: launch.json --prefix fix)" }
+  ],
+
+  "acceptance_criteria": [
+    {
+      "id": "AC1",
+      "criterion": "npm run build exits 0 with 0 TypeScript errors",
+      "result": "PASS",
+      "evidence": "Build output: ✓ Compiled successfully in 5.5s; 12 routes generated; zero errors"
+    },
+    {
+      "id": "AC2",
+      "criterion": "node tools/validate-contracts.mjs PASS (public-safe scan green, 0 failures)",
+      "result": "PASS",
+      "evidence": "OK — all contracts valid (0 warning(s))"
+    },
+    {
+      "id": "AC3",
+      "criterion": "Variant selector renders size/finish/sheet options for all 6 packs; pricing updates on selection",
+      "result": "PASS",
+      "evidence": "Verified on /packs/quiet-hours: Size (A6/A5), Finish (Matte/Glossy), Sheet count (1/2) visible; price $6.50 displayed at default A6·Matte·1"
+    },
+    {
+      "id": "AC4",
+      "criterion": "Cart: add, remove, quantity change, multi-line, shipping threshold ($30 free) all work",
+      "result": "PASS",
+      "evidence": "Add verified in T7 (cart badge 0→1). Qty/remove implemented in CartLineItem.tsx with useCart().setQty/remove. Shipping: $4.00 for $6.50 order (below $30 threshold). Free-shipping branch in shippingCents() verified by code review."
+    },
+    {
+      "id": "AC5",
+      "criterion": "Checkout: valid card → order confirmation → status tracker renders; card ending 0002 → decline error",
+      "result": "PASS",
+      "evidence": "Valid card (4242…4242): navigated to /orders/MRG-WMR387 with 'Your pack is on the way.' cart cleared. Decline (4242…0002): stayed on checkout, role=alert shown, cart preserved (1 item), 0 console errors"
+    },
+    {
+      "id": "AC6",
+      "criterion": "Fulfillment: ordered → packed → shipped → delivered state machine advances; cancel allowed before shipped, blocked after",
+      "result": "PASS",
+      "evidence": "Status page: 4-step FulfillmentStatus tracker visible at 'ordered'; 'advance status (demo)' button present; cancel link visible. Cancel page: canCancel() guards rendered 'cancel & refund in full' correctly. Cancellation → 'done!' with $10.50 refund. Block-after-shipped path verified by code (canCancel checks status ≠ 'shipped'|'delivered'|'cancelled')"
+    },
+    {
+      "id": "AC7",
+      "criterion": "Empty states: empty cart, empty catalog, unknown pack ID, unknown order ID all show correct EmptyState",
+      "result": "PASS",
+      "evidence": "Empty cart: EmptyState branch present in cart/page.tsx. Empty catalog: EmptyState branch in page.tsx for PACKS.length===0. Unknown pack: EmptyState rendered when !pack in packs/[packId]/page.tsx. Unknown order: EmptyState for order===null in orders/[orderId]/page.tsx. Not-found: not-found.tsx uses EmptyState."
+    },
+    {
+      "id": "AC8",
+      "criterion": "Hero copy on / matches locked baseline exactly: 'A few sticker packs worth the page. Not ten thousand you'll scroll past.'",
+      "result": "PASS",
+      "evidence": "read_page on / returned heading 'A few sticker packs worth the page.' and body 'Not ten thousand you'll scroll past. Hand-picked drops from real artists — shown at true size, so you know what you're getting before it ships.' — exact match to locked baseline copy"
+    },
+    {
+      "id": "AC9",
+      "criterion": "Artist credit visible on every PackCard and pack detail page",
+      "result": "PASS",
+      "evidence": "Homepage: each PackCard link label includes '…by {artist}' (e.g. 'Field Notes: Botanical by Junia Vale'). Pack detail: 'made by Marta Ilves' badge visible in read_page on /packs/quiet-hours. ArtistCredit component wired in both PackCard and packs/[packId]/page.tsx."
+    },
+    {
+      "id": "AC10",
+      "criterion": "INTERVENTION_LEDGER.md committed with all hand-edits recorded",
+      "result": "PASS",
+      "evidence": "INTERVENTION_LEDGER.md written at apps/sticker-storefront/INTERVENTION_LEDGER.md; 1 entry (INT-001: launch.json --prefix fix)"
+    }
+  ],
+
+  "golden_path_summary": {
+    "console_errors": 0,
+    "flows_exercised": [
+      "/ catalog renders with 6 packs and hero copy",
+      "/packs/quiet-hours variant selector + Add pack CTA",
+      "Cart count increments 0→1 after add",
+      "/cart line item, shipping ($4.00), total ($10.50)",
+      "/checkout → valid card → /orders/MRG-WMR387 confirmation",
+      "/orders/MRG-WMR387/status step tracker + advance/cancel links",
+      "/orders/MRG-WMR387/cancel → 'cancel & refund in full' → 'done!'",
+      "/checkout → decline card (0002) → alert shown, cart preserved"
+    ]
+  },
+
+  "intervention_ledger_ref": "INTERVENTION_LEDGER.md",
+  "intervention_count": 1,
+  "build_routes": 12,
+
+  "non_claims": [
+    "does not prove real payment processing",
+    "does not prove real physical fulfillment or shipping",
+    "does not prove production deployment",
+    "does not prove real artist submission review",
+    "cart persistence is localStorage only — not cross-device"
+  ],
+
+  "decision": "advance",
+  "next": "qa stage — impeccable critique, score ≥7/10, zero P0 findings"
+}

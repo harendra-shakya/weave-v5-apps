@@ -1,0 +1,221 @@
+{
+  "schema": "weave-v5/artifact-manifest/v1",
+  "app_id": "sticker-storefront",
+  "sealed_at": "2026-07-22T22:26:05.918Z",
+  "git_sha": "8676663385617db796f1758b4d99b5afd982030e",
+  "file_count": 53,
+  "files": [
+    {
+      "path": "INTERVENTION_LEDGER.md",
+      "sha256": "9c03cff8f0117eff8aca9f89b8c9a3f48fd4807277ca2b81837a46eec697f536"
+    },
+    {
+      "path": "app/about/page.tsx",
+      "sha256": "9fb122f4b40bdd6678fe8b1e89700cbb696ee260e38a272c5f6af7bd50b1ec91"
+    },
+    {
+      "path": "app/cart/page.tsx",
+      "sha256": "3fbcec2349937b08fe270c4da3c93f001c2075b2c30edf76b7a9cc4e03004145"
+    },
+    {
+      "path": "app/checkout/page.tsx",
+      "sha256": "a8b5ff43526e381e9325f7c3b0178400a7bbff8a2fbb38e558f010a4adecb898"
+    },
+    {
+      "path": "app/curator/page.tsx",
+      "sha256": "ef83d2e1f12f3133de33f60e16d8b0a0fdb67ea12e8087c4f13617ca14315909"
+    },
+    {
+      "path": "app/globals.css",
+      "sha256": "a8541a10349f9b6c4c09ad5ba076e5cc623c76f8cda352def9220fb65717bfd9"
+    },
+    {
+      "path": "app/layout.tsx",
+      "sha256": "1ebacf0a2d5997e6d265287fd976cc6afa7cef895f00e3cf165163d73e1b5f9b"
+    },
+    {
+      "path": "app/not-found.tsx",
+      "sha256": "ec9ba2f7fb8f3577707904132449fbb14dc15ca4eafdce90c77dcde6f492ae64"
+    },
+    {
+      "path": "app/orders/[orderId]/cancel/page.tsx",
+      "sha256": "c2d848cc5a7d4ba1e602e39d5e0c117c1a51afff807223dec8b380d304817318"
+    },
+    {
+      "path": "app/orders/[orderId]/page.tsx",
+      "sha256": "2c78472ec30369c8a797517323faf4b502ef95bbf11d01364e76707db758b263"
+    },
+    {
+      "path": "app/orders/[orderId]/status/page.tsx",
+      "sha256": "016d74464a9e006cbf1619126b609f76322afc0de308fc3293d2bdffe16a9155"
+    },
+    {
+      "path": "app/packs/[packId]/page.tsx",
+      "sha256": "70025449f765744616f763ec3573bd92169eeeae46f3a75816b1f691dfea4b31"
+    },
+    {
+      "path": "app/page.tsx",
+      "sha256": "93695b815d2ccd15daabc11f5be74bea7b42d732f61c3974a87e00384cc8bce8"
+    },
+    {
+      "path": "app/sell/page.tsx",
+      "sha256": "8a20dcdee2c60b162579d1d48c85ca27aa5a76451ac7b2a627282c5a5660ef7d"
+    },
+    {
+      "path": "app/sell/submissions/page.tsx",
+      "sha256": "f5eae9a41ee538cdbbf7d9f5433a7b3502f8a3d5607400a847a06203db510dba"
+    },
+    {
+      "path": "components/AddToCartButton.tsx",
+      "sha256": "13e36f5ee056422fd81f919fe293c2ceab6550d93619a7fb5623d766e61ba876"
+    },
+    {
+      "path": "components/ArtistCredit.tsx",
+      "sha256": "937274770d4255201aeecbf5cb650b042c87280279a37e691a8a818f08e65212"
+    },
+    {
+      "path": "components/CartLineItem.tsx",
+      "sha256": "b6ce21438aef04c5dad0629aa24d0d6148c09cd35633b0f4c092c6c997a6c2dc"
+    },
+    {
+      "path": "components/EmptyState.tsx",
+      "sha256": "58a2c25c84ddd4f034e751705e442885daa70d1038e9da52bad764e1008319cf"
+    },
+    {
+      "path": "components/FulfillmentStatus.tsx",
+      "sha256": "a7e5d40db9694f9d43bfc41b2775339f0755617a96e96680236a187305140a20"
+    },
+    {
+      "path": "components/PackCard.tsx",
+      "sha256": "02f935a72efc728671b63ce2fdb6de3e6eb2228ee633065a1751864fad1603ac"
+    },
+    {
+      "path": "components/PageFooter.tsx",
+      "sha256": "e4e64c40253aaed857b8821037b96b4ac8168eac2fe2332a068ad5ce0f569941"
+    },
+    {
+      "path": "components/PageHeader.tsx",
+      "sha256": "dffc61bac90d8ee53edce540a69c049e646c4429d73e81dc6d9c195572c912aa"
+    },
+    {
+      "path": "components/PaymentForm.tsx",
+      "sha256": "3ebe833b2d4296e831b27929beebdb4c88a9228357b7ac225a799c43934366cf"
+    },
+    {
+      "path": "components/PriceTag.tsx",
+      "sha256": "feada46027707968ca855f87041af2763f41f8df1d2f44d9964021d0a7a31fc4"
+    },
+    {
+      "path": "components/StepTracker.tsx",
+      "sha256": "58752c03258e00d95ddeabe0da2ea3d286e7aa784bbd5887a8e10e403560cd71"
+    },
+    {
+      "path": "components/StickerPlaceholder.tsx",
+      "sha256": "991bd032b7db2026998c2f0f97a41505807839e2645f7065a141b08a263366ce"
+    },
+    {
+      "path": "components/VariantSelector.tsx",
+      "sha256": "10b28b7eba8b0b1c5981d37080f4ef8d9a890b26ac3c86a6df0de7b764d66f5a"
+    },
+    {
+      "path": "components/Wordmark.tsx",
+      "sha256": "eaafd824b1f1c4a64506ae226dfdb8b44eae39ebf4bf969b2108051e7487af2c"
+    },
+    {
+      "path": "lib/cart.tsx",
+      "sha256": "dd544989fbf2d60d4c6ac26bc201ecb6fb60941d3acc1f3f9d68aa3f74a06282"
+    },
+    {
+      "path": "lib/format.ts",
+      "sha256": "85c15f3f1eb9a2aadfe32d9c3c8ca4d0c3bf63ca037b77b8da2dfac68a84810f"
+    },
+    {
+      "path": "lib/orders.ts",
+      "sha256": "f8b251ba1ac1f30eb7f8febe7ebe3dd324b609a27942bc30c6b26107c259e5aa"
+    },
+    {
+      "path": "lib/packs.ts",
+      "sha256": "d47ba453a9dae5f29d835043a0ba3d9265605a7626c2013cfc1dfaa30032a724"
+    },
+    {
+      "path": "lib/submissions.ts",
+      "sha256": "5a416c53e69f223ee19d8dac1c3d15dbb2cd2de67e55a805d5e52dd4dba571c2"
+    },
+    {
+      "path": "lib/types.ts",
+      "sha256": "0376f8d49746b7204159e86f13efb904e37c09e3fbb4ef271cf269affaef3b2d"
+    },
+    {
+      "path": "lifecycle/lifecycle-state.json",
+      "sha256": "8b8237bf0ca958a72b66131f0d39e1b4c66f31f7c61468956a0aad11759a2c4e"
+    },
+    {
+      "path": "next-env.d.ts",
+      "sha256": "f4e8976c19fc926644d72610bf1058bd6bf52add97e46a02bc0b912a751625c0"
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "ab4c61f6ee100ae43610a18512f1ebcec842bb2405431e1009266173f21cf772"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "7550050f280fe30c8eb9dc8f0c169455e8a9192874b1c299b2d457134d2f518a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a5cf182a584cb8bbadd4089f8a50216905309851d6185510b7dab41c7e306f78"
+    },
+    {
+      "path": "postcss.config.js",
+      "sha256": "fa650b380adfabb151a0b352f7135e107e6352345f899060f1c5c231228f94bf"
+    },
+    {
+      "path": "proof/analysis-result.json",
+      "sha256": "ef3d25f90adf435b4f488654a354691113231372766f48c79068dded4eb8580b"
+    },
+    {
+      "path": "proof/cohort-2026-07-22T22-22-26/cohort-result.json",
+      "sha256": "7a77912a48f382d7d0e82c4ce47df842d3e05d93bcba36d2339e674959405786"
+    },
+    {
+      "path": "proof/cohort-2026-07-22T22-24-48/cohort-result.json",
+      "sha256": "1c33602d501b1d45fa829a63ac7245abc0c2256479e482ab62176821c557e082"
+    },
+    {
+      "path": "proof/engineering-eval-result.json",
+      "sha256": "568f0982dd1d7f686e67b1b647525b16153d568fb7fdbdbf57fa0aa875a62055"
+    },
+    {
+      "path": "proof/intent-eval-result.json",
+      "sha256": "0525bff837cb9ca6cc82faa9dc102387a42feac67c29add8f4b208fb5576c3df"
+    },
+    {
+      "path": "proof/iteration-result.json",
+      "sha256": "74ce4c4a6d18f4ccccf5f70027b1feae567693f0268a8934c1892753ae369307"
+    },
+    {
+      "path": "proof/plan-eval-result.json",
+      "sha256": "686e72f6ffd7401409a9dd476beba95b2bdf917194a90656892c426f3671b426"
+    },
+    {
+      "path": "proof/qa-eval-result.json",
+      "sha256": "daf1151f41afb9a13507dba16c979f6c9edbf934f0db1e92ba0ef8a1766c6d86"
+    },
+    {
+      "path": "proof/research-eval-result.json",
+      "sha256": "027400d92830cc3d96088d553eff6433c4061001e9bce7c03a2de6a9764e1b06"
+    },
+    {
+      "path": "proof/selection-eval-result.json",
+      "sha256": "7d3ab96dfa7f3b3df49c44e3420ed795514999399330c9803650d39b0db4aac4"
+    },
+    {
+      "path": "tailwind.config.ts",
+      "sha256": "1d99e9aa15098d453c2c031c372281b7a8aeb0d384da64dc438777cfe1ca1fe3"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "a415c85542a21c6fba4984788418876a98b74043620fa3640efe895fe1bb3df4"
+    }
+  ]
+}

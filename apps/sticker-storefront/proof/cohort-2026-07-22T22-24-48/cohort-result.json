@@ -1,0 +1,2318 @@
+{
+  "schema": "weave-v5/cohort/v1",
+  "app_id": "sticker-storefront",
+  "seed": 42,
+  "user_count": 200,
+  "event_count": 378,
+  "generated_at": "2026-07-22T22:24:48.392Z",
+  "kpis": {
+    "views": 200,
+    "converts": 27,
+    "fulfills": 24,
+    "refunds": 2,
+    "conversion_rate": 0.135,
+    "aov": 12.851851851851853,
+    "refund_rate": 0.07407407407407407,
+    "fulfill_rate": 0.8888888888888888,
+    "guardrail_breach": false
+  },
+  "events": [
+    {
+      "user_id": "u000000",
+      "event": "view",
+      "ts": "2023-11-14T22:13:20.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000000",
+      "event": "engage",
+      "ts": "2023-11-14T22:13:21.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000001",
+      "event": "view",
+      "ts": "2023-11-14T22:14:22.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000001",
+      "event": "engage",
+      "ts": "2023-11-14T22:14:23.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000002",
+      "event": "view",
+      "ts": "2023-11-14T22:15:24.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000003",
+      "event": "view",
+      "ts": "2023-11-14T22:16:25.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000003",
+      "event": "engage",
+      "ts": "2023-11-14T22:16:26.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000003",
+      "event": "convert",
+      "ts": "2023-11-14T22:16:27.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000004",
+      "event": "view",
+      "ts": "2023-11-14T22:17:28.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000004",
+      "event": "engage",
+      "ts": "2023-11-14T22:17:29.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000004",
+      "event": "convert",
+      "ts": "2023-11-14T22:17:30.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000004",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:17:31.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000005",
+      "event": "view",
+      "ts": "2023-11-14T22:18:32.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000005",
+      "event": "engage",
+      "ts": "2023-11-14T22:18:33.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000006",
+      "event": "view",
+      "ts": "2023-11-14T22:19:34.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000006",
+      "event": "engage",
+      "ts": "2023-11-14T22:19:35.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000007",
+      "event": "view",
+      "ts": "2023-11-14T22:20:36.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000007",
+      "event": "engage",
+      "ts": "2023-11-14T22:20:37.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000007",
+      "event": "convert",
+      "ts": "2023-11-14T22:20:38.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000007",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:20:39.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000008",
+      "event": "view",
+      "ts": "2023-11-14T22:21:40.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000008",
+      "event": "engage",
+      "ts": "2023-11-14T22:21:41.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000008",
+      "event": "convert",
+      "ts": "2023-11-14T22:21:42.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000008",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:21:43.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000009",
+      "event": "view",
+      "ts": "2023-11-14T22:22:44.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000009",
+      "event": "engage",
+      "ts": "2023-11-14T22:22:45.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000010",
+      "event": "view",
+      "ts": "2023-11-14T22:23:46.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000010",
+      "event": "engage",
+      "ts": "2023-11-14T22:23:47.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000011",
+      "event": "view",
+      "ts": "2023-11-14T22:24:48.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000011",
+      "event": "engage",
+      "ts": "2023-11-14T22:24:49.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000012",
+      "event": "view",
+      "ts": "2023-11-14T22:25:50.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000012",
+      "event": "engage",
+      "ts": "2023-11-14T22:25:51.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000013",
+      "event": "view",
+      "ts": "2023-11-14T22:26:52.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000013",
+      "event": "engage",
+      "ts": "2023-11-14T22:26:53.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000013",
+      "event": "convert",
+      "ts": "2023-11-14T22:26:54.000Z",
+      "item_id": "pack-002",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000013",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:26:55.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000014",
+      "event": "view",
+      "ts": "2023-11-14T22:27:56.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000015",
+      "event": "view",
+      "ts": "2023-11-14T22:28:57.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000016",
+      "event": "view",
+      "ts": "2023-11-14T22:29:58.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000016",
+      "event": "engage",
+      "ts": "2023-11-14T22:29:59.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000017",
+      "event": "view",
+      "ts": "2023-11-14T22:31:00.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000018",
+      "event": "view",
+      "ts": "2023-11-14T22:32:01.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000018",
+      "event": "engage",
+      "ts": "2023-11-14T22:32:02.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000018",
+      "event": "convert",
+      "ts": "2023-11-14T22:32:03.000Z",
+      "item_id": "pack-003",
+      "amount_cents": 1200
+    },
+    {
+      "user_id": "u000018",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:32:04.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000019",
+      "event": "view",
+      "ts": "2023-11-14T22:33:05.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000020",
+      "event": "view",
+      "ts": "2023-11-14T22:34:06.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000021",
+      "event": "view",
+      "ts": "2023-11-14T22:35:07.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000021",
+      "event": "engage",
+      "ts": "2023-11-14T22:35:08.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000022",
+      "event": "view",
+      "ts": "2023-11-14T22:36:09.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000022",
+      "event": "engage",
+      "ts": "2023-11-14T22:36:10.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000023",
+      "event": "view",
+      "ts": "2023-11-14T22:37:11.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000024",
+      "event": "view",
+      "ts": "2023-11-14T22:38:12.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000025",
+      "event": "view",
+      "ts": "2023-11-14T22:39:13.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000025",
+      "event": "engage",
+      "ts": "2023-11-14T22:39:14.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000026",
+      "event": "view",
+      "ts": "2023-11-14T22:40:15.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000026",
+      "event": "engage",
+      "ts": "2023-11-14T22:40:16.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000027",
+      "event": "view",
+      "ts": "2023-11-14T22:41:17.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000027",
+      "event": "engage",
+      "ts": "2023-11-14T22:41:18.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000028",
+      "event": "view",
+      "ts": "2023-11-14T22:42:19.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000029",
+      "event": "view",
+      "ts": "2023-11-14T22:43:20.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000029",
+      "event": "engage",
+      "ts": "2023-11-14T22:43:21.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000030",
+      "event": "view",
+      "ts": "2023-11-14T22:44:22.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000030",
+      "event": "engage",
+      "ts": "2023-11-14T22:44:23.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000031",
+      "event": "view",
+      "ts": "2023-11-14T22:45:24.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000032",
+      "event": "view",
+      "ts": "2023-11-14T22:46:25.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000032",
+      "event": "engage",
+      "ts": "2023-11-14T22:46:26.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000033",
+      "event": "view",
+      "ts": "2023-11-14T22:47:27.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000033",
+      "event": "engage",
+      "ts": "2023-11-14T22:47:28.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000034",
+      "event": "view",
+      "ts": "2023-11-14T22:48:29.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000035",
+      "event": "view",
+      "ts": "2023-11-14T22:49:30.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000035",
+      "event": "engage",
+      "ts": "2023-11-14T22:49:31.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000036",
+      "event": "view",
+      "ts": "2023-11-14T22:50:32.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000037",
+      "event": "view",
+      "ts": "2023-11-14T22:51:33.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000037",
+      "event": "engage",
+      "ts": "2023-11-14T22:51:34.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000038",
+      "event": "view",
+      "ts": "2023-11-14T22:52:35.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000038",
+      "event": "engage",
+      "ts": "2023-11-14T22:52:36.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000039",
+      "event": "view",
+      "ts": "2023-11-14T22:53:37.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000039",
+      "event": "engage",
+      "ts": "2023-11-14T22:53:38.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000040",
+      "event": "view",
+      "ts": "2023-11-14T22:54:39.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000040",
+      "event": "engage",
+      "ts": "2023-11-14T22:54:40.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000041",
+      "event": "view",
+      "ts": "2023-11-14T22:55:41.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000042",
+      "event": "view",
+      "ts": "2023-11-14T22:56:42.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000042",
+      "event": "engage",
+      "ts": "2023-11-14T22:56:43.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000043",
+      "event": "view",
+      "ts": "2023-11-14T22:57:44.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000043",
+      "event": "engage",
+      "ts": "2023-11-14T22:57:45.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000043",
+      "event": "convert",
+      "ts": "2023-11-14T22:57:46.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000043",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:57:47.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000044",
+      "event": "view",
+      "ts": "2023-11-14T22:58:48.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000044",
+      "event": "engage",
+      "ts": "2023-11-14T22:58:49.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000045",
+      "event": "view",
+      "ts": "2023-11-14T22:59:50.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000045",
+      "event": "engage",
+      "ts": "2023-11-14T22:59:51.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000046",
+      "event": "view",
+      "ts": "2023-11-14T23:00:52.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000047",
+      "event": "view",
+      "ts": "2023-11-14T23:01:53.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000047",
+      "event": "engage",
+      "ts": "2023-11-14T23:01:54.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000048",
+      "event": "view",
+      "ts": "2023-11-14T23:02:55.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000048",
+      "event": "engage",
+      "ts": "2023-11-14T23:02:56.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000049",
+      "event": "view",
+      "ts": "2023-11-14T23:03:57.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000050",
+      "event": "view",
+      "ts": "2023-11-14T23:04:58.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000050",
+      "event": "engage",
+      "ts": "2023-11-14T23:04:59.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000051",
+      "event": "view",
+      "ts": "2023-11-14T23:06:00.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000051",
+      "event": "engage",
+      "ts": "2023-11-14T23:06:01.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000052",
+      "event": "view",
+      "ts": "2023-11-14T23:07:02.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000052",
+      "event": "engage",
+      "ts": "2023-11-14T23:07:03.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000052",
+      "event": "convert",
+      "ts": "2023-11-14T23:07:04.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000052",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:07:05.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000053",
+      "event": "view",
+      "ts": "2023-11-14T23:08:06.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000054",
+      "event": "view",
+      "ts": "2023-11-14T23:09:07.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000054",
+      "event": "engage",
+      "ts": "2023-11-14T23:09:08.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000055",
+      "event": "view",
+      "ts": "2023-11-14T23:10:09.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000055",
+      "event": "engage",
+      "ts": "2023-11-14T23:10:10.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000056",
+      "event": "view",
+      "ts": "2023-11-14T23:11:11.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000056",
+      "event": "engage",
+      "ts": "2023-11-14T23:11:12.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000056",
+      "event": "convert",
+      "ts": "2023-11-14T23:11:13.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000056",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:11:14.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000057",
+      "event": "view",
+      "ts": "2023-11-14T23:12:15.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000058",
+      "event": "view",
+      "ts": "2023-11-14T23:13:16.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000058",
+      "event": "engage",
+      "ts": "2023-11-14T23:13:17.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000058",
+      "event": "convert",
+      "ts": "2023-11-14T23:13:18.000Z",
+      "item_id": "pack-003",
+      "amount_cents": 1200
+    },
+    {
+      "user_id": "u000058",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:13:19.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000059",
+      "event": "view",
+      "ts": "2023-11-14T23:14:20.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000060",
+      "event": "view",
+      "ts": "2023-11-14T23:15:21.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000060",
+      "event": "engage",
+      "ts": "2023-11-14T23:15:22.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000061",
+      "event": "view",
+      "ts": "2023-11-14T23:16:23.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000061",
+      "event": "engage",
+      "ts": "2023-11-14T23:16:24.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000062",
+      "event": "view",
+      "ts": "2023-11-14T23:17:25.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000063",
+      "event": "view",
+      "ts": "2023-11-14T23:18:26.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000064",
+      "event": "view",
+      "ts": "2023-11-14T23:19:27.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000065",
+      "event": "view",
+      "ts": "2023-11-14T23:20:28.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000065",
+      "event": "engage",
+      "ts": "2023-11-14T23:20:29.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000065",
+      "event": "convert",
+      "ts": "2023-11-14T23:20:30.000Z",
+      "item_id": "pack-002",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000065",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:20:31.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000066",
+      "event": "view",
+      "ts": "2023-11-14T23:21:32.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000067",
+      "event": "view",
+      "ts": "2023-11-14T23:22:33.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000068",
+      "event": "view",
+      "ts": "2023-11-14T23:23:34.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000069",
+      "event": "view",
+      "ts": "2023-11-14T23:24:35.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000069",
+      "event": "engage",
+      "ts": "2023-11-14T23:24:36.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000070",
+      "event": "view",
+      "ts": "2023-11-14T23:25:37.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000071",
+      "event": "view",
+      "ts": "2023-11-14T23:26:38.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000072",
+      "event": "view",
+      "ts": "2023-11-14T23:27:39.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000072",
+      "event": "engage",
+      "ts": "2023-11-14T23:27:40.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000073",
+      "event": "view",
+      "ts": "2023-11-14T23:28:41.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000073",
+      "event": "engage",
+      "ts": "2023-11-14T23:28:42.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000073",
+      "event": "convert",
+      "ts": "2023-11-14T23:28:43.000Z",
+      "item_id": "pack-002",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000073",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:28:44.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000074",
+      "event": "view",
+      "ts": "2023-11-14T23:29:45.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000075",
+      "event": "view",
+      "ts": "2023-11-14T23:30:46.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000075",
+      "event": "engage",
+      "ts": "2023-11-14T23:30:47.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000076",
+      "event": "view",
+      "ts": "2023-11-14T23:31:48.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000076",
+      "event": "engage",
+      "ts": "2023-11-14T23:31:49.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000076",
+      "event": "convert",
+      "ts": "2023-11-14T23:31:50.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000076",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:31:51.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000077",
+      "event": "view",
+      "ts": "2023-11-14T23:32:52.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000077",
+      "event": "engage",
+      "ts": "2023-11-14T23:32:53.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000078",
+      "event": "view",
+      "ts": "2023-11-14T23:33:54.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000079",
+      "event": "view",
+      "ts": "2023-11-14T23:34:55.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000080",
+      "event": "view",
+      "ts": "2023-11-14T23:35:56.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000080",
+      "event": "engage",
+      "ts": "2023-11-14T23:35:57.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000081",
+      "event": "view",
+      "ts": "2023-11-14T23:36:58.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000081",
+      "event": "engage",
+      "ts": "2023-11-14T23:36:59.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000082",
+      "event": "view",
+      "ts": "2023-11-14T23:38:00.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000082",
+      "event": "engage",
+      "ts": "2023-11-14T23:38:01.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000083",
+      "event": "view",
+      "ts": "2023-11-14T23:39:02.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000083",
+      "event": "engage",
+      "ts": "2023-11-14T23:39:03.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000084",
+      "event": "view",
+      "ts": "2023-11-14T23:40:04.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000084",
+      "event": "engage",
+      "ts": "2023-11-14T23:40:05.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000084",
+      "event": "convert",
+      "ts": "2023-11-14T23:40:06.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000084",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:40:07.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000085",
+      "event": "view",
+      "ts": "2023-11-14T23:41:08.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000085",
+      "event": "engage",
+      "ts": "2023-11-14T23:41:09.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000086",
+      "event": "view",
+      "ts": "2023-11-14T23:42:10.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000086",
+      "event": "engage",
+      "ts": "2023-11-14T23:42:11.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000086",
+      "event": "convert",
+      "ts": "2023-11-14T23:42:12.000Z",
+      "item_id": "pack-003",
+      "amount_cents": 1200
+    },
+    {
+      "user_id": "u000086",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:42:13.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000086",
+      "event": "refund",
+      "ts": "2023-11-14T23:42:14.000Z",
+      "item_id": "pack-003",
+      "amount_cents": 1200
+    },
+    {
+      "user_id": "u000087",
+      "event": "view",
+      "ts": "2023-11-14T23:43:15.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000087",
+      "event": "engage",
+      "ts": "2023-11-14T23:43:16.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000088",
+      "event": "view",
+      "ts": "2023-11-14T23:44:17.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000088",
+      "event": "engage",
+      "ts": "2023-11-14T23:44:18.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000089",
+      "event": "view",
+      "ts": "2023-11-14T23:45:19.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000090",
+      "event": "view",
+      "ts": "2023-11-14T23:46:20.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000090",
+      "event": "engage",
+      "ts": "2023-11-14T23:46:21.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000091",
+      "event": "view",
+      "ts": "2023-11-14T23:47:22.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000091",
+      "event": "engage",
+      "ts": "2023-11-14T23:47:23.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000091",
+      "event": "convert",
+      "ts": "2023-11-14T23:47:24.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000091",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:47:25.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000091",
+      "event": "refund",
+      "ts": "2023-11-14T23:47:26.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000092",
+      "event": "view",
+      "ts": "2023-11-14T23:48:27.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000093",
+      "event": "view",
+      "ts": "2023-11-14T23:49:28.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000093",
+      "event": "engage",
+      "ts": "2023-11-14T23:49:29.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000094",
+      "event": "view",
+      "ts": "2023-11-14T23:50:30.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000094",
+      "event": "engage",
+      "ts": "2023-11-14T23:50:31.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000095",
+      "event": "view",
+      "ts": "2023-11-14T23:51:32.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000096",
+      "event": "view",
+      "ts": "2023-11-14T23:52:33.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000096",
+      "event": "engage",
+      "ts": "2023-11-14T23:52:34.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000097",
+      "event": "view",
+      "ts": "2023-11-14T23:53:35.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000097",
+      "event": "engage",
+      "ts": "2023-11-14T23:53:36.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000098",
+      "event": "view",
+      "ts": "2023-11-14T23:54:37.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000099",
+      "event": "view",
+      "ts": "2023-11-14T23:55:38.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000099",
+      "event": "engage",
+      "ts": "2023-11-14T23:55:39.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000100",
+      "event": "view",
+      "ts": "2023-11-14T23:56:40.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000100",
+      "event": "engage",
+      "ts": "2023-11-14T23:56:41.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000101",
+      "event": "view",
+      "ts": "2023-11-14T23:57:42.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000102",
+      "event": "view",
+      "ts": "2023-11-14T23:58:43.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000102",
+      "event": "engage",
+      "ts": "2023-11-14T23:58:44.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000103",
+      "event": "view",
+      "ts": "2023-11-14T23:59:45.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000104",
+      "event": "view",
+      "ts": "2023-11-15T00:00:46.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000105",
+      "event": "view",
+      "ts": "2023-11-15T00:01:47.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000106",
+      "event": "view",
+      "ts": "2023-11-15T00:02:48.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000107",
+      "event": "view",
+      "ts": "2023-11-15T00:03:49.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000108",
+      "event": "view",
+      "ts": "2023-11-15T00:04:50.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000108",
+      "event": "engage",
+      "ts": "2023-11-15T00:04:51.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000109",
+      "event": "view",
+      "ts": "2023-11-15T00:05:52.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000110",
+      "event": "view",
+      "ts": "2023-11-15T00:06:53.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000111",
+      "event": "view",
+      "ts": "2023-11-15T00:07:54.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000111",
+      "event": "engage",
+      "ts": "2023-11-15T00:07:55.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000112",
+      "event": "view",
+      "ts": "2023-11-15T00:08:56.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000112",
+      "event": "engage",
+      "ts": "2023-11-15T00:08:57.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000113",
+      "event": "view",
+      "ts": "2023-11-15T00:09:58.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000114",
+      "event": "view",
+      "ts": "2023-11-15T00:10:59.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000114",
+      "event": "engage",
+      "ts": "2023-11-15T00:11:00.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000115",
+      "event": "view",
+      "ts": "2023-11-15T00:12:01.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000115",
+      "event": "engage",
+      "ts": "2023-11-15T00:12:02.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000116",
+      "event": "view",
+      "ts": "2023-11-15T00:13:03.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000116",
+      "event": "engage",
+      "ts": "2023-11-15T00:13:04.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000117",
+      "event": "view",
+      "ts": "2023-11-15T00:14:05.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000117",
+      "event": "engage",
+      "ts": "2023-11-15T00:14:06.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000118",
+      "event": "view",
+      "ts": "2023-11-15T00:15:07.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000119",
+      "event": "view",
+      "ts": "2023-11-15T00:16:08.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000119",
+      "event": "engage",
+      "ts": "2023-11-15T00:16:09.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000119",
+      "event": "convert",
+      "ts": "2023-11-15T00:16:10.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000119",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:16:11.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000120",
+      "event": "view",
+      "ts": "2023-11-15T00:17:12.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000121",
+      "event": "view",
+      "ts": "2023-11-15T00:18:13.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000122",
+      "event": "view",
+      "ts": "2023-11-15T00:19:14.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000122",
+      "event": "engage",
+      "ts": "2023-11-15T00:19:15.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000123",
+      "event": "view",
+      "ts": "2023-11-15T00:20:16.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000123",
+      "event": "engage",
+      "ts": "2023-11-15T00:20:17.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000124",
+      "event": "view",
+      "ts": "2023-11-15T00:21:18.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000125",
+      "event": "view",
+      "ts": "2023-11-15T00:22:19.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000125",
+      "event": "engage",
+      "ts": "2023-11-15T00:22:20.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000125",
+      "event": "convert",
+      "ts": "2023-11-15T00:22:21.000Z",
+      "item_id": "pack-002",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000125",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:22:22.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000126",
+      "event": "view",
+      "ts": "2023-11-15T00:23:23.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000126",
+      "event": "engage",
+      "ts": "2023-11-15T00:23:24.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000127",
+      "event": "view",
+      "ts": "2023-11-15T00:24:25.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000127",
+      "event": "engage",
+      "ts": "2023-11-15T00:24:26.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000128",
+      "event": "view",
+      "ts": "2023-11-15T00:25:27.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000128",
+      "event": "engage",
+      "ts": "2023-11-15T00:25:28.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000129",
+      "event": "view",
+      "ts": "2023-11-15T00:26:29.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000130",
+      "event": "view",
+      "ts": "2023-11-15T00:27:30.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000130",
+      "event": "engage",
+      "ts": "2023-11-15T00:27:31.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000130",
+      "event": "convert",
+      "ts": "2023-11-15T00:27:32.000Z",
+      "item_id": "pack-003",
+      "amount_cents": 1200
+    },
+    {
+      "user_id": "u000130",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:27:33.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000131",
+      "event": "view",
+      "ts": "2023-11-15T00:28:34.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000132",
+      "event": "view",
+      "ts": "2023-11-15T00:29:35.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000133",
+      "event": "view",
+      "ts": "2023-11-15T00:30:36.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000134",
+      "event": "view",
+      "ts": "2023-11-15T00:31:37.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000135",
+      "event": "view",
+      "ts": "2023-11-15T00:32:38.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000135",
+      "event": "engage",
+      "ts": "2023-11-15T00:32:39.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000135",
+      "event": "convert",
+      "ts": "2023-11-15T00:32:40.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000135",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:32:41.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000136",
+      "event": "view",
+      "ts": "2023-11-15T00:33:42.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000136",
+      "event": "engage",
+      "ts": "2023-11-15T00:33:43.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000137",
+      "event": "view",
+      "ts": "2023-11-15T00:34:44.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000138",
+      "event": "view",
+      "ts": "2023-11-15T00:35:45.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000138",
+      "event": "engage",
+      "ts": "2023-11-15T00:35:46.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000139",
+      "event": "view",
+      "ts": "2023-11-15T00:36:47.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000139",
+      "event": "engage",
+      "ts": "2023-11-15T00:36:48.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000140",
+      "event": "view",
+      "ts": "2023-11-15T00:37:49.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000140",
+      "event": "engage",
+      "ts": "2023-11-15T00:37:50.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000141",
+      "event": "view",
+      "ts": "2023-11-15T00:38:51.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000141",
+      "event": "engage",
+      "ts": "2023-11-15T00:38:52.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000142",
+      "event": "view",
+      "ts": "2023-11-15T00:39:53.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000142",
+      "event": "engage",
+      "ts": "2023-11-15T00:39:54.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000142",
+      "event": "convert",
+      "ts": "2023-11-15T00:39:55.000Z",
+      "item_id": "pack-003",
+      "amount_cents": 1200
+    },
+    {
+      "user_id": "u000143",
+      "event": "view",
+      "ts": "2023-11-15T00:40:56.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000144",
+      "event": "view",
+      "ts": "2023-11-15T00:41:57.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000145",
+      "event": "view",
+      "ts": "2023-11-15T00:42:58.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000145",
+      "event": "engage",
+      "ts": "2023-11-15T00:42:59.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000145",
+      "event": "convert",
+      "ts": "2023-11-15T00:43:00.000Z",
+      "item_id": "pack-002",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000145",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:43:01.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000146",
+      "event": "view",
+      "ts": "2023-11-15T00:44:02.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000146",
+      "event": "engage",
+      "ts": "2023-11-15T00:44:03.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000147",
+      "event": "view",
+      "ts": "2023-11-15T00:45:04.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000147",
+      "event": "engage",
+      "ts": "2023-11-15T00:45:05.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000148",
+      "event": "view",
+      "ts": "2023-11-15T00:46:06.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000148",
+      "event": "engage",
+      "ts": "2023-11-15T00:46:07.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000149",
+      "event": "view",
+      "ts": "2023-11-15T00:47:08.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000149",
+      "event": "engage",
+      "ts": "2023-11-15T00:47:09.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000150",
+      "event": "view",
+      "ts": "2023-11-15T00:48:10.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000150",
+      "event": "engage",
+      "ts": "2023-11-15T00:48:11.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000151",
+      "event": "view",
+      "ts": "2023-11-15T00:49:12.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000151",
+      "event": "engage",
+      "ts": "2023-11-15T00:49:13.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000152",
+      "event": "view",
+      "ts": "2023-11-15T00:50:14.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000153",
+      "event": "view",
+      "ts": "2023-11-15T00:51:15.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000153",
+      "event": "engage",
+      "ts": "2023-11-15T00:51:16.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000153",
+      "event": "convert",
+      "ts": "2023-11-15T00:51:17.000Z",
+      "item_id": "pack-002",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000153",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:51:18.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000154",
+      "event": "view",
+      "ts": "2023-11-15T00:52:19.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000154",
+      "event": "engage",
+      "ts": "2023-11-15T00:52:20.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000155",
+      "event": "view",
+      "ts": "2023-11-15T00:53:21.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000155",
+      "event": "engage",
+      "ts": "2023-11-15T00:53:22.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000156",
+      "event": "view",
+      "ts": "2023-11-15T00:54:23.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000156",
+      "event": "engage",
+      "ts": "2023-11-15T00:54:24.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000157",
+      "event": "view",
+      "ts": "2023-11-15T00:55:25.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000157",
+      "event": "engage",
+      "ts": "2023-11-15T00:55:26.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000158",
+      "event": "view",
+      "ts": "2023-11-15T00:56:27.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000159",
+      "event": "view",
+      "ts": "2023-11-15T00:57:28.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000160",
+      "event": "view",
+      "ts": "2023-11-15T00:58:29.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000160",
+      "event": "engage",
+      "ts": "2023-11-15T00:58:30.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000161",
+      "event": "view",
+      "ts": "2023-11-15T00:59:31.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000161",
+      "event": "engage",
+      "ts": "2023-11-15T00:59:32.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000162",
+      "event": "view",
+      "ts": "2023-11-15T01:00:33.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000162",
+      "event": "engage",
+      "ts": "2023-11-15T01:00:34.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000163",
+      "event": "view",
+      "ts": "2023-11-15T01:01:35.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000164",
+      "event": "view",
+      "ts": "2023-11-15T01:02:36.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000165",
+      "event": "view",
+      "ts": "2023-11-15T01:03:37.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000165",
+      "event": "engage",
+      "ts": "2023-11-15T01:03:38.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000166",
+      "event": "view",
+      "ts": "2023-11-15T01:04:39.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000166",
+      "event": "engage",
+      "ts": "2023-11-15T01:04:40.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000167",
+      "event": "view",
+      "ts": "2023-11-15T01:05:41.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000167",
+      "event": "engage",
+      "ts": "2023-11-15T01:05:42.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000167",
+      "event": "convert",
+      "ts": "2023-11-15T01:05:43.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000167",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:05:44.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000168",
+      "event": "view",
+      "ts": "2023-11-15T01:06:45.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000168",
+      "event": "engage",
+      "ts": "2023-11-15T01:06:46.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000169",
+      "event": "view",
+      "ts": "2023-11-15T01:07:47.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000170",
+      "event": "view",
+      "ts": "2023-11-15T01:08:48.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000171",
+      "event": "view",
+      "ts": "2023-11-15T01:09:49.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000171",
+      "event": "engage",
+      "ts": "2023-11-15T01:09:50.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000171",
+      "event": "convert",
+      "ts": "2023-11-15T01:09:51.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000172",
+      "event": "view",
+      "ts": "2023-11-15T01:10:52.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000172",
+      "event": "engage",
+      "ts": "2023-11-15T01:10:53.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000173",
+      "event": "view",
+      "ts": "2023-11-15T01:11:54.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000173",
+      "event": "engage",
+      "ts": "2023-11-15T01:11:55.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000174",
+      "event": "view",
+      "ts": "2023-11-15T01:12:56.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000175",
+      "event": "view",
+      "ts": "2023-11-15T01:13:57.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000176",
+      "event": "view",
+      "ts": "2023-11-15T01:14:58.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000177",
+      "event": "view",
+      "ts": "2023-11-15T01:15:59.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000178",
+      "event": "view",
+      "ts": "2023-11-15T01:17:00.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000178",
+      "event": "engage",
+      "ts": "2023-11-15T01:17:01.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000179",
+      "event": "view",
+      "ts": "2023-11-15T01:18:02.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000179",
+      "event": "engage",
+      "ts": "2023-11-15T01:18:03.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000180",
+      "event": "view",
+      "ts": "2023-11-15T01:19:04.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000181",
+      "event": "view",
+      "ts": "2023-11-15T01:20:05.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000182",
+      "event": "view",
+      "ts": "2023-11-15T01:21:06.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000183",
+      "event": "view",
+      "ts": "2023-11-15T01:22:07.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000183",
+      "event": "engage",
+      "ts": "2023-11-15T01:22:08.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000183",
+      "event": "convert",
+      "ts": "2023-11-15T01:22:09.000Z",
+      "item_id": "pack-004",
+      "amount_cents": 900
+    },
+    {
+      "user_id": "u000183",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:22:10.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000184",
+      "event": "view",
+      "ts": "2023-11-15T01:23:11.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000184",
+      "event": "engage",
+      "ts": "2023-11-15T01:23:12.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000184",
+      "event": "convert",
+      "ts": "2023-11-15T01:23:13.000Z",
+      "item_id": "pack-001",
+      "amount_cents": 1400
+    },
+    {
+      "user_id": "u000184",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:23:14.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000185",
+      "event": "view",
+      "ts": "2023-11-15T01:24:15.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000186",
+      "event": "view",
+      "ts": "2023-11-15T01:25:16.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000187",
+      "event": "view",
+      "ts": "2023-11-15T01:26:17.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000187",
+      "event": "engage",
+      "ts": "2023-11-15T01:26:18.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000188",
+      "event": "view",
+      "ts": "2023-11-15T01:27:19.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000188",
+      "event": "engage",
+      "ts": "2023-11-15T01:27:20.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000189",
+      "event": "view",
+      "ts": "2023-11-15T01:28:21.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000189",
+      "event": "engage",
+      "ts": "2023-11-15T01:28:22.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000190",
+      "event": "view",
+      "ts": "2023-11-15T01:29:23.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000191",
+      "event": "view",
+      "ts": "2023-11-15T01:30:24.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000191",
+      "event": "engage",
+      "ts": "2023-11-15T01:30:25.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000192",
+      "event": "view",
+      "ts": "2023-11-15T01:31:26.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000192",
+      "event": "engage",
+      "ts": "2023-11-15T01:31:27.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000193",
+      "event": "view",
+      "ts": "2023-11-15T01:32:28.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000194",
+      "event": "view",
+      "ts": "2023-11-15T01:33:29.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000194",
+      "event": "engage",
+      "ts": "2023-11-15T01:33:30.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000195",
+      "event": "view",
+      "ts": "2023-11-15T01:34:31.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000195",
+      "event": "engage",
+      "ts": "2023-11-15T01:34:32.000Z",
+      "item_id": "pack-004"
+    },
+    {
+      "user_id": "u000196",
+      "event": "view",
+      "ts": "2023-11-15T01:35:33.000Z",
+      "item_id": "pack-001"
+    },
+    {
+      "user_id": "u000197",
+      "event": "view",
+      "ts": "2023-11-15T01:36:34.000Z",
+      "item_id": "pack-002"
+    },
+    {
+      "user_id": "u000198",
+      "event": "view",
+      "ts": "2023-11-15T01:37:35.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000198",
+      "event": "engage",
+      "ts": "2023-11-15T01:37:36.000Z",
+      "item_id": "pack-003"
+    },
+    {
+      "user_id": "u000199",
+      "event": "view",
+      "ts": "2023-11-15T01:38:37.000Z",
+      "item_id": "pack-004"
+    }
+  ]
+}

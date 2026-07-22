@@ -1,0 +1,47 @@
+{
+  "stage": "iteration",
+  "app_id": "sticker-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-23T00:00:00.000Z",
+
+  "adaptation": {
+    "id": "variant-clarity",
+    "target": "components/VariantSelector.tsx",
+    "description": "Surface price deltas and finish descriptions in variant pill labels so users understand pricing impact before clicking",
+    "changes": [
+      "Added delta() helper — formats +$X.XX relative to base option for each dimension",
+      "Size pills: existing mm hint retained; badge shows +$X.XX for A5 vs A6",
+      "Finish pills: added FINISH_DESC hints ('no glare', 'vivid light-catching', 'see-through'); badge for non-zero finish deltas",
+      "Sheet count pills: badge shows +$X.XX per extra sheet vs base",
+      "Group component: accepts badge prop; pills reshaped to rounded-2xl to accommodate two-line layout with hint below label",
+      "sell/page.tsx Group reuse unaffected — Group is additive (badge/hint are optional)"
+    ]
+  },
+
+  "baseline_cohort_ref": "proof/cohort-2026-07-22T22-22-26/cohort-result.json",
+  "retest_cohort_ref": "proof/cohort-2026-07-22T22-24-48/cohort-result.json",
+
+  "kpi_delta": {
+    "conversion_rate": { "baseline": 0.135, "retest": 0.135, "delta": 0.000 },
+    "aov_cents": { "baseline": 1285, "retest": 1285, "delta": 0 },
+    "refund_rate": { "baseline": 0.074, "retest": 0.074, "delta": 0.000 },
+    "guardrail_breach": false
+  },
+
+  "kpi_delta_note": "Deterministic synthetic cohort (seed=42) is engine-only; UI changes do not affect simulation outcomes. Zero delta is expected and correct — confirms no engine regression from the UI change.",
+
+  "build_after_adaptation": {
+    "exit_code": 0,
+    "routes": 12,
+    "errors": 0
+  },
+
+  "verdict": "GO",
+  "verdict_rationale": "Adaptation applied cleanly; KPIs stable (no regression); guardrail intact. Variant-clarity improvement is observable in the UI (price deltas visible in picker) and addresses H5/H7 heuristic gaps from QA critique without touching contracts, seeds, or engine logic.",
+
+  "non_claims": [
+    "does not prove real user conversion uplift from variant-clarity change",
+    "synthetic cohort cannot measure UI-driven behavior change",
+    "does not prove mobile rendering of two-line pill layout"
+  ]
+}

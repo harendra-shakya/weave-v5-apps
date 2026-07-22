@@ -1,0 +1,70 @@
+{
+  "stage": "qa",
+  "app_id": "sticker-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-23T00:00:00.000Z",
+  "method": "dual-agent impeccable critique (A: design review · B: detector + browser)",
+
+  "critique_snapshot_ref": ".impeccable/critique/2026-07-22T22-18-27Z__sticker-storefront.md",
+
+  "nielsen_scores": {
+    "h1_visibility_of_system_status": 2,
+    "h2_match_system_real_world": 4,
+    "h3_user_control_freedom": 3,
+    "h4_consistency_standards": 3,
+    "h5_error_prevention": 2,
+    "h6_recognition_over_recall": 4,
+    "h7_flexibility_efficiency": 2,
+    "h8_aesthetic_minimalist": 4,
+    "h9_error_recovery": 3,
+    "h10_help_documentation": 2,
+    "total_raw": 29,
+    "total_max": 40,
+    "score_10": 7.25
+  },
+
+  "detector_result": {
+    "exit_code": 0,
+    "verdict": "CLEAN",
+    "findings": []
+  },
+
+  "ai_slop_verdict": "PASS — not AI slop. Hard offset shadows, no gradient text, editorial copy with locked brand voice, badge-tilt as system signature.",
+
+  "findings_at_critique": [
+    { "id": "P1-1", "severity": "P1", "title": "Checkout submit has no processing state", "status": "fixed", "fix": "Added submitting state + disabled button + 'Placing order…' label in PaymentForm; onSubmitting callback in checkout/page.tsx" },
+    { "id": "P1-2", "severity": "P1", "title": "text-ink-faint contrast ~2.9:1 fails WCAG AA", "status": "deferred_iteration", "note": "Logged in iteration backlog — one token change, zero regression risk, scoped to iteration stage" },
+    { "id": "P1-3", "severity": "P1", "title": "Focus not moved to payment decline alert", "status": "fixed", "fix": "Added declineRef + tabIndex={-1} + setTimeout focus in checkout/page.tsx" },
+    { "id": "P1-4", "severity": "P1", "title": "No skip-to-content link; heading level skip in cart", "status": "fixed", "fix": "Skip link added in layout.tsx; CartLineItem h3 → h2" },
+    { "id": "P2-1", "severity": "P2", "title": "Multiple simultaneous role=alert; no aria-invalid; no required", "status": "fixed", "fix": "PaymentForm: single aria-live summary region, aria-invalid + aria-describedby per input, required on all required fields, per-field role=alert removed" },
+    { "id": "P2-2", "severity": "P2", "title": "Remove button no item-specific aria-label", "status": "fixed", "fix": "aria-label='Remove {pack.name} from cart' added to CartLineItem remove button" }
+  ],
+
+  "p0_count_after_fix": 0,
+  "p1_count_after_fix": 1,
+  "p1_deferred_note": "text-ink-faint contrast fix deferred to iteration stage (token only, no layout impact)",
+
+  "qa_gate": {
+    "score_threshold": 7.0,
+    "score_actual": 7.25,
+    "p0_threshold": 0,
+    "p0_actual": 0,
+    "result": "PASS"
+  },
+
+  "build_after_fix": {
+    "exit_code": 0,
+    "routes": 12,
+    "errors": 0
+  },
+
+  "non_claims": [
+    "does not prove WCAG AA compliance on all surfaces (text-ink-faint deferred)",
+    "does not prove screen-reader end-to-end testing with real AT",
+    "does not prove production deployment or real payment accessibility",
+    "does not prove mobile keyboard behavior on physical device"
+  ],
+
+  "decision": "advance",
+  "next": "deployment (owner-gated-skipped) → kpi-setup"
+}

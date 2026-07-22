@@ -10,8 +10,8 @@
       "note": "Not yet frozen — will be set at kpi-setup stage before baseline cohort run"
     },
     "sticker-storefront": {
-      "frozen_at_commit": null,
-      "frozen_at": null,
+      "frozen_at_commit": "8676663385617db796f1758b4d99b5afd982030e",
+      "frozen_at": "2026-07-22T22:22:18.632Z",
       "baseline_run_ref": null,
       "note": "Not yet frozen — will be set at kpi-setup stage before baseline cohort run"
     },
