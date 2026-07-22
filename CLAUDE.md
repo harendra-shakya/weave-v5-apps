@@ -1,0 +1,5 @@
+## Coding standards
+
+1. Use latest versions of libraries and idiomatic approaches as of today
+2. Keep it simple - NEVER over-engineer, ALWAYS simplify, NO unnecessary defensive programming. No extra features - focus on simplicity.
+3. Be concise. Keep README minimal. IMPORTANT: no emojis ever
