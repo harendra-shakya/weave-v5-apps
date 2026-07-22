@@ -1,0 +1,58 @@
+{
+  "schema": "weave-v5/kpi-formulas/v1",
+  "note": "These formulas are frozen at ATM-416. Changing a formula after seeing baseline results is an OWNER_GATE.",
+  "kpis": {
+    "conversion_rate": {
+      "description": "Fraction of sessions that reach the convert event",
+      "numerator": "count(event == 'convert')",
+      "denominator": "count(event == 'view')",
+      "type": "ratio",
+      "format": "percentage"
+    },
+    "aov": {
+      "description": "Average order value in dollars, computed over all convert events with amount_cents",
+      "formula": "sum(amount_cents where event == 'convert') / count(event == 'convert') / 100",
+      "type": "mean",
+      "format": "dollars",
+      "note": "Returns 0 if no conversions"
+    },
+    "refund_rate": {
+      "description": "Fraction of conversions that result in a refund event",
+      "numerator": "count(event == 'refund')",
+      "denominator": "count(event == 'convert')",
+      "type": "ratio",
+      "format": "percentage",
+      "note": "Returns 0 if no conversions"
+    },
+    "fulfill_rate": {
+      "description": "Fraction of conversions that are fulfilled (not cancelled)",
+      "numerator": "count(event == 'fulfill')",
+      "denominator": "count(event == 'convert')",
+      "type": "ratio",
+      "format": "percentage"
+    }
+  },
+  "guardrails": {
+    "refund_rate": {
+      "max": 0.15,
+      "label": "refund guardrail",
+      "action": "STOP if refund_rate > 0.15 in retest — do not issue GO or ITERATE"
+    },
+    "conversion_rate": {
+      "min": 0.01,
+      "label": "minimum conversion floor",
+      "action": "STOP if conversion_rate < 0.01 — degenerate cohort, do not compare"
+    }
+  },
+  "comparison": {
+    "primary_metric": "conversion_rate",
+    "secondary_metrics": ["aov", "fulfill_rate"],
+    "guardrail_metrics": ["refund_rate"],
+    "verdict_rules": {
+      "GO": "retest conversion_rate > baseline AND no guardrail breach",
+      "ITERATE": "retest conversion_rate <= baseline but within noise (<5% delta) AND no guardrail breach",
+      "PIVOT": "retest conversion_rate < baseline by >5% OR guardrail breached on secondary metric",
+      "STOP": "guardrail breached on refund_rate OR conversion_rate < floor"
+    }
+  }
+}

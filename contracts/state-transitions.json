@@ -1,0 +1,35 @@
+{
+  "schema": "weave-v5/state-transitions/v1",
+  "note": "Frozen at ATM-416. Changing after apps are built is an OWNER_GATE.",
+  "states": [
+    "pending",
+    "fulfilled",
+    "ownership_granted",
+    "packed",
+    "shipped",
+    "delivered",
+    "refunded",
+    "cancelled"
+  ],
+  "initial": "pending",
+  "terminal": ["refunded", "cancelled"],
+  "transitions": [
+    { "from": "pending",           "to": "fulfilled",         "label": "digital fulfillment — immediate access granted (video)" },
+    { "from": "pending",           "to": "ownership_granted", "label": "collectible ownership granted (Vitrine editions)" },
+    { "from": "pending",           "to": "packed",            "label": "physical: pack started (stickers)" },
+    { "from": "packed",            "to": "shipped",           "label": "physical: shipped" },
+    { "from": "shipped",           "to": "delivered",         "label": "physical: delivered" },
+    { "from": "pending",           "to": "cancelled",         "label": "cancelled before fulfillment" },
+    { "from": "packed",            "to": "cancelled",         "label": "cancelled before ship" },
+    { "from": "fulfilled",         "to": "refunded",          "label": "refund after fulfillment (within refund window)" },
+    { "from": "ownership_granted", "to": "refunded",          "label": "refund after ownership grant" },
+    { "from": "delivered",         "to": "refunded",          "label": "refund after delivery" }
+  ],
+  "truthfulness_invariant": "A state transition must record only what actually happened (deterministic engine output), never what was intended. A pending order that errors stays pending — it does not advance.",
+  "idempotency_invariant": "Re-processing a completed order with the same inputs must produce the same state and not create duplicate events.",
+  "invalid_transitions": [
+    { "from": "refunded",  "to": "*",      "reason": "terminal — no recovery from refunded" },
+    { "from": "cancelled", "to": "*",      "reason": "terminal — no recovery from cancelled" },
+    { "from": "delivered", "to": "packed", "reason": "cannot go backward in fulfillment chain" }
+  ]
+}

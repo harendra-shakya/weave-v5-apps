@@ -1,0 +1,14 @@
+{
+  "schema": "weave-v5/cohort-seeds/v1",
+  "frozen_at": "2026-07-22T00:00:00.000Z",
+  "note": "These seeds are FROZEN. Changing a seed after the baseline run is an OWNER_GATE — stop and surface it, never silently edit.",
+  "governance": "The identical-retest contract requires the retest to use the SAME seed as the baseline. Changing the seed after seeing baseline results invalidates the comparison.",
+  "seeds": {
+    "primary": {
+      "seed": 42,
+      "user_count": 200,
+      "description": "Primary baseline and retest cohort seed. Same seed used for baseline and every retest — delta is from the adaptation, not sample variance."
+    }
+  },
+  "funnel_schema": "docs/atm-415 per-app procedures — each app defines its own funnel probabilities for video/sticker/collectible in its cohort-runner call"
+}

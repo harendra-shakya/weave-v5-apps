@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "weave-v5/cancellation-refund/v1",
+  "type": "object",
+  "required": ["record_id", "order_id", "type", "reason", "processed_at"],
+  "properties": {
+    "record_id":    { "type": "string" },
+    "order_id":     { "type": "string" },
+    "type":         { "type": "string", "enum": ["cancellation", "refund"] },
+    "reason":       { "type": "string" },
+    "refund_cents": { "type": "integer", "minimum": 0 },
+    "processed_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

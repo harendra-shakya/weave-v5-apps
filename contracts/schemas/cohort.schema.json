@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "weave-v5/cohort/v1",
+  "description": "A deterministic synthetic cohort result.",
+  "type": "object",
+  "required": ["schema", "seed", "user_count", "event_count", "generated_at", "events"],
+  "properties": {
+    "schema":       { "type": "string", "const": "weave-v5/cohort/v1" },
+    "seed":         { "type": "integer" },
+    "user_count":   { "type": "integer", "minimum": 1 },
+    "event_count":  { "type": "integer", "minimum": 0 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "kpis":         { "type": "object" },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "weave-v5/event/v1" }
+    }
+  },
+  "additionalProperties": false
+}

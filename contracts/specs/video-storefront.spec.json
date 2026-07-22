@@ -1,0 +1,79 @@
+{
+  "schema": "weave-v5/app-spec/v1",
+  "app_id": "video-storefront",
+  "brand": "OneReel",
+  "locked_at": "2026-07-22",
+  "source": "docs/atm-415/atm-417-brand.md",
+  "persona": {
+    "name": "The filmmaker-patron",
+    "description": "Viewers who discover indie short filmmakers online and want to financially support them directly — one film at a time — where their money reaches the maker, not a subscription pool.",
+    "frustration": "All-you-can-watch platforms dilute creator payouts to pennies. Tip jars decouple support from the actual film. There is no simple way to buy a single short film and know the payment goes straight to the filmmaker."
+  },
+  "problem": "The patronage act is broken: you can subscribe to a platform, or donate to a tip jar, but you cannot buy the film and have that money go to the filmmaker. OneReel is the smallest possible fix.",
+  "positioning": "The Patron's Channel — your money reaches the maker, not the platform.",
+  "hero_line": "Be the reason the next one gets made.",
+  "catalog": {
+    "domain": "short films (indie, under 25 min, fictional catalog)",
+    "item_type": "digital film",
+    "example_items": [
+      { "id": "film-001", "title": "Chroma", "creator": "Anya Vasquez", "price_cents": 599, "currency": "USD", "category": "drama", "metadata": { "duration_minutes": 12, "genre": "drama" } },
+      { "id": "film-002", "title": "The Corridor", "creator": "Ben Tran", "price_cents": 499, "currency": "USD", "category": "thriller", "metadata": { "duration_minutes": 9, "genre": "thriller" } },
+      { "id": "film-003", "title": "Salt Flats", "creator": "Mira Osei", "price_cents": 799, "currency": "USD", "category": "documentary", "metadata": { "duration_minutes": 18, "genre": "documentary" } },
+      { "id": "film-004", "title": "Found Footage", "creator": "Lev Petrov", "price_cents": 399, "currency": "USD", "category": "experimental", "metadata": { "duration_minutes": 7, "genre": "experimental" } }
+    ]
+  },
+  "commerce_behavior": {
+    "cart": "single-item (one film per purchase, not a bundle)",
+    "checkout": "guest checkout — no account required for first purchase",
+    "fulfillment": "digital — film unlocked immediately on payment confirmation",
+    "refund_window": "24 hours if unwatched",
+    "cta": "Back this film"
+  },
+  "rights_provenance": {
+    "note": "Sandbox only — no real film rights. All catalog items are fictional.",
+    "creator_names": "Fictional — not real persons",
+    "media": "Placeholder assets only — no real footage committed to repo"
+  },
+  "architecture": {
+    "stack": "Next.js 14, TypeScript, Tailwind CSS",
+    "data_layer": "packages/commerce-core (local deterministic engine, no external DB or payment)",
+    "ui_source": "docs/atm-415/ui/onereel — port verbatim, no visual changes",
+    "path": "apps/video-storefront",
+    "licenses": ["MIT (Next.js)", "Apache-2.0 (Tailwind)"]
+  },
+  "kpi_assumptions": {
+    "primary_kpi": "conversion_rate",
+    "secondary_kpi": "aov",
+    "guardrail": "refund_rate < 0.15",
+    "baseline_cohort": { "seed": 42, "user_count": 200 },
+    "funnel": [
+      { "event": "view",    "prob": 1.00 },
+      { "event": "engage",  "prob": 0.55 },
+      { "event": "convert", "prob": 0.28 },
+      { "event": "fulfill", "prob": 0.95 },
+      { "event": "refund",  "prob": 0.04 }
+    ],
+    "nonclaim": "Synthetic cohort only. Numbers do not predict or reflect real patron behavior."
+  },
+  "risks": [
+    { "id": "R1", "description": "UI port may deviate from provided design", "mitigation": "impeccable critique gate >= 7/10, zero P0 findings, before qa passes" },
+    { "id": "R2", "description": "Synthetic patron behavior may differ from real film buyer behavior", "mitigation": "Synthetic-only nonclaim recorded in every iteration verdict" },
+    { "id": "R3", "description": "Single-item cart removes cross-sell signals", "mitigation": "Noted as a known simplification in the spec; not a defect" }
+  ],
+  "nonclaims": [
+    "does not prove real payment processing",
+    "does not prove real film rights or distribution",
+    "does not prove real filmmaker payout",
+    "synthetic cohort only — not real traffic or patron behavior",
+    "no claim of live deployment or production traffic"
+  ],
+  "stop_conditions": {
+    "ENGINEERING_REQUIRED": "If a required adapter, schema, or behavioral invariant is missing from commerce-core and blocks the build — stop and surface it",
+    "OWNER_GATE": "Any change to frozen contracts/seeds/KPI after baseline; any real payment, deployment, or user contact"
+  },
+  "bounded_adaptation_candidate": {
+    "description": "CTA framing change: 'Back this film' vs 'Buy film' — does patronage framing move conversion?",
+    "stage": "iteration",
+    "measure": "conversion_rate delta, same seed 42 cohort"
+  }
+}

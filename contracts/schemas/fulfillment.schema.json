@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "weave-v5/fulfillment/v1",
+  "description": "Fulfillment record for digital access (video/audio) or ownership grant (collectibles).",
+  "type": "object",
+  "required": ["fulfillment_id", "order_id", "type", "granted_at"],
+  "properties": {
+    "fulfillment_id": { "type": "string" },
+    "order_id":       { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": ["digital_access", "ownership_granted", "physical_shipment"]
+    },
+    "granted_at":  { "type": "string", "format": "date-time" },
+    "access_ref":  { "type": "string", "description": "Path or placeholder — no real streaming URLs" },
+    "edition_number": { "type": "integer", "minimum": 1, "description": "For collectibles: which edition number" },
+    "edition_of":     { "type": "integer", "minimum": 1, "description": "For collectibles: total edition size" },
+    "metadata":    { "type": "object" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "weave-v5/event/v1",
+  "description": "A single evidence event in the synthetic cohort event stream.",
+  "type": "object",
+  "required": ["user_id", "event", "ts"],
+  "properties": {
+    "user_id":  { "type": "string" },
+    "event": {
+      "type": "string",
+      "enum": ["view", "engage", "convert", "fulfill", "refund", "cancel"]
+    },
+    "ts":       { "type": "string", "format": "date-time" },
+    "item_id":  { "type": "string" },
+    "amount_cents": { "type": "integer", "minimum": 0 },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": false
+}

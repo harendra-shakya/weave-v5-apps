@@ -1,0 +1,78 @@
+{
+  "schema": "weave-v5/app-spec/v1",
+  "app_id": "sticker-storefront",
+  "brand": "Marginalia",
+  "locked_at": "2026-07-22",
+  "source": "docs/atm-415/atm-418-brand.md",
+  "persona": {
+    "name": "The planner hobbyist",
+    "description": "Journal and planner enthusiasts who treat their notebooks as a daily ritual and want a few beautiful, carefully chosen sticker packs from real artists — not ten thousand near-identical marketplace results.",
+    "frustration": "Marketplace searches return thousands of near-identical sheets with misleading mockups, unparseable variant menus, and unknown quality. No curation. The gamble is exhausting."
+  },
+  "problem": "The sticker marketplace is a flood: endless near-identical results, no curation, mystery quality, and a variant menu you cannot parse before you buy. Marginalia is the curated fix — fewer, better, honest.",
+  "positioning": "The Curated Drop — small, hand-picked sticker drops from real artists, opposite of the marketplace flood.",
+  "hero_line": "A few sticker packs worth the page. Not ten thousand you'll scroll past.",
+  "catalog": {
+    "domain": "curated sticker packs (physical goods with variants, fictional catalog)",
+    "item_type": "physical sticker pack",
+    "example_items": [
+      { "id": "pack-001", "title": "Botanica", "creator": "Iris Nkembu", "price_cents": 1400, "currency": "USD", "category": "nature", "metadata": { "sheet_count": 2, "sticker_count": 24, "finish": "matte", "size_cm": "A5" } },
+      { "id": "pack-002", "title": "Studio Hours", "creator": "Tomás Ruiz", "price_cents": 1800, "currency": "USD", "category": "productivity", "metadata": { "sheet_count": 3, "sticker_count": 36, "finish": "glossy", "size_cm": "A5" } },
+      { "id": "pack-003", "title": "Ink & Weather", "creator": "Priya Narayan", "price_cents": 1200, "currency": "USD", "category": "illustration", "metadata": { "sheet_count": 2, "sticker_count": 20, "finish": "matte", "size_cm": "A6" } },
+      { "id": "pack-004", "title": "Archive Marks", "creator": "Seren Davies", "price_cents": 900, "currency": "USD", "category": "minimal", "metadata": { "sheet_count": 1, "sticker_count": 12, "finish": "matte", "size_cm": "A6" } }
+    ]
+  },
+  "commerce_behavior": {
+    "cart": "multi-item with variants (size, finish, sheet count)",
+    "checkout": "standard checkout — address required for physical shipping",
+    "fulfillment": "physical — state machine: pending → packed → shipped → delivered",
+    "refund_window": "before shipped",
+    "cta": "Add pack"
+  },
+  "rights_provenance": {
+    "note": "Sandbox only — no real printing, shipping, or artist contracts. All catalog items are fictional.",
+    "creator_names": "Fictional — not real artists",
+    "media": "Flat-lay placeholder images only — no real artwork committed"
+  },
+  "architecture": {
+    "stack": "Next.js 14, TypeScript, Tailwind CSS",
+    "data_layer": "packages/commerce-core (local deterministic engine, no external DB or payment)",
+    "ui_source": "docs/atm-415/ui/marginalia — port verbatim, no visual changes",
+    "path": "apps/sticker-storefront",
+    "licenses": ["MIT (Next.js)", "Apache-2.0 (Tailwind)"]
+  },
+  "kpi_assumptions": {
+    "primary_kpi": "conversion_rate",
+    "secondary_kpi": "aov",
+    "guardrail": "refund_rate < 0.15",
+    "baseline_cohort": { "seed": 42, "user_count": 200 },
+    "funnel": [
+      { "event": "view",    "prob": 1.00 },
+      { "event": "engage",  "prob": 0.60 },
+      { "event": "convert", "prob": 0.25 },
+      { "event": "fulfill", "prob": 0.88 },
+      { "event": "refund",  "prob": 0.06 }
+    ],
+    "nonclaim": "Synthetic cohort only. Numbers do not predict or reflect real sticker buyer behavior."
+  },
+  "risks": [
+    { "id": "R1", "description": "UI port may deviate from provided design", "mitigation": "impeccable critique gate >= 7/10, zero P0 findings, before qa passes" },
+    { "id": "R2", "description": "Physical fulfillment simulation is synthetic — no real shipping", "mitigation": "State machine covers packed→shipped→delivered; synthetic nonclaim recorded" },
+    { "id": "R3", "description": "Variant complexity (size/finish/count) may confuse the synthetic cohort funnel", "mitigation": "Cohort treats first add-to-cart as engage; first checkout as convert" }
+  ],
+  "nonclaims": [
+    "does not prove real printing or shipping",
+    "does not prove real artist payment",
+    "synthetic cohort only — not real sticker buyer behavior",
+    "physical fulfillment is simulated — no real logistics"
+  ],
+  "stop_conditions": {
+    "ENGINEERING_REQUIRED": "If variant-cart schema cannot be represented in commerce-core without schema changes — stop and surface",
+    "OWNER_GATE": "Any change to frozen contracts/seeds/KPI after baseline; any real shipping or payment integration"
+  },
+  "bounded_adaptation_candidate": {
+    "description": "Variant clarity on product-detail page — making pack contents/finish more explicit at the top of the page vs buried in the details section",
+    "stage": "iteration",
+    "measure": "conversion_rate delta, same seed 42 cohort"
+  }
+}

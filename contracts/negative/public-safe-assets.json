@@ -1,0 +1,24 @@
+{
+  "schema": "weave-v5/negative-contract/v1",
+  "name": "public-safe-assets",
+  "applies_to": ["video-storefront", "sticker-storefront"],
+  "description": "Video and sticker storefronts must use only public-safe, non-copyrighted, generated or placeholder media assets. No real film footage, real artist artwork, or copyrighted material may be committed to the repo or referenced by URL.",
+  "rules": [
+    "All media in the repo must be placeholder, generated, or data URIs — no real video/image files of real works",
+    "Catalog items must use fictional creator names — no real persons",
+    "No external URLs resolving to copyrighted media (e.g. real indie film downloads, real artist artwork)",
+    "SVG illustrations and color-block placeholders are allowed",
+    "Unsplash/Lorem Picsum and similar generic stock placeholders are allowed if they carry a license"
+  ],
+  "forbidden_patterns": [
+    "youtube.com/watch",
+    "vimeo.com/[0-9]",
+    "instagram.com/p/",
+    "etsy.com"
+  ],
+  "scan_scope": [
+    "apps/video-storefront/src/**/*.{ts,tsx,js,jsx,json}",
+    "apps/sticker-storefront/src/**/*.{ts,tsx,js,jsx,json}"
+  ],
+  "note": "Catalog creator names must be visibly fictional — not real filmmaker or artist names. The synthetic note in the brand sandbox disclaimer covers the commercial context, but the assets themselves must be safe for public repos."
+}

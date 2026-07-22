@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "weave-v5/order/v1",
+  "type": "object",
+  "required": ["order_id", "session_id", "items", "total_cents", "state", "created_at"],
+  "properties": {
+    "order_id":    { "type": "string" },
+    "session_id":  { "type": "string" },
+    "checkout_id": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["item_id", "quantity", "unit_price_cents"],
+        "properties": {
+          "item_id":          { "type": "string" },
+          "quantity":         { "type": "integer", "minimum": 1 },
+          "unit_price_cents": { "type": "integer", "minimum": 0 },
+          "variant":          { "type": "object" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "total_cents": { "type": "integer", "minimum": 0 },
+    "state": {
+      "type": "string",
+      "enum": ["pending", "fulfilled", "ownership_granted", "packed", "shipped", "delivered", "refunded", "cancelled"]
+    },
+    "created_at":   { "type": "string", "format": "date-time" },
+    "updated_at":   { "type": "string", "format": "date-time" },
+    "state_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "at"],
+        "properties": {
+          "from": { "type": "string" },
+          "to":   { "type": "string" },
+          "at":   { "type": "string", "format": "date-time" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

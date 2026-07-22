@@ -1,0 +1,86 @@
+{
+  "schema": "weave-v5/app-spec/v1",
+  "app_id": "nft-storefront",
+  "brand": "Vitrine",
+  "locked_at": "2026-07-22",
+  "source": "docs/atm-415/atm-419-brand.md",
+  "persona": {
+    "name": "The anti-crypto edition collector",
+    "description": "People who love the '#7 of 50' feeling — owning a numbered edition from an artist they follow, with clear provenance — and are tired of wallet onboarding, seed phrases, gas fees, and a speculation culture they never asked for.",
+    "frustration": "Every 'digital ownership' product drags you through wallets, seed phrases, gas fees, and a flip-for-profit culture. The category made collecting feel like trading."
+  },
+  "problem": "Numbered digital editions should be about provenance and pride of collection — not wallets, gas, or speculation. The existing category is hostile to collectors who just want to own something beautiful. Vitrine is collecting given back to collectors.",
+  "positioning": "Collecting Without the Chain — ownership as joy and provenance, not finance.",
+  "hero_line": "Own the edition. Skip the wallet.",
+  "catalog": {
+    "domain": "numbered synthetic digital collectible editions (fictional catalog)",
+    "item_type": "synthetic collectible edition",
+    "example_items": [
+      { "id": "edition-001", "title": "Signal Grid #1", "creator": "Emeka Okonkwo", "price_cents": 2500, "currency": "USD", "category": "generative", "metadata": { "edition_number": 1, "edition_of": 50, "year": 2026, "medium": "generative art" } },
+      { "id": "edition-002", "title": "Fog Study III", "creator": "Hana Yoshida", "price_cents": 3500, "currency": "USD", "category": "photography", "metadata": { "edition_number": 3, "edition_of": 25, "year": 2025, "medium": "digital photography" } },
+      { "id": "edition-003", "title": "Archive: Red Series 4", "creator": "Mateo Rios", "price_cents": 1800, "currency": "USD", "category": "abstract", "metadata": { "edition_number": 4, "edition_of": 100, "year": 2026, "medium": "digital painting" } },
+      { "id": "edition-004", "title": "Membrane II", "creator": "Nadia Kowalski", "price_cents": 4200, "currency": "USD", "category": "sculpture", "metadata": { "edition_number": 2, "edition_of": 10, "year": 2026, "medium": "3D render" } }
+    ]
+  },
+  "commerce_behavior": {
+    "cart": "single-edition (one edition per purchase, each is unique by number)",
+    "checkout": "guest checkout — no wallet, no account required",
+    "fulfillment": "ownership_granted — edition added to 'Your Vitrine' shelf immediately",
+    "refund_window": "24 hours, before edition is claimed by another buyer",
+    "cta": "Add to collection"
+  },
+  "rights_provenance": {
+    "note": "Sandbox only — all editions are synthetic. No real digital ownership, no real blockchain, no real artist contracts.",
+    "creator_names": "Fictional — not real artists",
+    "media": "Placeholder/generated images only — no real artwork committed"
+  },
+  "chainless_boundary": {
+    "absolute": true,
+    "contract_ref": "contracts/negative/nft-chainless.json",
+    "nonclaim_surfaces": ["footer", "first_purchase"],
+    "note": "This boundary is a brand commitment, not just a technical limit. No wallet, chain, mint, token, gas, or blockchain surface — ever — in code, UI, or API calls. Brand copy negating these (e.g., 'no wallet', 'skip the wallet') is intentional and listed as known_false_positives in the chainless contract."
+  },
+  "architecture": {
+    "stack": "Next.js 14, TypeScript, Tailwind CSS",
+    "data_layer": "packages/commerce-core (local deterministic engine; ownership_granted state; no blockchain)",
+    "ui_source": "docs/atm-415/ui/vitrine — port verbatim, no visual changes",
+    "path": "apps/nft-storefront",
+    "licenses": ["MIT (Next.js)", "Apache-2.0 (Tailwind)"]
+  },
+  "kpi_assumptions": {
+    "primary_kpi": "conversion_rate",
+    "secondary_kpi": "aov",
+    "guardrail": "refund_rate < 0.15",
+    "baseline_cohort": { "seed": 42, "user_count": 200 },
+    "funnel": [
+      { "event": "view",    "prob": 1.00 },
+      { "event": "engage",  "prob": 0.50 },
+      { "event": "convert", "prob": 0.22 },
+      { "event": "fulfill", "prob": 0.97 },
+      { "event": "refund",  "prob": 0.03 }
+    ],
+    "nonclaim": "Synthetic cohort only. Numbers do not predict or reflect real collector behavior. All iteration verdicts must carry the explicit synthetic-only nonclaim."
+  },
+  "risks": [
+    { "id": "R1", "description": "UI port may deviate from provided design", "mitigation": "impeccable critique gate >= 7/10, zero P0 findings, before qa passes" },
+    { "id": "R2", "description": "The 'chainless' positioning is anti-crypto — scanner must not flag brand nonclaim copy", "mitigation": "known_false_positives allowance in nft-chainless.json covers negation/disclaimer copy" },
+    { "id": "R3", "description": "Edition ownership is synthetic — no real asset transfer", "mitigation": "Footer + first-purchase nonclaim required; every verdict carries explicit synthetic nonclaim" }
+  ],
+  "nonclaims": [
+    "does not prove real digital ownership or asset transfer",
+    "does not involve any blockchain, wallet, or token — ever",
+    "does not prove real artist licensing or rights",
+    "synthetic collectibles only — no financial value, no resale",
+    "synthetic cohort only — not real collector behavior",
+    "every iteration verdict must carry the explicit synthetic-only nonclaim"
+  ],
+  "stop_conditions": {
+    "ENGINEERING_REQUIRED": "If the ownership_granted fulfillment state cannot be supported in commerce-core — stop and surface",
+    "OWNER_GATE": "Any change to frozen contracts/seeds/KPI after baseline; any real payment, blockchain, or external service integration"
+  },
+  "bounded_adaptation_candidate": {
+    "description": "Provenance prominence: '#7 of 50' and provenance block shown above the fold vs below — does edition-scarcity framing at the top move conversion?",
+    "stage": "iteration",
+    "measure": "conversion_rate delta, same seed 42 cohort"
+  }
+}

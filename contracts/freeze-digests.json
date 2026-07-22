@@ -1,0 +1,28 @@
+{
+  "schema": "weave-v5/freeze-digests/v1",
+  "note": "Records the git SHA at which each app's baseline was frozen. The cohort must run AFTER the freeze — if a baseline run exists with a null frozen_at_commit, it is invalid.",
+  "governance": "Changing a frozen_at_commit after the baseline run is an OWNER_GATE. The freeze establishes the code-state boundary between 'building the app' and 'running the experiment'.",
+  "apps": {
+    "video-storefront": {
+      "frozen_at_commit": null,
+      "frozen_at": null,
+      "baseline_run_ref": null,
+      "note": "Not yet frozen — will be set at kpi-setup stage before baseline cohort run"
+    },
+    "sticker-storefront": {
+      "frozen_at_commit": null,
+      "frozen_at": null,
+      "baseline_run_ref": null,
+      "note": "Not yet frozen — will be set at kpi-setup stage before baseline cohort run"
+    },
+    "nft-storefront": {
+      "frozen_at_commit": null,
+      "frozen_at": null,
+      "baseline_run_ref": null,
+      "note": "Not yet frozen — will be set at kpi-setup stage before baseline cohort run"
+    }
+  },
+  "foundation_frozen_at_commit": "82ae291652c946a48c81306ea1e13073a7c1b196",
+  "foundation_frozen_at": "2026-07-22T00:00:00.000Z",
+  "foundation_note": "ATM-416 base SHA — contracts, schemas, seeds, and KPI formulas frozen at this commit"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "weave-v5/negative-contract/v1",
+  "name": "nft-chainless",
+  "applies_to": "nft-storefront",
+  "description": "The nft-storefront (Vitrine) must contain no wallet, chain, mint, token, gas, or blockchain surface anywhere in its code, UI, or API calls. This boundary is absolute — it is a brand commitment as well as a technical limit.",
+  "forbidden_terms": [
+    "ethers",
+    "viem",
+    "wagmi",
+    "metamask",
+    "web3.js",
+    "hardhat",
+    "truffle",
+    "solidity",
+    "abi",
+    "smart.contract",
+    "mintNFT",
+    "mintToken",
+    "blockchain",
+    "crypto.wallet",
+    "seed.phrase",
+    "private.key",
+    "json.rpc",
+    "eth_",
+    "0x[0-9a-fA-F]{40}"
+  ],
+  "known_false_positives": [
+    {
+      "pattern": "no wallet",
+      "reason": "Vitrine's brand promise — negation of wallet is intentional copy proving the boundary"
+    },
+    {
+      "pattern": "skip the wallet",
+      "reason": "Hero line — explicitly anti-wallet; quoting the promise is not implementing a wallet"
+    },
+    {
+      "pattern": "not on any chain",
+      "reason": "Nonclaim copy — disclaimer explicitly stating absence of chain"
+    },
+    {
+      "pattern": "no gas",
+      "reason": "Brand nonclaim — explicitly anti-gas"
+    },
+    {
+      "pattern": "without.*wallet",
+      "reason": "Nonclaim phrasing — negation context"
+    },
+    {
+      "pattern": "chainless",
+      "reason": "The boundary name — used in docs/tests/contracts to describe the boundary, not implement a chain"
+    },
+    {
+      "pattern": "nft-chainless",
+      "reason": "This contract's own filename — self-referential"
+    }
+  ],
+  "required_nonclaims": [
+    {
+      "surface": "footer",
+      "contains": "synthetic",
+      "note": "Every page footer must contain a synthetic disclaimer"
+    },
+    {
+      "surface": "first_purchase",
+      "contains": "synthetic collectible",
+      "note": "First-purchase notice must explicitly say synthetic collectible"
+    }
+  ],
+  "scan_scope": [
+    "apps/nft-storefront/src/**/*.{ts,tsx,js,jsx,json}",
+    "apps/nft-storefront/package.json"
+  ],
+  "exclude_scope": [
+    "apps/nft-storefront/src/**/*.test.*",
+    "apps/nft-storefront/proof/**"
+  ]
+}

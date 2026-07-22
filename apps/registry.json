@@ -1,0 +1,26 @@
+{
+  "schema": "weave-v5/registry/v1",
+  "apps": {
+    "video-storefront": {
+      "brand": "OneReel",
+      "path": "apps/video-storefront",
+      "spec": "contracts/specs/video-storefront.spec.json",
+      "status": "not_started",
+      "sealed_at": null
+    },
+    "sticker-storefront": {
+      "brand": "Marginalia",
+      "path": "apps/sticker-storefront",
+      "spec": "contracts/specs/sticker-storefront.spec.json",
+      "status": "not_started",
+      "sealed_at": null
+    },
+    "nft-storefront": {
+      "brand": "Vitrine",
+      "path": "apps/nft-storefront",
+      "spec": "contracts/specs/nft-storefront.spec.json",
+      "status": "not_started",
+      "sealed_at": null
+    }
+  }
+}

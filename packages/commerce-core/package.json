@@ -1,0 +1,15 @@
+{
+  "name": "@weave-v5/commerce-core",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Deterministic commerce engine for weave-v5 storefronts. No real payments, no external network calls.",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs",
+    "./cart": "./cart.mjs",
+    "./checkout": "./checkout.mjs",
+    "./orders": "./orders.mjs",
+    "./events": "./events.mjs",
+    "./kpi": "./kpi.mjs"
+  }
+}
