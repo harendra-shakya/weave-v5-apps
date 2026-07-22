@@ -1,0 +1,131 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "Analysis",
+  "artifact": "apps/video-storefront — OneReel video storefront, full lifecycle cycle",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/analysis.yaml",
+  "hard_gates": {
+    "outcome_compared_to_intent": {
+      "passed": true,
+      "evidence": [
+        "Intent: 'The patronage act is broken... OneReel is the smallest possible fix.' (spec.problem)",
+        "Outcome: 7-route app built, fully operable, no real payments, synthetic scope maintained throughout",
+        "KPIs measured against spec assumptions: conversion_rate 13.0% vs spec funnel (engage 55% × convert 28% × fulfill 95% ≈ 14.6% theoretical — actual 13.0%, within expected synthetic noise)",
+        "Refund rate 3.8% vs spec guardrail 15% — well within bounds",
+        "All synthetic nonclaims preserved through every stage"
+      ]
+    },
+    "continue_pivot_stop_decision": {
+      "passed": true,
+      "evidence": ["Decision: CONTINUE — product is operable, spec-compliant, lifecycle complete at synthetic scope. Next cycle: real deployment and real-traffic signal."]
+    }
+  },
+  "outcome_summary": {
+    "intent": "Build OneReel: the smallest possible fix to the broken patronage act — one film, one price, money straight to the maker.",
+    "delivered": [
+      "7-route Next.js 15 app: catalog, film detail, checkout, order confirmation, refund, about, filmmakers",
+      "Verbatim port of provided source design — zero visual deviations",
+      "Synthetic commerce engine (no real payments, no real auth, no real distribution)",
+      "Full accessibility: skip link, aria-labels, role=alert, aria-invalid/describedby, keyboard navigation",
+      "All 5 synthetic nonclaims on all transaction surfaces",
+      "13.0% synthetic conversion, $5.72 AOV, 3.8% refund rate, zero guardrail breaches"
+    ],
+    "not_delivered": [
+      "Real payment processing (out of scope by design)",
+      "Real film distribution (out of scope by design)",
+      "Behavioral unit tests — only tsc --noEmit (acceptable for verbatim UI port)",
+      "CTA framing signal — synthetic cohort is copy-agnostic; requires real traffic A/B test",
+      "Loading skeleton (P1 QA finding — unaddressed, deferred to next cycle)",
+      "Back-nav from checkout (P1 QA finding — unaddressed, deferred to next cycle)"
+    ]
+  },
+  "kpi_comparison": {
+    "primary_kpi": "conversion_rate",
+    "spec_assumption": "funnel: engage 55% × convert 28% × fulfill 95% ≈ 14.6% theoretical",
+    "actual": "13.0% (26/200 users)",
+    "delta": "-1.6pp vs theoretical — within synthetic noise; no real-world signal",
+    "aov_actual": "$5.72",
+    "refund_rate_actual": "3.8%",
+    "guardrail": "refund_rate < 15% → NOT BREACHED",
+    "nonclaim": "Synthetic cohort only. KPIs do not predict or reflect real patron behavior."
+  },
+  "failures": [
+    {
+      "id": "hydration_blank",
+      "severity": "P1",
+      "description": "if (!ready) return null — no loading skeleton on 4 client components (FilmDetailClient, CheckoutClient, BackedClient, RefundClient)",
+      "root_cause": "Verbatim port included the source's hydration guard without a loading state; acceptable for a synthetic demo but breaks perceived reliability on slow connections",
+      "deferred_to": "next cycle"
+    },
+    {
+      "id": "no_back_nav_checkout",
+      "severity": "P1",
+      "description": "No back link from checkout to film detail — browser back only",
+      "root_cause": "Source UI omits back navigation; consistent with mobile-first patronage flow assumption but breaks reflection-before-commitment scenario",
+      "deferred_to": "next cycle"
+    },
+    {
+      "id": "windows_runner_incompatibility",
+      "severity": "process",
+      "description": "bash-syntax gate commands and python3 dependency failed on Windows CI runner",
+      "root_cause": "Gate commands assume Unix shell and python3 alias; Windows uses cmd.exe and 'python'",
+      "resolution": "Both gates verified manually; documented in INTERVENTION_LEDGER",
+      "deferred_to": "weave-tool CI fix (separate track)"
+    },
+    {
+      "id": "cta_experiment_inconclusive",
+      "severity": "unknown",
+      "description": "Bounded adaptation 'Back this film' vs 'Buy film' produced 0.0% delta",
+      "root_cause": "Synthetic cohort is copy-agnostic by design — funnel probabilities are fixed in spec, not derived from UI text",
+      "resolution": "ITERATE — requires real traffic A/B test to resolve hypothesis",
+      "deferred_to": "deployment + real traffic"
+    }
+  ],
+  "reusable_learnings": [
+    {
+      "id": "L1",
+      "learning": "Synthetic cohort simulators (seed-based PRNG) cannot measure copy sensitivity or UI text changes — all iteration experiments that test copy, labels, or button text require real traffic",
+      "applicable_to": "ATM-418 (Marginalia), ATM-419 (Vitrine), and all future bounded adaptation candidates"
+    },
+    {
+      "id": "L2",
+      "learning": "Next.js source UIs that use Promise-based params API (async params: Promise<{id:string}>) require Next.js 15, not 14 — plan reviews should specify 15 when the source uses this pattern",
+      "applicable_to": "ATM-418, ATM-419 if they share the same source pattern"
+    },
+    {
+      "id": "L3",
+      "learning": "Impeccable critique on verbatim ports scores against the committed brand identity, not greenfield reflex-reject rules — identity-preservation exception applies; score reflects UX/functional quality, not aesthetic choices",
+      "applicable_to": "ATM-418 (Marginalia), ATM-419 (Vitrine) QA stages"
+    },
+    {
+      "id": "L4",
+      "learning": "Windows CI gate incompatibility (bash syntax, python3 vs python) is a recurring pattern — weave-tool gate commands need a cross-platform variant or a Windows runner pre-check",
+      "applicable_to": "ATM-420, ATM-423 closeout, weave-tool maintenance"
+    }
+  ],
+  "scores": {
+    "outcome_honesty": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": ["Wins explicitly listed (7 routes, accessibility, nonclaims, KPIs)", "Failures explicitly listed with severity (2 P1 UX gaps, windows incompatibility, inconclusive CTA experiment)", "Unknowns explicit: CTA framing effect, real patron behavior, real conversion rate all unknown"]
+    },
+    "kpi_interpretation": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": ["13.0% actual vs 14.6% theoretical — noted as within synthetic noise, not claimed as success signal", "Refund rate 3.8% vs 15% guardrail — noted as informational, not claimed as proof of satisfaction", "Explicit nonclaim: KPIs do not predict real patron behavior"]
+    },
+    "root_cause_quality": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": ["Hydration blank: specific root cause (source's guard, no loading state)", "CTA experiment: specific root cause (PRNG is copy-agnostic)", "Windows incompatibility: specific root cause (bash syntax, python vs python3 alias)", "No vague 'could be improved' language"]
+    },
+    "next_decision_quality": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": ["CONTINUE: product is operable, spec-compliant, all stages verified at synthetic scope", "Two P1 UX gaps deferred to next cycle with explicit rationale (out of scope for verbatim port)", "CTA experiment verdict ITERATE with explicit rationale (requires real traffic)", "No unsupported claims"]
+    }
+  },
+  "decision": "CONTINUE",
+  "decision_rationale": "The OneReel app is operable, spec-compliant, and delivers the minimum viable patronage experience at synthetic scope. All lifecycle stages are verified. The two P1 UX gaps (hydration blank, no checkout back-nav) are real and documented but do not block the synthetic lifecycle — they are candidates for the next cycle. Real-traffic deployment is the prerequisite for resolving the CTA hypothesis and generating meaningful KPI signals.",
+  "overall_notes": "Analysis stage complete. Full lifecycle cycle documented with honest wins, failures, and unknowns. KPIs interpreted against intent, not cherry-picked. Four reusable learnings captured. Decision: CONTINUE. Score: 16/16 (100%) → passes advance threshold (80%)."
+}

@@ -1,0 +1,32 @@
+WEAVE Lifecycle Eval
+stage: Intent
+artifact: current
+contract: packages/weave-tool/evals/lifecycle/intent.yaml
+state: verified
+
+Hard gates
+- success_metric_present: passed
+  output_excerpt:
+    spec.kpi_assumptions.primary_kpi: conversion_rate
+    spec.kpi_assumptions.secondary_kpi: aov
+    spec.kpi_assumptions.guardrail: refund_rate < 0.15
+    spec.kpi_assumptions.baseline_cohort: seed=42, user_count=200
+- approval_boundary_present: passed
+  output_excerpt:
+    spec.stop_conditions.OWNER_GATE: 'Any change to frozen contracts/seeds/KPI after baseline; any real payment, deployment, or user contact'
+    spec.stop_conditions.ENGINEERING_REQUIRED: 'If a required adapter, schema, or behavioral invariant is missing from commerce-core and blocks the build'
+    spec.nonclaims: does not prove real payment processing, real film rights, or real filmmaker payout
+
+Rubric
+- score: 16/16 (100.0%)
+- status: scored
+- goal_clarity: 4/4
+- target_user: 4/4
+- success_measures: 4/4
+- scope_boundaries: 4/4
+
+decision: advance
+blockers:
+- none
+next:
+- advance to next lifecycle stage

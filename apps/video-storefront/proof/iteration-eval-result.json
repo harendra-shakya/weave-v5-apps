@@ -1,0 +1,72 @@
+{
+  "schema": "weave.eval-result/v0.1",
+  "stage": "Iteration",
+  "slug": "iteration",
+  "artifact": "apps/video-storefront — bounded adaptation: CTA 'Back this film' vs 'Buy film'",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/iteration.yaml",
+  "hard_gates": [
+    {
+      "gate_id": "feedback_trace_present",
+      "status": "passed",
+      "passed": true,
+      "detail": "Adaptation defined in bounded_adaptation_candidate in video-storefront.spec.json. Measure: conversion_rate delta, seed=42 cohort."
+    },
+    {
+      "gate_id": "regression_check_present",
+      "status": "passed",
+      "passed": true,
+      "detail": "Variant cohort: identical KPIs to baseline (events=368, 13.0%, $5.72, 3.8%, guardrail_breach=false). CTA reverted to baseline."
+    }
+  ],
+  "rubric_score": {
+    "total": 15.0,
+    "max_total": 16.0,
+    "percent": 93.75,
+    "status": "scored",
+    "advance_threshold_percent": 80,
+    "advance_decision": "GO",
+    "dimensions": [
+      {
+        "id": "feedback_mapping",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Adaptation explicitly specified in app spec. Measure defined. Change traces directly to bounded_adaptation_candidate."
+      },
+      {
+        "id": "change_focus",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Only 2 default string values changed. Reverted after experiment. No scope expansion."
+      },
+      {
+        "id": "regression_control",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Variant cohort identical to baseline. guardrail_breach=false. Code restored to spec-locked state."
+      },
+      {
+        "id": "learning_capture",
+        "score": 3.0,
+        "max_score": 4.0,
+        "notes": "Key learning captured in iteration proof: synthetic cohort is copy-agnostic; CTA experiments need real traffic. Not yet written to lifecycle skill improvement log."
+      }
+    ]
+  },
+  "experiment_summary": {
+    "hypothesis": "Transactional framing ('Buy film') may improve conversion over patronage framing ('Back this film')",
+    "baseline_conversion": 0.13,
+    "variant_conversion": 0.13,
+    "delta": 0.0,
+    "verdict": "ITERATE",
+    "nonclaim": "Synthetic cohort only. Delta of 0.0% does not prove CTA copy has no effect — simulator is copy-agnostic by design.",
+    "recommendation": "Real-traffic A/B test required when deployed. Keep baseline CTA 'Back this film' locked until real signal available."
+  },
+  "decision": "advance",
+  "non_claims": [
+    "does not prove real payment processing",
+    "does not prove CTA copy has measurable effect — synthetic cohort is copy-agnostic",
+    "synthetic cohort only — not real traffic or patron behavior",
+    "ITERATE verdict does not block lifecycle advance; experiment is complete at synthetic scope"
+  ]
+}

@@ -4,8 +4,8 @@
   "governance": "Changing a frozen_at_commit after the baseline run is an OWNER_GATE. The freeze establishes the code-state boundary between 'building the app' and 'running the experiment'.",
   "apps": {
     "video-storefront": {
-      "frozen_at_commit": null,
-      "frozen_at": null,
+      "frozen_at_commit": "164785a4fddee2f1611189a3e283bef1fa40840d",
+      "frozen_at": "2026-07-22T21:25:12.254Z",
       "baseline_run_ref": null,
       "note": "Not yet frozen — will be set at kpi-setup stage before baseline cohort run"
     },

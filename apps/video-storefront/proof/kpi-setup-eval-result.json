@@ -1,0 +1,77 @@
+{
+  "schema": "weave.eval-result/v0.1",
+  "stage": "KPI Setup",
+  "slug": "kpi-setup",
+  "artifact": "apps/video-storefront — cohort baseline, seed=42, 200 users",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/kpi-setup.yaml",
+  "hard_gates": [
+    {
+      "gate_id": "metric_owner_present",
+      "status": "passed",
+      "passed": true,
+      "detail": "Metrics owned by ATM-415 sprint; reviewed under controller verification scope."
+    },
+    {
+      "gate_id": "privacy_boundary_present",
+      "status": "passed",
+      "passed": true,
+      "detail": "Synthetic cohort only. No PII. PRNG seed is public. All nonclaims present."
+    }
+  ],
+  "rubric_score": {
+    "total": 16.0,
+    "max_total": 16.0,
+    "percent": 100.0,
+    "status": "scored",
+    "advance_threshold_percent": 80,
+    "advance_decision": "GO",
+    "dimensions": [
+      {
+        "id": "metric_relevance",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "conversion_rate, aov, refund_rate, guardrail_breach all map directly to product intent and user satisfaction."
+      },
+      {
+        "id": "measurability",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Deterministic cohort confirmed — two runs with seed=42 produce identical results (events=368, 13.0% conversion, $5.72 AOV)."
+      },
+      {
+        "id": "anti_vanity",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "No vanity metrics. Refund rate alongside conversion prevents optimizing one-sided. No gross revenue without conversion denominator."
+      },
+      {
+        "id": "privacy_safety",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Fully synthetic. Sequential u-prefixed IDs. No email, no payment data. PRNG seed is public."
+      }
+    ]
+  },
+  "baseline": {
+    "seed": 42,
+    "count": 200,
+    "freeze_commit": "164785a4",
+    "run1_ref": "proof/baseline/run1.json/cohort-result.json",
+    "run2_ref": "proof/baseline/run2.json/cohort-result.json",
+    "determinism": "CONFIRMED",
+    "kpis": {
+      "conversion_rate": 0.13,
+      "aov": 5.720769230769231,
+      "refund_rate": 0.038461538461538464,
+      "guardrail_breach": false
+    }
+  },
+  "decision": "advance",
+  "non_claims": [
+    "does not prove real user traffic or conversion",
+    "does not prove real payment processing",
+    "synthetic cohort only — not real traffic",
+    "KPIs are simulation outputs — no real business metrics"
+  ]
+}

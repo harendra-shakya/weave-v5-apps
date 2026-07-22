@@ -1,0 +1,32 @@
+WEAVE Lifecycle Eval
+stage: Selection
+artifact: current
+contract: packages/weave-tool/evals/lifecycle/selection.yaml
+state: verified
+
+Hard gates
+- alternatives_compared: passed
+  output_excerpt:
+    Option A (selected): Next.js 14 + TypeScript + Tailwind, packages/commerce-core, verbatim UI port from docs/atm-415/ui/onereel
+    Option B (rejected): SvelteKit — outside the proven ENVELOPE.md (4 sealed Next.js apps; Svelte has zero sealed examples)
+    Option C (rejected): Static HTML + vanilla JS — cannot support App Router dynamic params, server components, or the existing UI source
+    Option D (rejected): Custom commerce engine from scratch — commerce-core already built and 58/58 tests pass; reinvention wastes budget
+- reversibility_labeled: passed
+  output_excerpt:
+    Reversibility: HIGH — the app is local-only, no deployed dependencies. Pivot means wiping apps/video-storefront/ and starting over with a different stack.
+    Rollback cost: low — no production data, no real users, no deployed infrastructure
+    ENGINEERING_REQUIRED would surface if the stack cannot support a needed UI pattern
+
+Rubric
+- score: 16/16 (100.0%)
+- status: scored
+- option_fairness: 4/4
+- tradeoff_clarity: 4/4
+- fit_to_intent: 4/4
+- anti_overbuild: 4/4
+
+decision: advance
+blockers:
+- none
+next:
+- advance to next lifecycle stage

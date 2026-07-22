@@ -1,0 +1,68 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "Intent",
+  "artifact": "contracts/specs/video-storefront.spec.json + docs/atm-415/atm-417-brand.md",
+  "reviewer": "claude-sonnet-4-6",
+  "hard_gates": {
+    "approval_boundary_present": {
+      "evidence": [
+        "spec.stop_conditions.OWNER_GATE: 'Any change to frozen contracts/seeds/KPI after baseline; any real payment, deployment, or user contact'",
+        "spec.stop_conditions.ENGINEERING_REQUIRED: 'If a required adapter, schema, or behavioral invariant is missing from commerce-core and blocks the build'",
+        "spec.nonclaims: does not prove real payment processing, real film rights, or real filmmaker payout"
+      ],
+      "notes": "Both OWNER_GATE and ENGINEERING_REQUIRED stop tokens defined in spec. Approval boundary is explicit.",
+      "passed": true
+    },
+    "success_metric_present": {
+      "evidence": [
+        "spec.kpi_assumptions.primary_kpi: conversion_rate",
+        "spec.kpi_assumptions.secondary_kpi: aov",
+        "spec.kpi_assumptions.guardrail: refund_rate < 0.15",
+        "spec.kpi_assumptions.baseline_cohort: seed=42, user_count=200"
+      ],
+      "notes": "Conversion rate as primary metric, AOV as secondary, refund_rate guardrail. All measurable and frozen.",
+      "passed": true
+    }
+  },
+  "scores": {
+    "goal_clarity": {
+      "evidence": [
+        "spec.problem: 'There is no simple way to pay a filmmaker for a single short film and know the money reaches them directly'",
+        "brand.hero_line: 'Be the reason the next one gets made.'",
+        "spec.positioning: 'The Patron's Channel — your money reaches the maker, not the platform'"
+      ],
+      "notes": "Goal is sharp and specific: a single-film patronage storefront where money goes directly to the filmmaker. No ambiguity about scope or purpose.",
+      "score": 4
+    },
+    "scope_boundaries": {
+      "evidence": [
+        "spec.commerce_behavior.cart: 'single-item (one film per purchase, not a bundle)'",
+        "spec.nonclaims: does not prove real payment processing, does not prove real film rights",
+        "brand: 'Out of scope by design: search/filter, filmmaker profiles, wishlists, reviews, real auth'",
+        "spec.architecture.ui_source: 'docs/atm-415/ui/onereel — port verbatim, no visual changes'"
+      ],
+      "notes": "Scope is clearly bounded: local Next.js app, synthetic payments, verbatim UI port, no real deployment or real commerce.",
+      "score": 4
+    },
+    "success_measures": {
+      "evidence": [
+        "contracts/kpi/formulas.json: conversion_rate, aov, refund_rate formulas frozen",
+        "spec.kpi_assumptions.baseline_cohort: seed=42, n=200 — deterministic synthetic cohort",
+        "contracts/cohort/seeds.json: governance note on frozen seeds"
+      ],
+      "notes": "Measurable success: conversion rate as primary, AOV as secondary. Both computed from frozen seed cohort — identical retest possible. Synthetic nonclaim explicit.",
+      "score": 4
+    },
+    "target_user": {
+      "evidence": [
+        "spec.persona.name: 'The filmmaker-patron'",
+        "spec.persona.description: 'Viewers who discover indie short filmmakers online and want to financially support them directly'",
+        "spec.persona.frustration: 'All-you-can-watch platforms dilute creator payouts to pennies'",
+        "brand.voice: 'The maker is the hero, the user is the patron'"
+      ],
+      "notes": "Target user is well-defined: viewer-as-patron who has discovered a filmmaker and wants to support the actual work. Distinct from general streaming consumer.",
+      "score": 4
+    }
+  },
+  "overall_notes": "Intent is fully specified by the locked brand doc and frozen spec. Both stop tokens defined, both hard gates passed. Ready for research stage."
+}

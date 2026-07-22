@@ -1,0 +1,39 @@
+{
+  "app_id": "video-storefront",
+  "current_stage": "complete",
+  "mode": "loop",
+  "schema": "weave-cos-lifecycle/v0.1",
+  "deployment_gates": {
+    "blocked_by_provider_access": true,
+    "launch_allowed": false,
+    "local_progress_allowed": true,
+    "non_claims": [
+      "does not prove provider account access",
+      "does not prove deployment target access",
+      "does not prove DNS or domain authority",
+      "does not request or store raw API keys, cookies, private keys, session values, or other raw secrets"
+    ],
+    "state": "deployment_blocked_until_provider_access_validated"
+  },
+  "stages": [
+    { "stage": "intent",      "state": "verified", "eval_result_ref": "proof/intent-eval-result.json", "eval_score_percent": 100 },
+    { "stage": "research",    "state": "verified", "eval_result_ref": "proof/research-eval-result.json", "eval_score_percent": 100 },
+    { "stage": "selection",   "state": "verified", "eval_result_ref": "proof/selection-eval-result.json", "eval_score_percent": 100 },
+    { "stage": "plan",        "state": "verified", "eval_result_ref": "proof/plan-eval-result.json", "eval_score_percent": 100 },
+    { "stage": "engineering", "state": "verified", "eval_result_ref": "proof/engineering-eval-result.json", "eval_score_percent": 91.67 },
+    { "stage": "qa",          "state": "verified", "eval_result_ref": "proof/qa-eval-result.json", "eval_score_percent": 90.0 },
+    { "stage": "deployment",  "state": "not_started", "proof_state": "not_required_yet" },
+    { "stage": "kpi-setup",   "state": "verified", "eval_result_ref": "proof/kpi-setup-eval-result.json", "eval_score_percent": 100.0 },
+    { "stage": "marketing",   "state": "not_started", "proof_state": "not_required_yet" },
+    { "stage": "iteration",   "state": "verified", "eval_result_ref": "proof/iteration-eval-result.json", "eval_score_percent": 93.75 },
+    { "stage": "analysis",    "state": "verified", "eval_result_ref": "proof/analysis-eval-result.json", "eval_score_percent": 100.0 }
+  ],
+  "non_claims": [
+    "does not prove real payment processing",
+    "does not prove real film rights or distribution",
+    "does not prove real filmmaker payout",
+    "synthetic cohort only — not real traffic",
+    "does not prove full lifecycle completion until controller verification"
+  ],
+  "updated_at": "2026-07-23T00:00:00.000Z"
+}

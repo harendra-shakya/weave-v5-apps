@@ -1,0 +1,49 @@
+WEAVE Lifecycle Eval
+stage: Research
+artifact: current
+contract: packages/weave-tool/evals/lifecycle/research.yaml
+state: verified
+
+Hard gates
+- source_refs_present: passed
+  output_excerpt:
+    Primary source: docs/atm-415/atm-417-brand.md (brand direction locked 2026-07-22)
+    Spec source: contracts/specs/video-storefront.spec.json (locked at ATM-416)
+    Envelope source: packages/weave-tool/skills/weave-application-lifecycle/ENVELOPE.md (proven stack record)
+    Negative contract: contracts/negative/public-safe-assets.json
+- facts_assumptions_split: passed
+  output_excerpt:
+    FACT: The brand doc is locked and frozen — atm-417-brand.md (status: Brand direction locked 2026-07-22)
+    FACT: The Next.js+TypeScript+Tailwind stack is proven in the weave-tool envelope (ENVELOPE.md: 4 apps completed)
+    FACT: commerce-core engine is built and 58/58 tests pass (ATM-416 commit 164785a)
+    ASSUMPTION: Synthetic cohort funnel probabilities (view 100%, engage 55%, convert 28%, fulfill 95%, refund 4%) are plausible but not derived from real data
+    ASSUMPTION: Patronage framing ('Back this film') moves conversion vs generic 'Buy' — untested; this is the bounded adaptation candidate
+- product_research_coverage_when_uncertain: passed
+  output_excerpt:
+    Product uncertainty: LOW — this is a synthetic demo app with locked brand, provided UI, and frozen spec. Product decisions are not uncertain.
+    User research: patron persona defined in brand doc (not derived from surveys — acknowledged as spec-sourced)
+    Alternatives considered in spec: all-you-can-watch subscriptions, tip jars, bundle platforms — all rejected in brand doc
+    Disconfirming evidence: spec.R2 — 'Synthetic patron behavior may differ from real film buyer behavior' — nonclaim explicit
+    Constraints: synthetic-only scope, public-safe assets, verbatim UI port — all in spec
+- not_technical_feasibility_only: passed
+  output_excerpt:
+    Product/user coverage: patron persona, frustration story, voice constraints, copy starters — from brand doc
+    Market positioning: 'The Patron's Channel' vs subscriptions vs tip jars — alternatives enumerated
+    Value proposition: pay-per-film + maker's name + direct payout qualitative framing
+    Technical feasibility is a supporting point, not the only coverage
+
+Rubric
+- score: 24/24 (100.0%)
+- status: scored
+- source_quality: 4/4
+- product_market_coverage: 4/4
+- risk_identification: 4/4
+- technical_feasibility: 4/4
+- claim_taxonomy: 4/4
+- decision_readiness: 4/4
+
+decision: advance
+blockers:
+- none
+next:
+- advance to next lifecycle stage

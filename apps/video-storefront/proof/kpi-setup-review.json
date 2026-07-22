@@ -1,0 +1,109 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "KPI Setup",
+  "artifact": "apps/video-storefront — cohort baseline, seed=42, 200 users",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/kpi-setup.yaml",
+  "hard_gates": {
+    "metric_owner_present": {
+      "passed": true,
+      "evidence": ["Metrics owned by ATM-417/ATM-415 sprint; reviewed under ATM-415 controller verification scope"]
+    },
+    "privacy_boundary_present": {
+      "passed": true,
+      "evidence": [
+        "All metrics are synthetic — no real user data collected",
+        "cohort-runner.mjs uses mulberry32 PRNG with seed=42 — no PII",
+        "All nonclaims present: 'synthetic cohort only — not real traffic'",
+        "No user identifiers beyond u000000..u000199 synthetic IDs"
+      ]
+    }
+  },
+  "baseline": {
+    "tool": "node tools/cohort-runner.mjs --app video-storefront --seed 42 --count 200",
+    "freeze_commit": "164785a4",
+    "run1": "proof/baseline/run1.json/cohort-result.json",
+    "run2": "proof/baseline/run2.json/cohort-result.json",
+    "determinism_check": "PASS — both runs: events=368, conversion_rate=0.13, aov=5.7208, refund_rate=0.03846, guardrail_breach=false",
+    "kpis": {
+      "views": 200,
+      "converts": 26,
+      "conversion_rate": 0.13,
+      "aov": 5.720769230769231,
+      "refund_rate": 0.038461538461538464,
+      "fulfill_rate": 1.0,
+      "guardrail_breach": false,
+      "event_count": 368
+    }
+  },
+  "metric_definitions": {
+    "conversion_rate": {
+      "formula": "converts / views",
+      "intent_map": "Primary signal: are patrons backing films they find",
+      "baseline": "13.0%",
+      "direction": "higher is better"
+    },
+    "aov": {
+      "formula": "total_revenue / converts",
+      "intent_map": "Average film price patrons choose to back",
+      "baseline": "$5.72",
+      "direction": "informational (catalog-driven)"
+    },
+    "refund_rate": {
+      "formula": "refunds / converts",
+      "intent_map": "Satisfaction signal: patrons who regretted backing",
+      "baseline": "3.8%",
+      "direction": "lower is better",
+      "guardrail": "if refund_rate > 0.15 → guardrail_breach=true"
+    },
+    "guardrail_breach": {
+      "formula": "refund_rate > 0.15",
+      "intent_map": "Hard stop: product causing significant patron dissatisfaction",
+      "baseline": false,
+      "direction": "must remain false"
+    }
+  },
+  "scores": {
+    "metric_relevance": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": [
+        "conversion_rate maps directly to product intent: patrons backing films",
+        "aov reflects catalog pricing decisions (informational, not a KPI to optimize directly)",
+        "refund_rate is a satisfaction proxy: patrons who regretted the decision",
+        "guardrail_breach is a hard-stop signal preventing degenerate iteration directions"
+      ]
+    },
+    "measurability": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": [
+        "cohort-runner.mjs produces deterministic KPIs — same seed → same result",
+        "Two identical runs confirmed: events=368, conversion_rate=0.13, aov=$5.72",
+        "commerce-core engine is synchronous and testable without network access",
+        "Output schema (weave-v5/cohort/v1) is machine-readable and diff-able"
+      ]
+    },
+    "anti_vanity": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": [
+        "No page view counts alone (views only used as denominator)",
+        "No 'total registered users' or 'accounts created' (no real auth)",
+        "Conversion rate not gross revenue (avoids optimizing high-price films over well-matched ones)",
+        "Refund rate included alongside conversion — prevents optimizing conversion by hiding the refund path"
+      ]
+    },
+    "privacy_safety": {
+      "score": 4,
+      "max_score": 4,
+      "evidence": [
+        "Synthetic cohort only — no real user data",
+        "No PII: user_ids are u000000..u000199 (sequential synthetic)",
+        "No email, no real payment data, no real identity",
+        "PRNG seed is public — results are reproducible by any reviewer"
+      ]
+    }
+  },
+  "overall_notes": "KPI setup stage complete. Four metrics — conversion_rate, aov, refund_rate, guardrail_breach — directly map to product intent, are reliably measurable via deterministic cohort simulation, avoid vanity traps, and operate on fully synthetic data with no privacy concerns. Baseline: 13.0% conversion, $5.72 AOV, 3.8% refund, no guardrail breach. Determinism confirmed via two identical runs. Score: 16/16 (100%) → passes advance threshold (80%)."
+}

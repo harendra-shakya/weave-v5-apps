@@ -1,0 +1,64 @@
+{
+  "schema": "weave.eval-result/v0.1",
+  "stage": "Analysis",
+  "slug": "analysis",
+  "artifact": "apps/video-storefront — OneReel video storefront, full lifecycle cycle",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/analysis.yaml",
+  "hard_gates": [
+    {
+      "gate_id": "outcome_compared_to_intent",
+      "status": "passed",
+      "passed": true,
+      "detail": "Intent ('smallest possible fix to the broken patronage act') compared to outcome (7-route operable app, 13.0% synthetic conversion, 3.8% refund rate vs 15% guardrail, all nonclaims preserved)."
+    },
+    {
+      "gate_id": "continue_pivot_stop_decision",
+      "status": "passed",
+      "passed": true,
+      "detail": "Decision: CONTINUE. Product is operable and spec-compliant at synthetic scope. Two P1 UX gaps deferred. Real traffic required for CTA experiment resolution."
+    }
+  ],
+  "rubric_score": {
+    "total": 16.0,
+    "max_total": 16.0,
+    "percent": 100.0,
+    "status": "scored",
+    "advance_threshold_percent": 80,
+    "advance_decision": "GO",
+    "dimensions": [
+      {
+        "id": "outcome_honesty",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Wins, failures, and unknowns explicitly separated. P1 gaps documented. CTA experiment explicitly inconclusive, not claimed as signal."
+      },
+      {
+        "id": "kpi_interpretation",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "13.0% vs 14.6% theoretical — treated as within synthetic noise, not success claim. Refund 3.8% vs 15% guardrail — informational. Nonclaim preserved."
+      },
+      {
+        "id": "root_cause_quality",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "All 4 failures have specific root causes. No vague language. CTA experiment root cause correctly identifies PRNG copy-agnosticism."
+      },
+      {
+        "id": "next_decision_quality",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "CONTINUE justified: spec-compliant, all stages verified, P1 gaps explicitly deferred with rationale, CTA verdict ITERATE with clear prerequisite (real traffic)."
+      }
+    ]
+  },
+  "decision": "advance",
+  "lifecycle_decision": "CONTINUE",
+  "non_claims": [
+    "does not prove real payment processing",
+    "does not prove real patron behavior or conversion rates",
+    "synthetic cohort only — KPIs do not predict real traffic",
+    "CONTINUE decision applies to synthetic lifecycle only — real deployment requires provider access validation"
+  ]
+}

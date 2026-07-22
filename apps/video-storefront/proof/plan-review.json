@@ -1,0 +1,78 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "Plan",
+  "artifact": "Build plan: Next.js 14 app at apps/video-storefront/, portng docs/atm-415/ui/onereel verbatim",
+  "reviewer": "claude-sonnet-4-6",
+  "hard_gates": {
+    "acceptance_criteria_present": {
+      "evidence": [
+        "npm run build exits 0 with no console errors",
+        "node tools/validate-contracts.mjs passes",
+        "impeccable critique >=7/10, zero P0 findings (qa gate)",
+        "cohort-runner.mjs produces same KPIs across two runs with seed=42 (determinism)",
+        "All 7 routes render: /, /films/[id], /checkout/[id], /backed/[id], /refund/[id], /about, /filmmakers",
+        "All critical states present: empty catalog, not-found, payment failure, empty orders"
+      ],
+      "notes": "Acceptance criteria are concrete and verifiable. Two hard gates (build + validate-contracts) run automatically.",
+      "passed": true
+    },
+    "verification_surface_present": {
+      "evidence": [
+        "Engineering gate: npm run build (hard gate)",
+        "Contract gate: node tools/validate-contracts.mjs (hard gate)",
+        "QA gate: /impeccable critique >=7/10 zero P0",
+        "KPI gate: cohort-runner.mjs determinism proof (two runs, same seed, same events array)",
+        "Route check: visual inspection via npm run dev"
+      ],
+      "notes": "Two hard gates plus visual inspection plus QA gate. Verification surface is explicit.",
+      "passed": true
+    }
+  },
+  "scores": {
+    "path_specificity": {
+      "evidence": [
+        "App root: apps/video-storefront/ (Next.js 14, TypeScript, Tailwind)",
+        "UI source: docs/atm-415/ui/onereel — verbatim port of: app/, components/, lib/, styles/tokens.css, tailwind.config.ts",
+        "Data layer: packages/commerce-core (cart, checkout, orders, events, kpi)",
+        "Catalog: from contracts/specs/video-storefront.spec.json example_items (4 items) + 4 more fictional films",
+        "Routes: 7 per README: /, /films/[id], /checkout/[id], /backed/[id], /refund/[id], /about, /filmmakers"
+      ],
+      "notes": "Every file path is specified. No ambiguity about where things live.",
+      "score": 4
+    },
+    "task_granularity": {
+      "evidence": [
+        "T1: scaffold Next.js app at apps/video-storefront/ (package.json, tsconfig, next.config)",
+        "T2: copy styles/tokens.css + tailwind.config.ts verbatim",
+        "T3: copy all components/ verbatim (Wordmark, FilmCard, BackFilmButton, PriceTag, MakerCredit, EmptyState, PaymentForm, SubmitFilmForm, CommunityFilms, PageHeader, PageFooter, DemoUserChip, PosterPlaceholder)",
+        "T4: copy lib/films.ts + lib/submissions.ts + lib/useFilm.ts verbatim; author catalog from spec example_items",
+        "T5: copy all app/ routes verbatim; wire lib imports",
+        "T6: verify npm run build exits 0",
+        "T7: wire cohort-runner.mjs to app catalog data — verify determinism"
+      ],
+      "notes": "Tasks are granular and ordered. Each is a discrete commit-worthy unit.",
+      "score": 4
+    },
+    "dependency_awareness": {
+      "evidence": [
+        "T2 (tokens) must complete before T3 (components) — components reference or-* CSS variables",
+        "T4 (lib/films.ts with catalog) must complete before T5 (routes) — routes import getFilm()",
+        "T1 (scaffold) must complete before all others — package.json defines the Next.js version",
+        "ATM-416 foundation must be complete (it is: commit 164785a) — cohort-runner needs commerce-core"
+      ],
+      "notes": "Dependency chain is clear. All ATM-416 dependencies are satisfied.",
+      "score": 4
+    },
+    "proof_quality": {
+      "evidence": [
+        "Engineering proof: npm run build output + validate-contracts output → proof/engineering-eval-result.json",
+        "QA proof: impeccable critique result → proof/qa-eval-result.json",
+        "KPI proof: two cohort runs → proof/baseline/ (two runs, events array comparison)",
+        "Seal proof: seal-app.mjs → proof/seal-manifest.json"
+      ],
+      "notes": "Each stage produces a durable on-disk proof artifact. No self-attestation without evidence.",
+      "score": 4
+    }
+  },
+  "overall_notes": "Plan is specific, dependency-ordered, and verifiable. Two hard gates (build + contracts) run automatically. The verbatim-port constraint is the key simplification: no design decisions to make, just wiring. validate-contracts.mjs is already green (ATM-416)."
+}

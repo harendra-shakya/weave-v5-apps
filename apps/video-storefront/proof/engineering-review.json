@@ -1,0 +1,112 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "Engineering",
+  "artifact": "apps/video-storefront/ — Next.js 15 app, verbatim port of docs/atm-415/ui/onereel",
+  "reviewer": "claude-sonnet-4-6",
+  "hard_gates": {
+    "build_exits_0": {
+      "evidence": [
+        "npm run build → ✓ Compiled successfully in 5.1s",
+        "12/12 routes generated: /, /about, /filmmakers, /films/[id] (6 static), /backed/[id], /checkout/[id], /refund/[id], /_not-found",
+        "generateStaticParams: all 6 films pre-rendered (salt-on-the-windowsill, night-bus-to-aldgate, the-projectionists-daughter, dust-choir, a-field-guide-to-leaving, winter-swimmers)",
+        "TypeScript strict mode: no type errors"
+      ],
+      "notes": "npm run build exits 0, 12/12 routes, strict TypeScript. Hard gate passes.",
+      "passed": true
+    },
+    "contracts_valid": {
+      "evidence": [
+        "node tools/validate-contracts.mjs → OK — all contracts valid (0 warning(s))",
+        "9/9 checks pass: schemas, specs, distinctness, seeds, KPI, state-transitions, negative contracts, freeze-digests, registry",
+        "Engineering build has not altered any frozen contract"
+      ],
+      "notes": "validate-contracts.mjs exits 0. ATM-416 contracts are intact.",
+      "passed": true
+    }
+  },
+  "scores": {
+    "correctness": {
+      "evidence": [
+        "All 7 spec routes present: /, /films/[id], /checkout/[id], /backed/[id], /refund/[id], /about, /filmmakers",
+        "All critical states handled: empty catalog (EmptyState), film not-found (not-found.tsx + EmptyState in client), payment failure (declined card via 0002 suffix), refund flow (confirmed/unconfirmed states)",
+        "Verbatim port: zero visual deviations from source — every component copied byte-for-byte from docs/atm-415/ui/onereel",
+        "Proper film resolution: curated (server-side via getFilm) + submitted (client-side via useFilm/localStorage)",
+        "CTA copy locked: default ctaLabel='Back this film' in PaymentForm (baseline for ATM-417 bounded adaptation)",
+        "Synthetic nonclaim present in footer: 'OneReel is a synthetic demo. Films, makers, and payments are fictional — no real charges, no real distribution.'",
+        "Commerce-core not yet wired at UI level (T7 deferred to kpi-setup stage): cohort-runner.mjs imports lib catalog independently"
+      ],
+      "notes": "All spec routes, all critical states, all brand copy correct. Verbatim port verified.",
+      "score": 4
+    },
+    "maintainability": {
+      "evidence": [
+        "Verbatim port: no abstraction beyond the source design — every component is exactly as authored",
+        "Ponytail-clean: no speculative helpers, no over-engineered wrappers",
+        "13 components are single-responsibility and composable (FilmCard + PosterPlaceholder + MakerCredit + PriceTag, etc.)",
+        "lib/films.ts is a typed static array — simplest possible catalog that the spec calls for",
+        "lib/submissions.ts localStorage pattern: self-contained, no framework coupling",
+        "lib/useFilm.ts: 19-line hook that composes curated+submitted lookup — no over-engineering",
+        "Token-driven design: all colors from CSS vars, no hex in components"
+      ],
+      "notes": "Minimum implementation for a verbatim port. Nothing added, nothing speculative.",
+      "score": 4
+    },
+    "user_experience": {
+      "evidence": [
+        "Skip-to-main link for keyboard users (app/layout.tsx)",
+        "All form inputs: htmlFor/id pairs, aria-invalid, aria-describedby on error messages",
+        "PaymentForm: 5 fully labelled fields, inline validation, declined-card alert with role='alert'",
+        "SubmitFilmForm: 6 fully labelled fields with validation",
+        "BackFilmButton: disabled state when processing ('Backing…'), focus-visible ring",
+        "EmptyState component: warm, non-apologetic empty states throughout",
+        "PosterPlaceholder: aria-hidden — decorative gradient, text content is accessible via nearby headings",
+        "MakerCredit: always visible, always in ember — brand proof point on every card",
+        "DemoUserChip: dropdown with sr-only label, no real auth required",
+        "Footer synthetic disclaimer: visible, plain-language nonclaim"
+      ],
+      "notes": "Full accessibility pass on all interactive surfaces. Brand proof points present.",
+      "score": 4
+    },
+    "trust_boundary": {
+      "evidence": [
+        "No real payment: PaymentForm is synthetic, 900ms timeout, no provider API calls",
+        "No real auth: DemoUserChip uses localStorage select, no credentials, no session tokens",
+        "No real film rights or distribution: SubmitFilmForm stores to localStorage only",
+        "No real email: 'A receipt and your film link are on their way to your email' — demo nonclaim in BackedClient",
+        "Secret scanner clean: python check_no_secrets.py exits 0 after .gitignore excludes .next/ build artifacts",
+        "NFT/chainless boundary: N/A for video-storefront (that is Vitrine's constraint). No wallet, chain, or blockchain surface present.",
+        "No raw API keys, credentials, or private keys in source"
+      ],
+      "notes": "All trust boundaries are clean. Synthetic-only scope correctly enforced throughout.",
+      "score": 4
+    },
+    "test_coverage": {
+      "evidence": [
+        "npm test (tsc --noEmit) exits 0 — TypeScript strict mode covers type correctness across all 34 source files",
+        "npm run build compiles and generates 12 routes — acts as an integration test for imports and component composition",
+        "No behavioral unit tests (no jest/vitest configured) — the spec does not require them for a UI port",
+        "Regression risk paths: type-level coverage (strict TS) catches import errors, prop mismatches, missing components",
+        "Known gap: no behavioral tests for PaymentForm validation logic, formatPrice, formatRuntime functions",
+        "Windows gate note: unit_tests_pass gate uses bash 'if [ -f package.json ]' syntax — fails on Windows cmd. npm test itself exits 0 (verified manually). This is a known Windows runner quirk."
+      ],
+      "notes": "Type-safe build + tsc --noEmit covers structural correctness. No behavioral unit tests — acceptable for a verbatim UI port with no custom business logic beyond the source.",
+      "score": 2
+    },
+    "documentation": {
+      "evidence": [
+        "Synthetic nonclaim in PageFooter: 'no real charges, no real distribution'",
+        "PaymentForm: 'Demo checkout — synthetic payment, no real charge. Any details work; a card ending in 0002 simulates a decline.'",
+        "SubmitFilmForm: 'Demo listing — no real upload. Your film joins the catalog in this browser, priced and credited to you.'",
+        "BackedClient: 'A receipt and your film link are on their way to your email.' (demo nonclaim context)",
+        "RefundClient: 'Demo refund — synthetic, like the payment. Nothing was really charged.'",
+        "lib/films.ts: module-level comment explains synthetic/public-safe nature",
+        "lib/submissions.ts: explains real distribution is backend work; swap module instruction",
+        "All component files carry source comments explaining design invariants (MakerCredit brand proof, PaymentForm synthetic note, etc.)",
+        "app/page.tsx: NOTE comment preserving the ATM-417 baseline copy"
+      ],
+      "notes": "Every user-facing synthetic claim is explicitly documented. All component-level design invariants preserved from source.",
+      "score": 4
+    }
+  },
+  "overall_notes": "Engineering stage complete. The app is a verbatim port of docs/atm-415/ui/onereel — no visual changes, no design decisions made. Both hard gates pass (build exits 0, contracts valid). TypeScript strict, 12/12 routes, all critical states. Trust boundary is clean (synthetic-only, no real payments/auth/distribution). Test coverage gap (no behavioral tests) is the only deduction — acceptable for a pure UI port with no novel business logic. Score: 22/24 (91.7%) → passes advance threshold (84%)."
+}

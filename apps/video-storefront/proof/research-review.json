@@ -1,0 +1,110 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "Research",
+  "artifact": "contracts/specs/video-storefront.spec.json (source: docs/atm-415/atm-417-brand.md, ENVELOPE.md)",
+  "reviewer": "claude-sonnet-4-6",
+  "hard_gates": {
+    "source_refs_present": {
+      "evidence": [
+        "Primary source: docs/atm-415/atm-417-brand.md (brand direction locked 2026-07-22)",
+        "Spec source: contracts/specs/video-storefront.spec.json (locked at ATM-416)",
+        "Envelope source: packages/weave-tool/skills/weave-application-lifecycle/ENVELOPE.md (proven stack record)",
+        "Negative contract: contracts/negative/public-safe-assets.json"
+      ],
+      "notes": "All research claims cite the locked brand doc, frozen spec, or the envelope's proven-stack record. No unsourced claims.",
+      "passed": true
+    },
+    "facts_assumptions_split": {
+      "evidence": [
+        "FACT: The brand doc is locked and frozen — atm-417-brand.md (status: Brand direction locked 2026-07-22)",
+        "FACT: The Next.js+TypeScript+Tailwind stack is proven in the weave-tool envelope (ENVELOPE.md: 4 apps completed)",
+        "FACT: commerce-core engine is built and 58/58 tests pass (ATM-416 commit 164785a)",
+        "ASSUMPTION: Synthetic cohort funnel probabilities (view 100%, engage 55%, convert 28%, fulfill 95%, refund 4%) are plausible but not derived from real data",
+        "ASSUMPTION: Patronage framing ('Back this film') moves conversion vs generic 'Buy' — untested; this is the bounded adaptation candidate"
+      ],
+      "notes": "Facts (locked brand, proven stack, built engine) clearly separated from assumptions (funnel probabilities, CTA framing effect). The assumption list is the honest scope of the synthetic experiment.",
+      "passed": true
+    },
+    "product_research_coverage_when_uncertain": {
+      "evidence": [
+        "Product uncertainty: LOW — this is a synthetic demo app with locked brand, provided UI, and frozen spec. Product decisions are not uncertain.",
+        "User research: patron persona defined in brand doc (not derived from surveys — acknowledged as spec-sourced)",
+        "Alternatives considered in spec: all-you-can-watch subscriptions, tip jars, bundle platforms — all rejected in brand doc",
+        "Disconfirming evidence: spec.R2 — 'Synthetic patron behavior may differ from real film buyer behavior' — nonclaim explicit",
+        "Constraints: synthetic-only scope, public-safe assets, verbatim UI port — all in spec"
+      ],
+      "notes": "Product uncertainty is low because the brand direction is locked. The synthetic-only scope means market research is not possible (and not needed for a synthetic demo). The nonclaim covers the gap.",
+      "passed": true
+    },
+    "not_technical_feasibility_only": {
+      "evidence": [
+        "Product/user coverage: patron persona, frustration story, voice constraints, copy starters — from brand doc",
+        "Market positioning: 'The Patron's Channel' vs subscriptions vs tip jars — alternatives enumerated",
+        "Value proposition: pay-per-film + maker's name + direct payout qualitative framing",
+        "Technical feasibility is a supporting point, not the only coverage"
+      ],
+      "notes": "Research covers product positioning, user persona, value proposition, and alternatives — not just technical feasibility.",
+      "passed": true
+    }
+  },
+  "scores": {
+    "source_quality": {
+      "evidence": [
+        "Locked brand doc (atm-417-brand.md) — primary source, locked by brand sprint",
+        "Frozen spec (video-storefront.spec.json) — derived from brand doc, validated at ATM-416",
+        "ENVELOPE.md — proven-stack record from 4 completed lifecycle apps"
+      ],
+      "notes": "Sources are locked/frozen documents, not ephemeral web searches. Appropriate for a synthetic demo where the brand is pre-defined.",
+      "score": 4
+    },
+    "product_market_coverage": {
+      "evidence": [
+        "Target market: indie short-film patrons who want to support specific filmmakers",
+        "Alternatives: all-you-can-watch subscriptions (creator gets pennies), tip jars (decoupled from work), bundle platforms (hides who got paid)",
+        "Value delivery: pay-per-film + creator name + qualitative payout framing",
+        "Positioning: 'The Patron's Channel' — distinct from all alternatives enumerated"
+      ],
+      "notes": "Product-market coverage is complete for a synthetic synthetic demo. All alternatives considered; positioning is sharp.",
+      "score": 4
+    },
+    "risk_identification": {
+      "evidence": [
+        "R1: UI port deviation — mitigated by impeccable gate >=7/10, zero P0",
+        "R2: synthetic patron behavior may differ from real — nonclaim in every verdict",
+        "R3: single-item cart removes cross-sell signal — documented simplification",
+        "Public-safe scan contract: fictional names, no real footage"
+      ],
+      "notes": "All risks in the spec with mitigations. No surprises from the research phase.",
+      "score": 4
+    },
+    "technical_feasibility": {
+      "evidence": [
+        "Stack proven: Next.js + TypeScript + Tailwind in ENVELOPE.md (4 apps completed)",
+        "Engine built: commerce-core 58/58 tests pass (ATM-416)",
+        "UI provided: docs/atm-415/ui/onereel — port not redesign",
+        "No unknown technical risks in the envelope"
+      ],
+      "notes": "Fully feasible. Stack is proven, engine is built, UI is provided. No open technical questions.",
+      "score": 4
+    },
+    "claim_taxonomy": {
+      "evidence": [
+        "FACT claims: stack proven, engine built, brand locked, UI provided",
+        "ASSUMPTION claims: funnel probabilities, CTA effect on conversion",
+        "NONCLAIM: synthetic cohort does not predict real patron behavior"
+      ],
+      "notes": "Claims are labeled and separated. Facts cite specific artifacts; assumptions are acknowledged as untested.",
+      "score": 4
+    },
+    "decision_readiness": {
+      "evidence": [
+        "All decisions made: stack selected, UI sourced, catalog defined, KPI frozen",
+        "Next stage (selection) has no open questions to answer — everything is in the spec",
+        "Blocking question if any: none — brand is locked, UI is provided, engine is built"
+      ],
+      "notes": "Ready for selection. No open research questions remain.",
+      "score": 4
+    }
+  },
+  "overall_notes": "Research is fully grounded in the locked brand doc and frozen spec. The synthetic scope limits research to the pre-defined brand rather than live market data — this is appropriate and the nonclaim is explicit. All hard gates pass. Decision-ready."
+}

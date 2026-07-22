@@ -1,0 +1,69 @@
+{
+  "schema": "weave.eval-review/v0.1",
+  "stage": "Selection",
+  "artifact": "Architecture decision: Next.js 14 + TypeScript + Tailwind + commerce-core + verbatim UI port",
+  "reviewer": "claude-sonnet-4-6",
+  "hard_gates": {
+    "alternatives_compared": {
+      "evidence": [
+        "Option A (selected): Next.js 14 + TypeScript + Tailwind, packages/commerce-core, verbatim UI port from docs/atm-415/ui/onereel",
+        "Option B (rejected): SvelteKit — outside the proven ENVELOPE.md (4 sealed Next.js apps; Svelte has zero sealed examples)",
+        "Option C (rejected): Static HTML + vanilla JS — cannot support App Router dynamic params, server components, or the existing UI source",
+        "Option D (rejected): Custom commerce engine from scratch — commerce-core already built and 58/58 tests pass; reinvention wastes budget"
+      ],
+      "notes": "Four options considered. Option A is the only one within the proven envelope with a pre-built engine and provided UI.",
+      "passed": true
+    },
+    "reversibility_labeled": {
+      "evidence": [
+        "Reversibility: HIGH — the app is local-only, no deployed dependencies. Pivot means wiping apps/video-storefront/ and starting over with a different stack.",
+        "Rollback cost: low — no production data, no real users, no deployed infrastructure",
+        "ENGINEERING_REQUIRED would surface if the stack cannot support a needed UI pattern"
+      ],
+      "notes": "Fully reversible. Local-only app with no external dependencies.",
+      "passed": true
+    }
+  },
+  "scores": {
+    "fit_to_intent": {
+      "evidence": [
+        "Intent: patron-facing single-film storefront with pay-per-film + maker credit + instant digital access",
+        "Next.js App Router: handles film/[id], checkout/[id], backed/[id] dynamic routes natively",
+        "commerce-core: provides cart/checkout/order/events — exact fit for the pay-per-film flow",
+        "Tailwind: UI tokens already defined in docs/atm-415/ui/onereel/styles/tokens.css"
+      ],
+      "notes": "Perfect fit: the stack was used to design the provided UI. No impedance mismatch.",
+      "score": 4
+    },
+    "option_fairness": {
+      "evidence": [
+        "All four options were evaluated against the ENVELOPE.md proven record",
+        "Selection wasn't made without considering alternatives",
+        "The rejection of SvelteKit/vanilla/custom-engine is evidence-based, not preference-based"
+      ],
+      "notes": "Options evaluated fairly. The envelope record is the objective criterion.",
+      "score": 4
+    },
+    "tradeoff_clarity": {
+      "evidence": [
+        "Tradeoff accepted: Next.js adds SSR complexity vs a simpler SPA, but SSR is required for film/[id] server components",
+        "Tradeoff accepted: verbatim UI port constrains visual creativity but eliminates design risk and closes the 3.6/10 gap",
+        "Tradeoff accepted: commerce-core is synthetic-only — no real payment capability, but that's the intent"
+      ],
+      "notes": "Tradeoffs are explicit. The verbatim-port constraint is a deliberate choice to eliminate the prior 3.6/10 design-quality gap.",
+      "score": 4
+    },
+    "anti_overbuild": {
+      "evidence": [
+        "No custom auth — DemoUserChip + localStorage (spec: 'no real auth')",
+        "No database — lib/films.ts is a static array; wired to commerce-core in memory",
+        "No payment provider — synthetic PaymentForm (spec: synthetic only)",
+        "No search/filter (spec: out of scope by design)",
+        "No dark mode (brand: light mode only)"
+      ],
+      "notes": "Selection explicitly excludes every 'nice to have' that's out of scope. Minimal surface.",
+      "score": 4
+    }
+  },
+  "overall_notes": "Selection is straightforward: the provided UI, proven stack, and pre-built engine make this a port not a build decision. No structural change needed; no ENGINEERING_REQUIRED stop. Fully reversible."
+}

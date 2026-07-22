@@ -1,0 +1,102 @@
+{
+  "schema": "weave.eval-result/v0.1",
+  "stage": "Engineering",
+  "slug": "engineering",
+  "artifact": "apps/video-storefront/ — Next.js 15 app, verbatim port of docs/atm-415/ui/onereel",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/engineering.yaml",
+  "hard_gates": [
+    {
+      "gate_id": "build_exits_0",
+      "status": "passed",
+      "passed": true,
+      "detail": "npm run build → ✓ 12/12 routes, strict TypeScript, no errors",
+      "evidence": "cd apps/video-storefront && npm run build → '✓ Generating static pages (12/12)'"
+    },
+    {
+      "gate_id": "contracts_valid",
+      "status": "passed",
+      "passed": true,
+      "detail": "node tools/validate-contracts.mjs → OK — all contracts valid (0 warning(s))",
+      "evidence": "9/9 contract checks pass. No frozen contract modified."
+    },
+    {
+      "gate_id": "diff_check_clean",
+      "status": "passed",
+      "passed": true,
+      "detail": "git diff --check → exit 0",
+      "evidence": "Verified via --run-gates. No conflict markers or trailing whitespace."
+    },
+    {
+      "gate_id": "unit_tests_pass",
+      "status": "windows-runner-incompatible",
+      "passed": "manual-verified",
+      "detail": "Gate command uses bash 'if [ -f package.json ]' — fails in Windows cmd.exe. npm test (tsc --noEmit) exits 0 when run directly.",
+      "evidence": "cd apps/video-storefront && npm test → exit 0, no type errors. INTERVENTION_LEDGER entry #3.",
+      "runner_exit_code": 1,
+      "runner_error": "-f was unexpected at this time. (Windows cmd.exe bash-syntax incompatibility)"
+    },
+    {
+      "gate_id": "no_secret_leakage",
+      "status": "windows-runner-incompatible",
+      "passed": "manual-verified",
+      "detail": "Gate command uses 'python3' which is not in PATH on Windows. python check_no_secrets.py exits 0.",
+      "evidence": "cd weave-v5-apps && python scripts/check_no_secrets.py → exit 0 (after .gitignore excludes .next/ build artifacts with false-positive sk-async-storage-instance). INTERVENTION_LEDGER entry #3 and #4.",
+      "runner_exit_code": 9009,
+      "runner_error": "python3 not found on Windows (requires 'python' not 'python3')"
+    }
+  ],
+  "rubric_score": {
+    "total": 22.0,
+    "max_total": 24.0,
+    "percent": 91.67,
+    "status": "scored",
+    "advance_threshold_percent": 84,
+    "advance_decision": "GO",
+    "dimensions": [
+      {
+        "id": "correctness",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "All 7 spec routes, all critical states, CTA locked, synthetic nonclaims present."
+      },
+      {
+        "id": "maintainability",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Verbatim port — minimum necessary, nothing speculative."
+      },
+      {
+        "id": "user_experience",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Full a11y: skip link, aria-labels, form error announcements, focus rings."
+      },
+      {
+        "id": "trust_boundary",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Synthetic-only scope. No real payments, auth, distribution. Scanner clean."
+      },
+      {
+        "id": "test_coverage",
+        "score": 2.0,
+        "max_score": 4.0,
+        "notes": "tsc --noEmit + build cover structural correctness. No behavioral unit tests (no jest/vitest). Acceptable for a verbatim UI port."
+      },
+      {
+        "id": "documentation",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Synthetic nonclaims on every transaction surface. Component design invariants preserved from source."
+      }
+    ]
+  },
+  "decision": "advance",
+  "non_claims": [
+    "does not prove real payment processing",
+    "does not prove real film distribution or maker payout",
+    "synthetic cohort only — not real traffic",
+    "Windows runner gate incompatibility documented in INTERVENTION_LEDGER — both gates verified manually to pass"
+  ]
+}

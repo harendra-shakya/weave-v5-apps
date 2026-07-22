@@ -1,0 +1,98 @@
+{
+  "schema": "weave.eval-result/v0.1",
+  "stage": "QA",
+  "slug": "qa",
+  "artifact": "apps/video-storefront/ — OneReel video storefront, 7 routes, live at http://localhost:3004",
+  "reviewer": "claude-sonnet-4-6",
+  "contract": "packages/weave-tool/evals/lifecycle/qa.yaml",
+  "hard_gates": [
+    {
+      "gate_id": "cos_bootstrap_smoke_pass",
+      "status": "passed",
+      "passed": true,
+      "detail": "npm run build → ✓ 12/12 routes, exit 0. Dev server running at port 3004, all 7 routes respond.",
+      "evidence": "Reconfirmed from engineering stage; dev server verified live in QA browser session."
+    },
+    {
+      "gate_id": "package_validation_pass",
+      "status": "passed",
+      "passed": true,
+      "detail": "Gate no-ops (true) for app with package.json. Not the weave-tool package itself.",
+      "evidence": "No-op gate — automatic pass."
+    },
+    {
+      "gate_id": "public_safe_scan_pass",
+      "status": "windows-runner-incompatible",
+      "passed": "manual-verified",
+      "detail": "Gate uses python3 — not in PATH on Windows runner. Verified manually: python check_no_secrets.py → exit 0. impeccable detect.mjs → exit 0, [] (zero findings). No secrets or forbidden patterns in source.",
+      "runner_exit_code": 9009,
+      "runner_error": "python3 not found on Windows"
+    }
+  ],
+  "rubric_score": {
+    "total": 18.0,
+    "max_total": 20.0,
+    "percent": 90.0,
+    "status": "scored",
+    "advance_threshold_percent": 84,
+    "advance_decision": "GO",
+    "dimensions": [
+      {
+        "id": "happy_path_proof",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "All 7 spec routes exercised live. Zero console errors. Mobile viewport verified. Synthetic nonclaims confirmed on all transaction surfaces."
+      },
+      {
+        "id": "failure_path_proof",
+        "score": 3.0,
+        "max_score": 4.0,
+        "notes": "Decline simulation, form validation, not-found, and refund confirmed states all verified from source. Decline flow not re-triggered live in this QA session — source confirmation only."
+      },
+      {
+        "id": "regression_awareness",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "contracts_valid: 9/9 pass. No frozen contracts modified. All 7 routes verified clean. CLI detector: 0 findings."
+      },
+      {
+        "id": "rollback_clarity",
+        "score": 4.0,
+        "max_score": 4.0,
+        "notes": "Verbatim port — rollback is removing the scaffold. INTERVENTION_LEDGER complete. No external state. Git history clean."
+      },
+      {
+        "id": "evidence_quality",
+        "score": 3.0,
+        "max_score": 4.0,
+        "notes": "Live browser session on running dev server. read_page used (screenshots unavailable — browser pane not displayable). Evidence is fresh and target-surface specific. Minor gap: visual-only findings (poster contrast) not verifiable without screenshots."
+      }
+    ]
+  },
+  "impeccable_summary": {
+    "nielsen_score": "30/40 (75%) — Good",
+    "p0_count": 0,
+    "p1_count": 2,
+    "p2_count": 2,
+    "p3_count": 1,
+    "ai_slop_verdict": "NOT AI SLOP",
+    "cli_detector": "exit 0, zero findings",
+    "console_errors": "zero across all 7 routes",
+    "snapshot": ".impeccable/critique/2026-07-22T21-22-36Z__apps-video-storefront.md"
+  },
+  "qa_findings_for_iteration": [
+    { "severity": "P1", "id": "hydration_blank", "description": "if (!ready) return null — no loading skeleton on 4 client components" },
+    { "severity": "P1", "id": "no_back_nav_checkout", "description": "No back link from checkout to film detail" },
+    { "severity": "P2", "id": "submit_only_validation", "description": "Submit-only validation; focus not moved to first error" },
+    { "severity": "P2", "id": "refund_button_hierarchy", "description": "Refund button visually heavier than Keep the film link" },
+    { "severity": "P3", "id": "no_cvc_hint", "description": "CVC field lacks static hint text" }
+  ],
+  "decision": "advance",
+  "non_claims": [
+    "does not prove real payment processing",
+    "does not prove real film distribution or maker payout",
+    "synthetic cohort only — not real traffic",
+    "Windows runner gate incompatibility documented in INTERVENTION_LEDGER — public_safe_scan_pass verified manually to pass",
+    "screenshot evidence not available — browser pane not displayable; read_page structure evidence substituted"
+  ]
+}

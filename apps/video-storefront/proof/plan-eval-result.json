@@ -1,0 +1,36 @@
+WEAVE Lifecycle Eval
+stage: Plan
+artifact: current
+contract: packages/weave-tool/evals/lifecycle/plan.yaml
+state: verified
+
+Hard gates
+- acceptance_criteria_present: passed
+  output_excerpt:
+    npm run build exits 0 with no console errors
+    node tools/validate-contracts.mjs passes
+    impeccable critique >=7/10, zero P0 findings (qa gate)
+    cohort-runner.mjs produces same KPIs across two runs with seed=42 (determinism)
+    All 7 routes render: /, /films/[id], /checkout/[id], /backed/[id], /refund/[id], /about, /filmmakers
+    All critical states present: empty catalog, not-found, payment failure, empty orders
+- verification_surface_present: passed
+  output_excerpt:
+    Engineering gate: npm run build (hard gate)
+    Contract gate: node tools/validate-contracts.mjs (hard gate)
+    QA gate: /impeccable critique >=7/10 zero P0
+    KPI gate: cohort-runner.mjs determinism proof (two runs, same seed, same events array)
+    Route check: visual inspection via npm run dev
+
+Rubric
+- score: 16/16 (100.0%)
+- status: scored
+- task_granularity: 4/4
+- path_specificity: 4/4
+- dependency_awareness: 4/4
+- proof_quality: 4/4
+
+decision: advance
+blockers:
+- none
+next:
+- advance to next lifecycle stage

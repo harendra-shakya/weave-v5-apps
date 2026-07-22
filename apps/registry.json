@@ -5,8 +5,13 @@
       "brand": "OneReel",
       "path": "apps/video-storefront",
       "spec": "contracts/specs/video-storefront.spec.json",
-      "status": "not_started",
-      "sealed_at": null
+      "status": "sealed",
+      "sealed_at": "2026-07-22T21:30:38.828Z",
+      "seal_manifest": "apps/video-storefront/proof/seal-manifest.json",
+      "lifecycle_score_summary": {
+        "intent": 100, "research": 100, "selection": 100, "plan": 100,
+        "engineering": 91.67, "qa": 90.0, "kpi_setup": 100, "iteration": 93.75, "analysis": 100
+      }
     },
     "sticker-storefront": {
       "brand": "Marginalia",

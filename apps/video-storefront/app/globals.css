@@ -1,0 +1,22 @@
+@import "../styles/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-or-cream font-sans text-or-ink antialiased;
+  }
+  ::selection {
+    background: var(--or-ember-wash);
+  }
+  /* Default link treatment — ember only on interaction (accent stays sparing) */
+  a {
+    @apply underline-offset-4;
+  }
+  :focus-visible {
+    outline: 2px solid var(--or-ember);
+    outline-offset: 2px;
+  }
+}
