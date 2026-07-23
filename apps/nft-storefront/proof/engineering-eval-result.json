@@ -1,0 +1,93 @@
+{
+  "stage": "engineering",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "acceptance_criteria": [
+    {
+      "id": "AC1",
+      "description": "npm run build exits 0 with zero TypeScript errors",
+      "result": "passed",
+      "evidence": "build: 8 routes compiled in 5.5s, 0 TypeScript errors, 0 lint errors"
+    },
+    {
+      "id": "AC2",
+      "description": "node tools/validate-contracts.mjs exits 0 — chainless + public-safe scan PASS",
+      "result": "passed",
+      "evidence": "OK — all contracts valid (0 warning(s)) — 9 checks passed including nft-chainless.json and public-safe-assets.json"
+    },
+    {
+      "id": "AC3",
+      "description": "Impeccable critique ≥ 7/10, 0 P0 findings on collector-facing surface",
+      "result": "passed",
+      "evidence": "QA stage eval: 8.5/10 combined (34+34/80), 0 P0 findings, 1 P1 fixed (muted contrast → 4.92:1). See proof/qa-eval-result.json"
+    },
+    {
+      "id": "AC4",
+      "description": "Hero copy is exactly 'Own the edition. Skip the wallet.' (baseline lock)",
+      "result": "passed",
+      "evidence": "app/page.tsx h1: 'Own the edition. Skip the wallet.' — browser read_page confirmed ref_12"
+    },
+    {
+      "id": "AC5",
+      "description": "Primary CTA is 'Add to collection' (baseline lock)",
+      "result": "passed",
+      "evidence": "components/AddToCollectionButton.tsx button text 'Add to collection'; CheckoutPanel.tsx submit button 'Add to collection'; confirmed via browser read_page ref_68 and ref_85"
+    },
+    {
+      "id": "AC6",
+      "description": "Footer nonclaim present on every page",
+      "result": "passed",
+      "evidence": "FooterNonclaim renders in PageFooter on every route; browser confirmed ref_58 on /, /editions/plum-moon, /checkout/plum-moon, /collection"
+    },
+    {
+      "id": "AC7",
+      "description": "First-purchase notice fires before first Add to collection",
+      "result": "passed",
+      "evidence": "FirstPurchaseNotice dialog appeared (ref_69 'A quick note before your first edition') on first click of Add to collection; confirmed correct copy 'A quick note: this is a synthetic collectible...'"
+    },
+    {
+      "id": "AC8",
+      "description": "Negative code proof: no non-allowlisted forbidden term matches in app source",
+      "result": "passed",
+      "evidence": "validate-contracts.mjs passes (includes nft-chainless scan); no ethers/viem/wagmi/metamask/web3/blockchain/mintNFT/mintToken in any source file"
+    },
+    {
+      "id": "AC9",
+      "description": "Negative dep proof: no wallet/chain/crypto package in package.json",
+      "result": "passed",
+      "evidence": "package.json deps: next, react, react-dom only. devDeps: @types/*, autoprefixer, postcss, tailwindcss, typescript only. Zero chain deps."
+    },
+    {
+      "id": "AC10",
+      "description": "Local ownership fixture stores to localStorage, never calls any chain RPC",
+      "result": "passed",
+      "evidence": "lib/collection.tsx uses window.localStorage.setItem only; no fetch/XMLHttpRequest/WebSocket/RPC calls; ownership is client-local state only"
+    },
+    {
+      "id": "AC11",
+      "description": "All 8 pages render without console errors",
+      "result": "passed",
+      "evidence": "read_console_messages(onlyErrors=true) returned 0 errors across /, /editions/[id], /checkout/[id], /collection flows; build compiled all 8 routes clean"
+    },
+    {
+      "id": "AC12",
+      "description": "Collect → shelf flow clickable end to end",
+      "result": "passed",
+      "evidence": "Browser verified: / → /editions/plum-moon (Add to collection) → FirstPurchaseNotice → /checkout/plum-moon → 'It's yours. Added to your Vitrine.' → /collection 'Your Vitrine' showing 'Plum Moon no. 7 of 50'"
+    }
+  ],
+
+  "interventions": [],
+
+  "score": {
+    "ac_pass_count": 12,
+    "ac_total": 12,
+    "ac_deferred": 0,
+    "note": "All 12 ACs pass. AC3 evaluated in qa stage: 8.5/10, 0 P0."
+  },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to qa stage"
+}

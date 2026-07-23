@@ -1,0 +1,47 @@
+{
+  "stage": "iteration",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "adaptation": {
+    "id": "provenance-clarity",
+    "description": "Make edition number visually dominant on EditionCard shop grid cards",
+    "hypothesis": "A larger, separated 'no. X' provenance mark at 16px/black increases collector engagement vs the compact 'just N made · no. X is next' single line",
+    "file_changed": "components/EditionMark.tsx",
+    "change": "EditionMarkLine split into two lines: 'no. X' at text-[16px] font-black in accent color (was xs extrabold inline), 'just N made' at text-[11px] font-extrabold text-muted below",
+    "direction": "expected positive — provenance prominence is a documented conversion driver in numbered-edition collector UX"
+  },
+
+  "iteration_cohort": {
+    "seed": 42,
+    "user_count": 200,
+    "cohort_result_ref": "proof/cohort-2026-07-23T23-11-00/cohort-result.json",
+    "kpis": {
+      "conversion_rate": 0.10,
+      "aov_dollars": 30.35,
+      "refund_rate": 0.00,
+      "guardrail_breach": false
+    }
+  },
+
+  "delta_vs_baseline": {
+    "conversion_rate_delta": 0.00,
+    "aov_delta_dollars": 0.00,
+    "refund_rate_delta": 0.00,
+    "note": "delta is exactly 0 — expected behavior; cohort engine is deterministic (seed=42) and engine-blind to UI surface changes; identical results confirm engine correctness, not that UI change had no effect"
+  },
+
+  "non_claims": [
+    "SYNTHETIC-ONLY: these KPIs do not represent real collector behavior or real commerce outcomes",
+    "does not prove real digital ownership or asset transfer",
+    "does not involve any blockchain, wallet, or token — ever",
+    "synthetic collectibles only — no financial value, no resale",
+    "zero-delta between baseline and iteration is a property of the synthetic engine, not a finding about UI efficacy",
+    "the hypothesis (provenance prominence drives engagement) is untested in real user data — this sprint does not claim otherwise"
+  ],
+
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to analysis stage"
+}

@@ -1,0 +1,66 @@
+{
+  "stage": "selection",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "selected_approach": {
+    "id": "port-vitrine-verbatim",
+    "name": "Port Vitrine UI verbatim with locked brand copy overrides",
+    "description": "Port docs/atm-415/ui/vitrine/ into apps/nft-storefront/ without visual changes. Apply 2 locked copy overrides: hero ('Own the edition. Skip the wallet.') and CTA ('Add to collection'). Wire commerce-core cohort engine via spec funnel. Produce negative proof bundle.",
+    "rationale": "The Vitrine UI source is the authoritative design artifact for this app (spec says 'port verbatim, no visual changes'). It implements the Museum Label mood with Keepsake tokens. The only valid deviation from verbatim is locked copy from the brand doc, which is itself part of the spec."
+  },
+
+  "alternatives_considered": [
+    {
+      "id": "custom-museum-label",
+      "name": "Design from scratch using brand doc's deep-teal/serif specification",
+      "rejected_because": "Brand doc's visual direction ('deep teal accent, refined serif for titles') predates the UI source and represents aspirational direction, not a finalized spec. The spec explicitly names the UI source as the deliverable. Custom design would diverge from the verified artifact, add engineering scope, and risk not passing impeccable critique without the existing design work."
+    }
+  ],
+
+  "key_decisions": [
+    {
+      "id": "D1",
+      "decision": "Port Keepsake design system (plum accent, Nunito font, cream/warm tokens) verbatim",
+      "rationale": "Spec says 'port verbatim, no visual changes'. The Keepsake system is the resolved implementation of the Museum Label mood."
+    },
+    {
+      "id": "D2",
+      "decision": "Override hero to 'Own the edition. Skip the wallet.'",
+      "rationale": "Brand doc and spec both lock this as the deterministic baseline copy for the learning loop. The UI source's 'Little editions, big joy.' is a valid alternative but cannot serve as the locked baseline without changing the spec — OWNER_GATE."
+    },
+    {
+      "id": "D3",
+      "decision": "Override AddToCollectionButton CTA to 'Add to collection'",
+      "rationale": "Brand doc and spec lock 'Add to collection' as the primary funnel CTA. The UI source's 'Pop it on my shelf' is charming but deviates from the locked copy. The locked CTA is the baseline for the provenance-clarity adaptation."
+    },
+    {
+      "id": "D4",
+      "decision": "Local ownership fixture (localStorage) is the fulfillment mechanism — not commerce-core engine state",
+      "rationale": "The Vitrine UI uses lib/collection.tsx (localStorage) for ownership tracking. The cohort runner uses the spec's funnel probabilities directly — it is engine-blind to the local ownership store. This is consistent with ATM-417/418: engine and UI run in separate simulation and real-UI contexts."
+    },
+    {
+      "id": "D5",
+      "decision": "No price display in the UI — engine uses spec price_cents for KPI only",
+      "rationale": "Vitrine is 'Collecting Without the Chain' — the collection experience is free (no price in UI). The cohort runner reads price_cents from the spec for AOV computation. This matches the brand positioning and is architecturally clean."
+    },
+    {
+      "id": "D6",
+      "decision": "Adaptation candidate: provenance-clarity enhancement on shop grid cards",
+      "rationale": "The spec's bounded_adaptation_candidate targets provenance prominence. The baseline EditionCard shows '#N of M' in small text. The adaptation makes the edition number and creator more prominent on the card, exercising whether scarcity/provenance framing at the browsing stage moves conversion."
+    }
+  ],
+
+  "rubric": {
+    "decision_clarity": { "score": 4, "max": 4, "evidence": "6 explicit decisions with clear rationale. Selected approach stated and sourced to spec authority." },
+    "alternatives_evaluated": { "score": 4, "max": 4, "evidence": "1 real alternative considered (custom design from brand doc). Rejected with specific reasoning tied to spec authority and scope risk." },
+    "risks_covered": { "score": 4, "max": 4, "evidence": "Copy overrides are minimal (2 items). Scanner FP risk pre-covered by known_false_positives. Cohort blind spot documented. No ENGINEERING_REQUIRED or OWNER_GATE triggered." },
+    "reversibility": { "score": 4, "max": 4, "evidence": "All decisions are reversible pre-baseline. The 2 copy overrides can be reverted if the brand doc is updated via OWNER_GATE. Post-baseline: frozen by contract." }
+  },
+
+  "score": { "earned": 16, "possible": 16, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to plan stage"
+}

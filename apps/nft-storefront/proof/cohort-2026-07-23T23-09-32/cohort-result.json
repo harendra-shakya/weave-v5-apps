@@ -1,0 +1,2093 @@
+{
+  "schema": "weave-v5/cohort/v1",
+  "app_id": "nft-storefront",
+  "seed": 42,
+  "user_count": 200,
+  "event_count": 342,
+  "generated_at": "2026-07-23T23:09:32.376Z",
+  "kpis": {
+    "views": 200,
+    "converts": 20,
+    "fulfills": 20,
+    "refunds": 0,
+    "conversion_rate": 0.1,
+    "aov": 30.35,
+    "refund_rate": 0,
+    "fulfill_rate": 1,
+    "guardrail_breach": false
+  },
+  "events": [
+    {
+      "user_id": "u000000",
+      "event": "view",
+      "ts": "2023-11-14T22:13:20.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000000",
+      "event": "engage",
+      "ts": "2023-11-14T22:13:21.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000001",
+      "event": "view",
+      "ts": "2023-11-14T22:14:22.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000001",
+      "event": "engage",
+      "ts": "2023-11-14T22:14:23.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000002",
+      "event": "view",
+      "ts": "2023-11-14T22:15:24.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000003",
+      "event": "view",
+      "ts": "2023-11-14T22:16:25.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000003",
+      "event": "engage",
+      "ts": "2023-11-14T22:16:26.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000004",
+      "event": "view",
+      "ts": "2023-11-14T22:17:27.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000005",
+      "event": "view",
+      "ts": "2023-11-14T22:18:28.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000005",
+      "event": "engage",
+      "ts": "2023-11-14T22:18:29.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000006",
+      "event": "view",
+      "ts": "2023-11-14T22:19:30.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000007",
+      "event": "view",
+      "ts": "2023-11-14T22:20:31.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000007",
+      "event": "engage",
+      "ts": "2023-11-14T22:20:32.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000008",
+      "event": "view",
+      "ts": "2023-11-14T22:21:33.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000009",
+      "event": "view",
+      "ts": "2023-11-14T22:22:34.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000009",
+      "event": "engage",
+      "ts": "2023-11-14T22:22:35.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000009",
+      "event": "convert",
+      "ts": "2023-11-14T22:22:36.000Z",
+      "item_id": "edition-002",
+      "amount_cents": 3500
+    },
+    {
+      "user_id": "u000009",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:22:37.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000010",
+      "event": "view",
+      "ts": "2023-11-14T22:23:38.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000010",
+      "event": "engage",
+      "ts": "2023-11-14T22:23:39.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000010",
+      "event": "convert",
+      "ts": "2023-11-14T22:23:40.000Z",
+      "item_id": "edition-003",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000010",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:23:41.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000011",
+      "event": "view",
+      "ts": "2023-11-14T22:24:42.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000011",
+      "event": "engage",
+      "ts": "2023-11-14T22:24:43.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000012",
+      "event": "view",
+      "ts": "2023-11-14T22:25:44.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000012",
+      "event": "engage",
+      "ts": "2023-11-14T22:25:45.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000013",
+      "event": "view",
+      "ts": "2023-11-14T22:26:46.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000013",
+      "event": "engage",
+      "ts": "2023-11-14T22:26:47.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000014",
+      "event": "view",
+      "ts": "2023-11-14T22:27:48.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000014",
+      "event": "engage",
+      "ts": "2023-11-14T22:27:49.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000015",
+      "event": "view",
+      "ts": "2023-11-14T22:28:50.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000016",
+      "event": "view",
+      "ts": "2023-11-14T22:29:51.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000016",
+      "event": "engage",
+      "ts": "2023-11-14T22:29:52.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000017",
+      "event": "view",
+      "ts": "2023-11-14T22:30:53.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000018",
+      "event": "view",
+      "ts": "2023-11-14T22:31:54.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000019",
+      "event": "view",
+      "ts": "2023-11-14T22:32:55.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000019",
+      "event": "engage",
+      "ts": "2023-11-14T22:32:56.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000020",
+      "event": "view",
+      "ts": "2023-11-14T22:33:57.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000021",
+      "event": "view",
+      "ts": "2023-11-14T22:34:58.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000021",
+      "event": "engage",
+      "ts": "2023-11-14T22:34:59.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000021",
+      "event": "convert",
+      "ts": "2023-11-14T22:35:00.000Z",
+      "item_id": "edition-002",
+      "amount_cents": 3500
+    },
+    {
+      "user_id": "u000021",
+      "event": "fulfill",
+      "ts": "2023-11-14T22:35:01.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000022",
+      "event": "view",
+      "ts": "2023-11-14T22:36:02.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000023",
+      "event": "view",
+      "ts": "2023-11-14T22:37:03.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000024",
+      "event": "view",
+      "ts": "2023-11-14T22:38:04.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000024",
+      "event": "engage",
+      "ts": "2023-11-14T22:38:05.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000025",
+      "event": "view",
+      "ts": "2023-11-14T22:39:06.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000026",
+      "event": "view",
+      "ts": "2023-11-14T22:40:07.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000026",
+      "event": "engage",
+      "ts": "2023-11-14T22:40:08.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000027",
+      "event": "view",
+      "ts": "2023-11-14T22:41:09.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000028",
+      "event": "view",
+      "ts": "2023-11-14T22:42:10.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000029",
+      "event": "view",
+      "ts": "2023-11-14T22:43:11.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000030",
+      "event": "view",
+      "ts": "2023-11-14T22:44:12.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000031",
+      "event": "view",
+      "ts": "2023-11-14T22:45:13.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000031",
+      "event": "engage",
+      "ts": "2023-11-14T22:45:14.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000032",
+      "event": "view",
+      "ts": "2023-11-14T22:46:15.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000033",
+      "event": "view",
+      "ts": "2023-11-14T22:47:16.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000033",
+      "event": "engage",
+      "ts": "2023-11-14T22:47:17.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000034",
+      "event": "view",
+      "ts": "2023-11-14T22:48:18.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000034",
+      "event": "engage",
+      "ts": "2023-11-14T22:48:19.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000035",
+      "event": "view",
+      "ts": "2023-11-14T22:49:20.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000036",
+      "event": "view",
+      "ts": "2023-11-14T22:50:21.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000036",
+      "event": "engage",
+      "ts": "2023-11-14T22:50:22.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000037",
+      "event": "view",
+      "ts": "2023-11-14T22:51:23.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000037",
+      "event": "engage",
+      "ts": "2023-11-14T22:51:24.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000038",
+      "event": "view",
+      "ts": "2023-11-14T22:52:25.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000039",
+      "event": "view",
+      "ts": "2023-11-14T22:53:26.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000039",
+      "event": "engage",
+      "ts": "2023-11-14T22:53:27.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000040",
+      "event": "view",
+      "ts": "2023-11-14T22:54:28.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000041",
+      "event": "view",
+      "ts": "2023-11-14T22:55:29.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000041",
+      "event": "engage",
+      "ts": "2023-11-14T22:55:30.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000042",
+      "event": "view",
+      "ts": "2023-11-14T22:56:31.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000042",
+      "event": "engage",
+      "ts": "2023-11-14T22:56:32.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000043",
+      "event": "view",
+      "ts": "2023-11-14T22:57:33.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000043",
+      "event": "engage",
+      "ts": "2023-11-14T22:57:34.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000044",
+      "event": "view",
+      "ts": "2023-11-14T22:58:35.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000044",
+      "event": "engage",
+      "ts": "2023-11-14T22:58:36.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000045",
+      "event": "view",
+      "ts": "2023-11-14T22:59:37.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000046",
+      "event": "view",
+      "ts": "2023-11-14T23:00:38.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000046",
+      "event": "engage",
+      "ts": "2023-11-14T23:00:39.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000047",
+      "event": "view",
+      "ts": "2023-11-14T23:01:40.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000047",
+      "event": "engage",
+      "ts": "2023-11-14T23:01:41.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000047",
+      "event": "convert",
+      "ts": "2023-11-14T23:01:42.000Z",
+      "item_id": "edition-004",
+      "amount_cents": 4200
+    },
+    {
+      "user_id": "u000047",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:01:43.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000048",
+      "event": "view",
+      "ts": "2023-11-14T23:02:44.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000048",
+      "event": "engage",
+      "ts": "2023-11-14T23:02:45.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000049",
+      "event": "view",
+      "ts": "2023-11-14T23:03:46.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000049",
+      "event": "engage",
+      "ts": "2023-11-14T23:03:47.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000050",
+      "event": "view",
+      "ts": "2023-11-14T23:04:48.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000051",
+      "event": "view",
+      "ts": "2023-11-14T23:05:49.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000051",
+      "event": "engage",
+      "ts": "2023-11-14T23:05:50.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000052",
+      "event": "view",
+      "ts": "2023-11-14T23:06:51.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000052",
+      "event": "engage",
+      "ts": "2023-11-14T23:06:52.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000053",
+      "event": "view",
+      "ts": "2023-11-14T23:07:53.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000054",
+      "event": "view",
+      "ts": "2023-11-14T23:08:54.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000054",
+      "event": "engage",
+      "ts": "2023-11-14T23:08:55.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000055",
+      "event": "view",
+      "ts": "2023-11-14T23:09:56.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000055",
+      "event": "engage",
+      "ts": "2023-11-14T23:09:57.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000056",
+      "event": "view",
+      "ts": "2023-11-14T23:10:58.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000057",
+      "event": "view",
+      "ts": "2023-11-14T23:11:59.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000057",
+      "event": "engage",
+      "ts": "2023-11-14T23:12:00.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000058",
+      "event": "view",
+      "ts": "2023-11-14T23:13:01.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000059",
+      "event": "view",
+      "ts": "2023-11-14T23:14:02.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000059",
+      "event": "engage",
+      "ts": "2023-11-14T23:14:03.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000060",
+      "event": "view",
+      "ts": "2023-11-14T23:15:04.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000060",
+      "event": "engage",
+      "ts": "2023-11-14T23:15:05.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000061",
+      "event": "view",
+      "ts": "2023-11-14T23:16:06.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000062",
+      "event": "view",
+      "ts": "2023-11-14T23:17:07.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000062",
+      "event": "engage",
+      "ts": "2023-11-14T23:17:08.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000063",
+      "event": "view",
+      "ts": "2023-11-14T23:18:09.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000064",
+      "event": "view",
+      "ts": "2023-11-14T23:19:10.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000064",
+      "event": "engage",
+      "ts": "2023-11-14T23:19:11.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000064",
+      "event": "convert",
+      "ts": "2023-11-14T23:19:12.000Z",
+      "item_id": "edition-001",
+      "amount_cents": 2500
+    },
+    {
+      "user_id": "u000064",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:19:13.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000065",
+      "event": "view",
+      "ts": "2023-11-14T23:20:14.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000066",
+      "event": "view",
+      "ts": "2023-11-14T23:21:15.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000066",
+      "event": "engage",
+      "ts": "2023-11-14T23:21:16.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000067",
+      "event": "view",
+      "ts": "2023-11-14T23:22:17.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000067",
+      "event": "engage",
+      "ts": "2023-11-14T23:22:18.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000068",
+      "event": "view",
+      "ts": "2023-11-14T23:23:19.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000069",
+      "event": "view",
+      "ts": "2023-11-14T23:24:20.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000070",
+      "event": "view",
+      "ts": "2023-11-14T23:25:21.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000071",
+      "event": "view",
+      "ts": "2023-11-14T23:26:22.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000071",
+      "event": "engage",
+      "ts": "2023-11-14T23:26:23.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000071",
+      "event": "convert",
+      "ts": "2023-11-14T23:26:24.000Z",
+      "item_id": "edition-004",
+      "amount_cents": 4200
+    },
+    {
+      "user_id": "u000071",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:26:25.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000072",
+      "event": "view",
+      "ts": "2023-11-14T23:27:26.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000073",
+      "event": "view",
+      "ts": "2023-11-14T23:28:27.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000074",
+      "event": "view",
+      "ts": "2023-11-14T23:29:28.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000075",
+      "event": "view",
+      "ts": "2023-11-14T23:30:29.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000075",
+      "event": "engage",
+      "ts": "2023-11-14T23:30:30.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000076",
+      "event": "view",
+      "ts": "2023-11-14T23:31:31.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000077",
+      "event": "view",
+      "ts": "2023-11-14T23:32:32.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000078",
+      "event": "view",
+      "ts": "2023-11-14T23:33:33.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000078",
+      "event": "engage",
+      "ts": "2023-11-14T23:33:34.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000079",
+      "event": "view",
+      "ts": "2023-11-14T23:34:35.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000079",
+      "event": "engage",
+      "ts": "2023-11-14T23:34:36.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000079",
+      "event": "convert",
+      "ts": "2023-11-14T23:34:37.000Z",
+      "item_id": "edition-004",
+      "amount_cents": 4200
+    },
+    {
+      "user_id": "u000079",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:34:38.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000080",
+      "event": "view",
+      "ts": "2023-11-14T23:35:39.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000081",
+      "event": "view",
+      "ts": "2023-11-14T23:36:40.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000081",
+      "event": "engage",
+      "ts": "2023-11-14T23:36:41.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000082",
+      "event": "view",
+      "ts": "2023-11-14T23:37:42.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000082",
+      "event": "engage",
+      "ts": "2023-11-14T23:37:43.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000082",
+      "event": "convert",
+      "ts": "2023-11-14T23:37:44.000Z",
+      "item_id": "edition-003",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000082",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:37:45.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000083",
+      "event": "view",
+      "ts": "2023-11-14T23:38:46.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000084",
+      "event": "view",
+      "ts": "2023-11-14T23:39:47.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000085",
+      "event": "view",
+      "ts": "2023-11-14T23:40:48.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000085",
+      "event": "engage",
+      "ts": "2023-11-14T23:40:49.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000086",
+      "event": "view",
+      "ts": "2023-11-14T23:41:50.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000086",
+      "event": "engage",
+      "ts": "2023-11-14T23:41:51.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000087",
+      "event": "view",
+      "ts": "2023-11-14T23:42:52.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000087",
+      "event": "engage",
+      "ts": "2023-11-14T23:42:53.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000088",
+      "event": "view",
+      "ts": "2023-11-14T23:43:54.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000088",
+      "event": "engage",
+      "ts": "2023-11-14T23:43:55.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000089",
+      "event": "view",
+      "ts": "2023-11-14T23:44:56.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000090",
+      "event": "view",
+      "ts": "2023-11-14T23:45:57.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000091",
+      "event": "view",
+      "ts": "2023-11-14T23:46:58.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000091",
+      "event": "engage",
+      "ts": "2023-11-14T23:46:59.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000091",
+      "event": "convert",
+      "ts": "2023-11-14T23:47:00.000Z",
+      "item_id": "edition-004",
+      "amount_cents": 4200
+    },
+    {
+      "user_id": "u000091",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:47:01.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000092",
+      "event": "view",
+      "ts": "2023-11-14T23:48:02.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000093",
+      "event": "view",
+      "ts": "2023-11-14T23:49:03.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000094",
+      "event": "view",
+      "ts": "2023-11-14T23:50:04.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000095",
+      "event": "view",
+      "ts": "2023-11-14T23:51:05.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000095",
+      "event": "engage",
+      "ts": "2023-11-14T23:51:06.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000096",
+      "event": "view",
+      "ts": "2023-11-14T23:52:07.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000097",
+      "event": "view",
+      "ts": "2023-11-14T23:53:08.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000098",
+      "event": "view",
+      "ts": "2023-11-14T23:54:09.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000099",
+      "event": "view",
+      "ts": "2023-11-14T23:55:10.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000100",
+      "event": "view",
+      "ts": "2023-11-14T23:56:11.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000101",
+      "event": "view",
+      "ts": "2023-11-14T23:57:12.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000101",
+      "event": "engage",
+      "ts": "2023-11-14T23:57:13.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000101",
+      "event": "convert",
+      "ts": "2023-11-14T23:57:14.000Z",
+      "item_id": "edition-002",
+      "amount_cents": 3500
+    },
+    {
+      "user_id": "u000101",
+      "event": "fulfill",
+      "ts": "2023-11-14T23:57:15.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000102",
+      "event": "view",
+      "ts": "2023-11-14T23:58:16.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000103",
+      "event": "view",
+      "ts": "2023-11-14T23:59:17.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000104",
+      "event": "view",
+      "ts": "2023-11-15T00:00:18.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000104",
+      "event": "engage",
+      "ts": "2023-11-15T00:00:19.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000105",
+      "event": "view",
+      "ts": "2023-11-15T00:01:20.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000106",
+      "event": "view",
+      "ts": "2023-11-15T00:02:21.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000106",
+      "event": "engage",
+      "ts": "2023-11-15T00:02:22.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000107",
+      "event": "view",
+      "ts": "2023-11-15T00:03:23.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000107",
+      "event": "engage",
+      "ts": "2023-11-15T00:03:24.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000108",
+      "event": "view",
+      "ts": "2023-11-15T00:04:25.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000109",
+      "event": "view",
+      "ts": "2023-11-15T00:05:26.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000110",
+      "event": "view",
+      "ts": "2023-11-15T00:06:27.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000110",
+      "event": "engage",
+      "ts": "2023-11-15T00:06:28.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000111",
+      "event": "view",
+      "ts": "2023-11-15T00:07:29.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000112",
+      "event": "view",
+      "ts": "2023-11-15T00:08:30.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000113",
+      "event": "view",
+      "ts": "2023-11-15T00:09:31.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000114",
+      "event": "view",
+      "ts": "2023-11-15T00:10:32.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000115",
+      "event": "view",
+      "ts": "2023-11-15T00:11:33.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000116",
+      "event": "view",
+      "ts": "2023-11-15T00:12:34.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000117",
+      "event": "view",
+      "ts": "2023-11-15T00:13:35.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000118",
+      "event": "view",
+      "ts": "2023-11-15T00:14:36.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000119",
+      "event": "view",
+      "ts": "2023-11-15T00:15:37.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000119",
+      "event": "engage",
+      "ts": "2023-11-15T00:15:38.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000120",
+      "event": "view",
+      "ts": "2023-11-15T00:16:39.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000121",
+      "event": "view",
+      "ts": "2023-11-15T00:17:40.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000122",
+      "event": "view",
+      "ts": "2023-11-15T00:18:41.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000122",
+      "event": "engage",
+      "ts": "2023-11-15T00:18:42.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000123",
+      "event": "view",
+      "ts": "2023-11-15T00:19:43.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000123",
+      "event": "engage",
+      "ts": "2023-11-15T00:19:44.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000124",
+      "event": "view",
+      "ts": "2023-11-15T00:20:45.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000125",
+      "event": "view",
+      "ts": "2023-11-15T00:21:46.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000125",
+      "event": "engage",
+      "ts": "2023-11-15T00:21:47.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000126",
+      "event": "view",
+      "ts": "2023-11-15T00:22:48.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000127",
+      "event": "view",
+      "ts": "2023-11-15T00:23:49.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000127",
+      "event": "engage",
+      "ts": "2023-11-15T00:23:50.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000128",
+      "event": "view",
+      "ts": "2023-11-15T00:24:51.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000129",
+      "event": "view",
+      "ts": "2023-11-15T00:25:52.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000129",
+      "event": "engage",
+      "ts": "2023-11-15T00:25:53.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000130",
+      "event": "view",
+      "ts": "2023-11-15T00:26:54.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000131",
+      "event": "view",
+      "ts": "2023-11-15T00:27:55.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000131",
+      "event": "engage",
+      "ts": "2023-11-15T00:27:56.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000131",
+      "event": "convert",
+      "ts": "2023-11-15T00:27:57.000Z",
+      "item_id": "edition-004",
+      "amount_cents": 4200
+    },
+    {
+      "user_id": "u000131",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:27:58.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000132",
+      "event": "view",
+      "ts": "2023-11-15T00:28:59.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000133",
+      "event": "view",
+      "ts": "2023-11-15T00:30:00.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000133",
+      "event": "engage",
+      "ts": "2023-11-15T00:30:01.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000133",
+      "event": "convert",
+      "ts": "2023-11-15T00:30:02.000Z",
+      "item_id": "edition-002",
+      "amount_cents": 3500
+    },
+    {
+      "user_id": "u000133",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:30:03.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000134",
+      "event": "view",
+      "ts": "2023-11-15T00:31:04.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000135",
+      "event": "view",
+      "ts": "2023-11-15T00:32:05.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000136",
+      "event": "view",
+      "ts": "2023-11-15T00:33:06.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000136",
+      "event": "engage",
+      "ts": "2023-11-15T00:33:07.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000136",
+      "event": "convert",
+      "ts": "2023-11-15T00:33:08.000Z",
+      "item_id": "edition-001",
+      "amount_cents": 2500
+    },
+    {
+      "user_id": "u000136",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:33:09.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000137",
+      "event": "view",
+      "ts": "2023-11-15T00:34:10.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000137",
+      "event": "engage",
+      "ts": "2023-11-15T00:34:11.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000138",
+      "event": "view",
+      "ts": "2023-11-15T00:35:12.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000139",
+      "event": "view",
+      "ts": "2023-11-15T00:36:13.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000140",
+      "event": "view",
+      "ts": "2023-11-15T00:37:14.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000141",
+      "event": "view",
+      "ts": "2023-11-15T00:38:15.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000142",
+      "event": "view",
+      "ts": "2023-11-15T00:39:16.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000142",
+      "event": "engage",
+      "ts": "2023-11-15T00:39:17.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000142",
+      "event": "convert",
+      "ts": "2023-11-15T00:39:18.000Z",
+      "item_id": "edition-003",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000142",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:39:19.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000143",
+      "event": "view",
+      "ts": "2023-11-15T00:40:20.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000144",
+      "event": "view",
+      "ts": "2023-11-15T00:41:21.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000145",
+      "event": "view",
+      "ts": "2023-11-15T00:42:22.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000146",
+      "event": "view",
+      "ts": "2023-11-15T00:43:23.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000147",
+      "event": "view",
+      "ts": "2023-11-15T00:44:24.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000147",
+      "event": "engage",
+      "ts": "2023-11-15T00:44:25.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000147",
+      "event": "convert",
+      "ts": "2023-11-15T00:44:26.000Z",
+      "item_id": "edition-004",
+      "amount_cents": 4200
+    },
+    {
+      "user_id": "u000147",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:44:27.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000148",
+      "event": "view",
+      "ts": "2023-11-15T00:45:28.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000148",
+      "event": "engage",
+      "ts": "2023-11-15T00:45:29.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000149",
+      "event": "view",
+      "ts": "2023-11-15T00:46:30.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000150",
+      "event": "view",
+      "ts": "2023-11-15T00:47:31.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000150",
+      "event": "engage",
+      "ts": "2023-11-15T00:47:32.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000151",
+      "event": "view",
+      "ts": "2023-11-15T00:48:33.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000151",
+      "event": "engage",
+      "ts": "2023-11-15T00:48:34.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000152",
+      "event": "view",
+      "ts": "2023-11-15T00:49:35.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000152",
+      "event": "engage",
+      "ts": "2023-11-15T00:49:36.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000153",
+      "event": "view",
+      "ts": "2023-11-15T00:50:37.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000153",
+      "event": "engage",
+      "ts": "2023-11-15T00:50:38.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000154",
+      "event": "view",
+      "ts": "2023-11-15T00:51:39.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000155",
+      "event": "view",
+      "ts": "2023-11-15T00:52:40.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000156",
+      "event": "view",
+      "ts": "2023-11-15T00:53:41.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000157",
+      "event": "view",
+      "ts": "2023-11-15T00:54:42.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000158",
+      "event": "view",
+      "ts": "2023-11-15T00:55:43.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000158",
+      "event": "engage",
+      "ts": "2023-11-15T00:55:44.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000158",
+      "event": "convert",
+      "ts": "2023-11-15T00:55:45.000Z",
+      "item_id": "edition-003",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000158",
+      "event": "fulfill",
+      "ts": "2023-11-15T00:55:46.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000159",
+      "event": "view",
+      "ts": "2023-11-15T00:56:47.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000159",
+      "event": "engage",
+      "ts": "2023-11-15T00:56:48.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000160",
+      "event": "view",
+      "ts": "2023-11-15T00:57:49.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000160",
+      "event": "engage",
+      "ts": "2023-11-15T00:57:50.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000161",
+      "event": "view",
+      "ts": "2023-11-15T00:58:51.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000161",
+      "event": "engage",
+      "ts": "2023-11-15T00:58:52.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000162",
+      "event": "view",
+      "ts": "2023-11-15T00:59:53.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000162",
+      "event": "engage",
+      "ts": "2023-11-15T00:59:54.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000163",
+      "event": "view",
+      "ts": "2023-11-15T01:00:55.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000163",
+      "event": "engage",
+      "ts": "2023-11-15T01:00:56.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000164",
+      "event": "view",
+      "ts": "2023-11-15T01:01:57.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000164",
+      "event": "engage",
+      "ts": "2023-11-15T01:01:58.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000165",
+      "event": "view",
+      "ts": "2023-11-15T01:02:59.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000166",
+      "event": "view",
+      "ts": "2023-11-15T01:04:00.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000166",
+      "event": "engage",
+      "ts": "2023-11-15T01:04:01.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000166",
+      "event": "convert",
+      "ts": "2023-11-15T01:04:02.000Z",
+      "item_id": "edition-003",
+      "amount_cents": 1800
+    },
+    {
+      "user_id": "u000166",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:04:03.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000167",
+      "event": "view",
+      "ts": "2023-11-15T01:05:04.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000167",
+      "event": "engage",
+      "ts": "2023-11-15T01:05:05.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000168",
+      "event": "view",
+      "ts": "2023-11-15T01:06:06.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000168",
+      "event": "engage",
+      "ts": "2023-11-15T01:06:07.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000169",
+      "event": "view",
+      "ts": "2023-11-15T01:07:08.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000169",
+      "event": "engage",
+      "ts": "2023-11-15T01:07:09.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000170",
+      "event": "view",
+      "ts": "2023-11-15T01:08:10.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000170",
+      "event": "engage",
+      "ts": "2023-11-15T01:08:11.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000171",
+      "event": "view",
+      "ts": "2023-11-15T01:09:12.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000172",
+      "event": "view",
+      "ts": "2023-11-15T01:10:13.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000173",
+      "event": "view",
+      "ts": "2023-11-15T01:11:14.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000173",
+      "event": "engage",
+      "ts": "2023-11-15T01:11:15.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000174",
+      "event": "view",
+      "ts": "2023-11-15T01:12:16.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000174",
+      "event": "engage",
+      "ts": "2023-11-15T01:12:17.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000175",
+      "event": "view",
+      "ts": "2023-11-15T01:13:18.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000175",
+      "event": "engage",
+      "ts": "2023-11-15T01:13:19.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000176",
+      "event": "view",
+      "ts": "2023-11-15T01:14:20.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000177",
+      "event": "view",
+      "ts": "2023-11-15T01:15:21.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000178",
+      "event": "view",
+      "ts": "2023-11-15T01:16:22.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000178",
+      "event": "engage",
+      "ts": "2023-11-15T01:16:23.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000179",
+      "event": "view",
+      "ts": "2023-11-15T01:17:24.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000179",
+      "event": "engage",
+      "ts": "2023-11-15T01:17:25.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000180",
+      "event": "view",
+      "ts": "2023-11-15T01:18:26.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000180",
+      "event": "engage",
+      "ts": "2023-11-15T01:18:27.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000180",
+      "event": "convert",
+      "ts": "2023-11-15T01:18:28.000Z",
+      "item_id": "edition-001",
+      "amount_cents": 2500
+    },
+    {
+      "user_id": "u000180",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:18:29.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000181",
+      "event": "view",
+      "ts": "2023-11-15T01:19:30.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000181",
+      "event": "engage",
+      "ts": "2023-11-15T01:19:31.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000182",
+      "event": "view",
+      "ts": "2023-11-15T01:20:32.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000183",
+      "event": "view",
+      "ts": "2023-11-15T01:21:33.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000184",
+      "event": "view",
+      "ts": "2023-11-15T01:22:34.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000184",
+      "event": "engage",
+      "ts": "2023-11-15T01:22:35.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000184",
+      "event": "convert",
+      "ts": "2023-11-15T01:22:36.000Z",
+      "item_id": "edition-001",
+      "amount_cents": 2500
+    },
+    {
+      "user_id": "u000184",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:22:37.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000185",
+      "event": "view",
+      "ts": "2023-11-15T01:23:38.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000185",
+      "event": "engage",
+      "ts": "2023-11-15T01:23:39.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000186",
+      "event": "view",
+      "ts": "2023-11-15T01:24:40.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000187",
+      "event": "view",
+      "ts": "2023-11-15T01:25:41.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000188",
+      "event": "view",
+      "ts": "2023-11-15T01:26:42.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000189",
+      "event": "view",
+      "ts": "2023-11-15T01:27:43.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000190",
+      "event": "view",
+      "ts": "2023-11-15T01:28:44.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000191",
+      "event": "view",
+      "ts": "2023-11-15T01:29:45.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000191",
+      "event": "engage",
+      "ts": "2023-11-15T01:29:46.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000192",
+      "event": "view",
+      "ts": "2023-11-15T01:30:47.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000192",
+      "event": "engage",
+      "ts": "2023-11-15T01:30:48.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000193",
+      "event": "view",
+      "ts": "2023-11-15T01:31:49.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000194",
+      "event": "view",
+      "ts": "2023-11-15T01:32:50.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000195",
+      "event": "view",
+      "ts": "2023-11-15T01:33:51.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000196",
+      "event": "view",
+      "ts": "2023-11-15T01:34:52.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000196",
+      "event": "engage",
+      "ts": "2023-11-15T01:34:53.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000196",
+      "event": "convert",
+      "ts": "2023-11-15T01:34:54.000Z",
+      "item_id": "edition-001",
+      "amount_cents": 2500
+    },
+    {
+      "user_id": "u000196",
+      "event": "fulfill",
+      "ts": "2023-11-15T01:34:55.000Z",
+      "item_id": "edition-001"
+    },
+    {
+      "user_id": "u000197",
+      "event": "view",
+      "ts": "2023-11-15T01:35:56.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000197",
+      "event": "engage",
+      "ts": "2023-11-15T01:35:57.000Z",
+      "item_id": "edition-002"
+    },
+    {
+      "user_id": "u000198",
+      "event": "view",
+      "ts": "2023-11-15T01:36:58.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000198",
+      "event": "engage",
+      "ts": "2023-11-15T01:36:59.000Z",
+      "item_id": "edition-003"
+    },
+    {
+      "user_id": "u000199",
+      "event": "view",
+      "ts": "2023-11-15T01:38:00.000Z",
+      "item_id": "edition-004"
+    },
+    {
+      "user_id": "u000199",
+      "event": "engage",
+      "ts": "2023-11-15T01:38:01.000Z",
+      "item_id": "edition-004"
+    }
+  ]
+}

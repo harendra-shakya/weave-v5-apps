@@ -1,0 +1,62 @@
+{
+  "stage": "plan",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "acceptance_criteria": [
+    { "id": "AC1",  "description": "npm run build exits 0 with zero TypeScript errors" },
+    { "id": "AC2",  "description": "node tools/validate-contracts.mjs exits 0 — chainless scan + public-safe scan both PASS" },
+    { "id": "AC3",  "description": "Impeccable critique ≥ 7/10 (Nielsen), 0 P0 findings on collector-facing surface" },
+    { "id": "AC4",  "description": "Hero copy is exactly 'Own the edition. Skip the wallet.' (baseline lock)" },
+    { "id": "AC5",  "description": "Primary CTA is 'Add to collection' (baseline lock)" },
+    { "id": "AC6",  "description": "Footer nonclaim present on every page: 'Vitrine collectibles are synthetic — for the collecting experience, not real ownership, transfer, or financial value.'" },
+    { "id": "AC7",  "description": "First-purchase notice fires before first Add to collection: 'A quick note: this is a synthetic collectible. You\\'re collecting the experience — there\\'s no real ownership, resale, or value.'" },
+    { "id": "AC8",  "description": "Negative code proof: grep of apps/nft-storefront/ for all forbidden_terms in nft-chainless.json returns 0 non-allowlisted matches" },
+    { "id": "AC9",  "description": "Negative dep proof: no wallet/chain/crypto package in package.json or node_modules/.package-lock.json" },
+    { "id": "AC10", "description": "Local ownership fixture (lib/collection.tsx) stores to localStorage, never calls any chain RPC" },
+    { "id": "AC11", "description": "All 8 pages render without console errors: /, /editions/[id], /checkout/[id], /collection, /collection/return/[id], /maker, /about, not-found" },
+    { "id": "AC12", "description": "Collect → shelf flow is clickable end to end: browse → detail → Add to collection → checkout → Your Vitrine shelf displays the edition" }
+  ],
+
+  "engineering_plan": {
+    "stack": "Next.js 15, TypeScript, Tailwind CSS 3.4, Nunito (Google Fonts)",
+    "structure": {
+      "app/": "Next.js App Router pages (8 routes + not-found)",
+      "components/": "17 components ported from UI source",
+      "lib/": "3 lib modules (editions.ts, collection.tsx, makers.tsx)",
+      "proof/": "lifecycle proof artifacts",
+      "lifecycle/": "lifecycle-state.json"
+    },
+    "copy_overrides": [
+      "app/page.tsx: hero = 'Own the edition. Skip the wallet.', sub = 'Numbered digital editions with clear provenance and a shelf you\\'re proud of — no wallet, no gas, no speculation.'",
+      "components/AddToCollectionButton.tsx: CTA = 'Add to collection', owned state = 'In your Vitrine · no. X of Y'"
+    ],
+    "dynamic_segment_fix": "Rename all -id- dirs to [id] (Next.js dynamic route syntax)",
+    "no_changes": [
+      "All design tokens (globals.css, tailwind.config.ts) — verbatim from UI source",
+      "All components not listed in copy_overrides — verbatim",
+      "All lib modules — verbatim",
+      "All page layouts — verbatim except page.tsx hero block"
+    ]
+  },
+
+  "adaptation_plan": {
+    "candidate": "provenance-clarity",
+    "description": "Add a prominent provenance badge to EditionCard showing '#N of M' in accent color with larger text, making edition scarcity/number more visible at the browsing stage. Baseline card shows this in 12px text; adaptation promotes it to a featured badge above the title.",
+    "scope": "components/EditionCard.tsx — UI-only change, no engine or spec change",
+    "expected_kpi_delta": "0.0% (cohort is engine-blind to UI changes; verdict will be GO or ITERATE based on no regression)"
+  },
+
+  "rubric": {
+    "ac_coverage": { "score": 4, "max": 4, "evidence": "12 ACs cover: build, contracts, QA, copy lock, nonclaims, negative proof (code+dep+runtime), pages, golden path." },
+    "plan_completeness": { "score": 4, "max": 4, "evidence": "Engineering plan specifies stack, structure, copy overrides, dynamic-segment fix, and what stays verbatim. Adaptation plan scoped to single component." },
+    "risk_coverage": { "score": 4, "max": 4, "evidence": "AC8 (code proof) and AC9 (dep proof) cover chainless boundary directly. AC10 covers runtime. Adaptation expected 0.0% delta documented as nonclaim." },
+    "measurability": { "score": 4, "max": 4, "evidence": "Every AC is binary pass/fail. Copy ACs are exact string matches. Negative proof ACs are grep results. Golden-path AC is a click sequence." }
+  },
+
+  "score": { "earned": 16, "possible": 16, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to engineering stage"
+}

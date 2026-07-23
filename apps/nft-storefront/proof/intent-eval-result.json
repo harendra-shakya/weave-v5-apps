@@ -1,0 +1,102 @@
+{
+  "stage": "intent",
+  "app_id": "nft-storefront",
+  "artifact": "contracts/specs/nft-storefront.spec.json + docs/atm-415/atm-419-brand.md",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "hard_gates": [
+    {
+      "id": "success_metric_present",
+      "result": "passed",
+      "evidence": {
+        "primary_kpi": "conversion_rate",
+        "secondary_kpi": "aov",
+        "guardrail": "refund_rate < 0.15",
+        "baseline_cohort": { "seed": 42, "user_count": 200 },
+        "source": "contracts/specs/nft-storefront.spec.json → kpi_assumptions"
+      }
+    },
+    {
+      "id": "approval_boundary_present",
+      "result": "passed",
+      "evidence": {
+        "OWNER_GATE": "Any change to frozen contracts/seeds/KPI after baseline; any real blockchain, wallet, or payment integration; any change to the chainless negative contract",
+        "ENGINEERING_REQUIRED": "If the ownership_granted fulfillment state cannot be supported in commerce-core without schema changes — stop and surface",
+        "CHAIN_BOUNDARY": "Hitting any forbidden surface (wallet, chain, mint, token, etc.) is OWNER_GATE — stop and escalate, never work around",
+        "nonclaims": [
+          "does not prove real digital ownership or asset transfer",
+          "does not involve any blockchain, wallet, or token — ever",
+          "synthetic collectibles only — no financial value, no resale"
+        ],
+        "source": "contracts/specs/nft-storefront.spec.json → stop_conditions + nonclaims + contracts/negative/nft-chainless.json"
+      }
+    }
+  ],
+
+  "required_inputs": {
+    "goal_statement": "Build Vitrine — a local synthetic strictly-chainless collectible storefront running the full WEAVE lifecycle (intent→analysis→seal). The goal is to produce reproducible lifecycle evidence for a distinct domain (numbered digital editions with provenance, local ownership shelf, no wallet/chain/gas), proving WEAVE operates a product lifecycle end-to-end for a third app type distinct from OneReel and Marginalia. The app's defining rule: no blockchain surface exists — ever — in code, dependencies, config, or runtime calls.",
+    "target_user": "The anti-crypto edition collector — someone who loves the '#7 of 50' feeling of owning a numbered edition from an artist they follow, with clear provenance. They are tired of wallet onboarding, seed phrases, gas fees, and a flip-for-profit speculation culture. They want the pride of a visible, arrangeable collection — not a locked wallet. Persona source: atm-419-brand.md + contracts/specs/nft-storefront.spec.json.",
+    "success_criteria": [
+      "npm run build exits 0, zero console errors",
+      "node tools/validate-contracts.mjs PASS (chainless scan green, public-safe scan green)",
+      "impeccable critique ≥ 7/10, zero P0 findings on collector-facing surface",
+      "negative proof bundle complete: code/dep/config/runtime proofs of no forbidden surface",
+      "deterministic baseline cohort (seed=42, 200 users) produces consistent cohort-result.json across ≥2 runs",
+      "one bounded adaptation applied (provenance-clarity) and retested with identical seed — KPI delta recorded",
+      "seal manifest produced with file checksums",
+      "conversion_rate and aov measurable; refund_rate guardrail < 0.15 held",
+      "footer nonclaim present on every page; first-purchase notice fires before first Add to collection"
+    ],
+    "non_goals": [
+      "No real blockchain, wallet, smart contract, token, or NFT minting",
+      "No real payment processing or financial transaction",
+      "No real artist licensing or digital asset rights",
+      "No public deployment, marketing, or user contact",
+      "No copyrighted artwork (all edition art is synthetic CSS shapes)",
+      "deployment and marketing lifecycle stages are owner-gated-skipped"
+    ],
+    "approval_boundaries": {
+      "OWNER_GATE": [
+        "Any change to frozen contracts/schemas/seeds/KPI/state-transitions after baseline freeze",
+        "Any real blockchain, wallet, mint, payment, or external service integration",
+        "Any change to the chainless negative contract (contracts/negative/nft-chainless.json)",
+        "Any change to the known_false_positives list in the chainless contract"
+      ],
+      "ENGINEERING_REQUIRED": [
+        "If commerce-core cannot represent ownership_granted fulfillment state without schema changes"
+      ],
+      "CHAIN_BOUNDARY_GATE": [
+        "Encountering any forbidden surface (wallet, chain, mint, token, gas, RPC, eth_) during build — STOP, do not work around, escalate"
+      ]
+    }
+  },
+
+  "rubric": {
+    "goal_clarity": {
+      "score": 4,
+      "max": 4,
+      "evidence": "Goal is specific (local synthetic chainless collectible storefront, distinct from OneReel and Marginalia) and testable (build gate, chainless scan gate, QA gate, deterministic cohort, negative proof bundle). Outcome is 'sealed Vitrine app with lifecycle proof artifacts and negative proof'."
+    },
+    "target_user": {
+      "score": 4,
+      "max": 4,
+      "evidence": "Anti-crypto edition collector persona is named, distinct from OneReel's filmmaker-patron and Marginalia's planner-hobbyist, with a specific frustration (wallet/gas/speculation culture) and a clear use case (own a numbered edition with provenance on a visible shelf). Frustration story drives the brand direction."
+    },
+    "success_measures": {
+      "score": 4,
+      "max": 4,
+      "evidence": "Primary KPI conversion_rate and secondary aov are numeric and measurable via cohort runner. Guardrail refund_rate < 0.15 is a hard threshold. Cohort is frozen (seed=42, 200 users). Build and QA gates are binary pass/fail. Negative proof is enumerable and verifiable."
+    },
+    "scope_boundaries": {
+      "score": 4,
+      "max": 4,
+      "evidence": "Non-goals are explicit (no blockchain/wallet/payment/deployment). Approval boundaries named: OWNER_GATE for frozen-contract changes and any real external action; ENGINEERING_REQUIRED for schema gaps; CHAIN_BOUNDARY_GATE for any forbidden surface contact. The chainless boundary is a brand commitment enforced by contract, not just convention."
+    }
+  },
+
+  "score": { "earned": 16, "possible": 16, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to research stage"
+}

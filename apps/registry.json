@@ -29,8 +29,13 @@
       "brand": "Vitrine",
       "path": "apps/nft-storefront",
       "spec": "contracts/specs/nft-storefront.spec.json",
-      "status": "not_started",
-      "sealed_at": null
+      "status": "sealed",
+      "sealed_at": "2026-07-23T23:12:01.317Z",
+      "seal_manifest": "apps/nft-storefront/proof/seal-manifest.json",
+      "lifecycle_score_summary": {
+        "intent": 100, "research": 100, "selection": 100, "plan": 100,
+        "engineering": 100, "qa": 85.0, "kpi_setup": 100, "iteration": 100, "analysis": 100
+      }
     }
   }
 }

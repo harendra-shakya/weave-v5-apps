@@ -1,0 +1,47 @@
+{
+  "stage": "kpi-setup",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "cohort_config": {
+    "seed": 42,
+    "user_count": 200,
+    "engine": "tools/cohort-runner.mjs",
+    "funnel_spec": "nft-storefront spec funnel",
+    "note": "synthetic cohort only — not real collector behavior; engine-blind to UI surface changes"
+  },
+
+  "baseline_kpis": {
+    "views": 200,
+    "converts": 20,
+    "fulfills": 20,
+    "refunds": 0,
+    "conversion_rate": 0.10,
+    "aov_dollars": 30.35,
+    "refund_rate": 0.00,
+    "fulfill_rate": 1.00,
+    "guardrail_breach": false
+  },
+
+  "cohort_result_ref": "proof/cohort-2026-07-23T23-09-32/cohort-result.json",
+
+  "kpi_targets": {
+    "conversion_rate_target": 0.12,
+    "aov_target_dollars": 30.00,
+    "refund_rate_ceiling": 0.05,
+    "note": "targets are synthetic indicators only — do not prove real commerce performance"
+  },
+
+  "non_claims": [
+    "does not prove real digital ownership or asset transfer",
+    "does not involve any blockchain, wallet, or token — ever",
+    "synthetic collectibles only — no financial value, no resale",
+    "synthetic cohort only — not real collector behavior",
+    "every iteration verdict must carry the explicit synthetic-only nonclaim"
+  ],
+
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to iteration stage — apply provenance-clarity adaptation"
+}

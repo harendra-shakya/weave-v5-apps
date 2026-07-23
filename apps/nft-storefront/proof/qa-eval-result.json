@@ -1,0 +1,94 @@
+{
+  "stage": "qa",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "method": "impeccable dual-agent critique — Assessment A (design/UX) + Assessment B (technical/a11y)",
+  "gate": { "min_score": 7.0, "max_p0": 0 },
+
+  "pages_surveyed": [
+    "/",
+    "/editions/[id]",
+    "/checkout/[id]",
+    "/collection",
+    "/about",
+    "/maker",
+    "/collection/return/[id]",
+    "not-found"
+  ],
+
+  "assessment_a": {
+    "label": "Design / UX — Nielsen Heuristics",
+    "heuristics": [
+      { "id": "H1", "name": "Visibility of system status",        "score": 3, "notes": "Nav badge live count, owned state shows edition number, checkout confirmation copy. No async ops so no loading states needed." },
+      { "id": "H2", "name": "Match between system and real world", "score": 3, "notes": "Warm vocabulary (edition, stall, Vitrine, 'Send it back'). 'Vitrine' requires about-page for unfamiliar users — minor." },
+      { "id": "H3", "name": "User control and freedom",            "score": 3, "notes": "Return flow with 'Keep it' escape, FirstPurchaseNotice 'Not now', 404 CTA. Checkout-to-return is one extra step — acceptable." },
+      { "id": "H4", "name": "Consistency and standards",           "score": 4, "notes": "Identical nav and footer nonclaim on all 8 pages. CTA style, accent color, Nunito font consistent throughout." },
+      { "id": "H5", "name": "Error prevention",                    "score": 4, "notes": "FirstPurchaseNotice before first add prevents misunderstanding of synthetic nature. Return step prevents accidental removal." },
+      { "id": "H6", "name": "Recognition rather than recall",      "score": 4, "notes": "Nav badge shows count, edition detail shows full provenance, checkout confirms identity. Nothing to remember between screens." },
+      { "id": "H7", "name": "Flexibility and efficiency of use",   "score": 3, "notes": "Single well-executed happy path. No search/filter (6 editions — not needed). Acceptable scope." },
+      { "id": "H8", "name": "Aesthetic and minimalist design",     "score": 4, "notes": "Keepsake system clean, warm, uncluttered. No competing visual noise." },
+      { "id": "H9", "name": "Help recognize and recover from errors","score": 3,"notes": "404 friendly with CTA. Return flow reversible. Maker form demo-only — no real validation needed." },
+      { "id": "H10","name": "Help and documentation",              "score": 3, "notes": "About page explains concept. FirstPurchaseNotice is inline contextual help. Maker page clarifies demo context." }
+    ],
+    "total": 34,
+    "max": 40,
+    "score_10": 8.5
+  },
+
+  "assessment_b": {
+    "label": "Technical / Accessibility",
+    "heuristics": [
+      { "id": "H1", "name": "System status (ARIA announcements)",  "score": 3, "notes": "ARIA landmarks present: banner, main, contentinfo, nav aria-label='Main'/'Footer'. FirstPurchaseNotice has aria-label. No async ops needing live regions." },
+      { "id": "H2", "name": "Semantic HTML",                       "score": 4, "notes": "h1 on every page. Buttons for actions, links for navigation. role='img' aria-label on EditionArtwork shape. img alt on uploaded images." },
+      { "id": "H3", "name": "Keyboard / focus accessibility",      "score": 3, "notes": "Native button/link elements fully keyboard accessible. FirstPurchaseNotice uses native button for dismiss (no JS focus trap, but not a modal overlay)." },
+      { "id": "H4", "name": "Code quality / consistency",          "score": 4, "notes": "TypeScript strict 0 errors. validate-contracts PASS (0 warnings, 9 checks). Next.js 15 async params pattern correct." },
+      { "id": "H5", "name": "Security / chainless contracts",      "score": 4, "notes": "No wallet/chain/crypto code in any source file. No forbidden deps in package.json. localStorage only, zero RPC calls." },
+      { "id": "H6", "name": "Code readability",                    "score": 3, "notes": "Components well-named and scoped. Lifecycle proof chain complete. No dead code." },
+      { "id": "H7", "name": "Performance",                         "score": 3, "notes": "Next.js App Router static rendering. Minimal client JS. Only next/react/react-dom in prod. No heavy libraries." },
+      { "id": "H8", "name": "Code minimalism",                     "score": 4, "notes": "Only 3 prod deps. No unnecessary abstractions. Shortest working implementation." },
+      { "id": "H9", "name": "Error handling",                      "score": 3, "notes": "not-found.tsx handles unknown routes. ReturnPanel handles edition-not-found gracefully. Maker form is demo-only." },
+      { "id": "H10","name": "Documentation",                       "score": 3, "notes": "Code is self-documenting via naming. Lifecycle proof artifacts complete (intent/research/selection/plan/engineering eval results)." }
+    ],
+    "total": 34,
+    "max": 40,
+    "score_10": 8.5
+  },
+
+  "combined_score": {
+    "total": 68,
+    "max": 80,
+    "score_10": 8.5,
+    "gate_min_score": 7.0,
+    "gate_passes": true
+  },
+
+  "findings": {
+    "p0": [],
+    "p1": [
+      {
+        "id": "P1-001",
+        "description": "text-muted at 3.94:1 contrast fails WCAG AA for normal text (needs 4.5:1)",
+        "affected": "EditionCard artist/count (12.5px bold), footer nav links (13px extrabold), body secondary copy",
+        "fix": "Darkened --ks-muted from oklch(55% 0.015 60) → rgb(139,119,109) to oklch(53% 0.015 60) → rgb(115,106,99)",
+        "fixed_contrast": "4.92:1",
+        "status": "fixed",
+        "file": "app/globals.css"
+      }
+    ]
+  },
+
+  "ac3_verdict": {
+    "result": "passed",
+    "evidence": "Combined score 8.5/10 ≥ gate 7.0/10; P0 count 0; P1 found and fixed before seal"
+  },
+
+  "console_errors_during_survey": 0,
+  "pages_with_footer_nonclaim": 8,
+  "pages_with_correct_nav": 8,
+
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to kpi-setup stage"
+}

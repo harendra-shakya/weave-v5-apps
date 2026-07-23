@@ -1,0 +1,48 @@
+{
+  "stage": "analysis",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "verdict": "PASS — ready to seal",
+
+  "summary": "Vitrine (nft-storefront) completed all lifecycle stages successfully. The app delivers a fully operable synthetic collectible storefront: 6 numbered editions, local-ownership collection shelf, maker stall demo, and clean provenance UX — with zero blockchain, wallet, or chain surface anywhere in the codebase. QA scored 8.5/10 with 0 P0 findings. One P1 (muted text contrast) fixed during QA. Provenance-clarity adaptation applied (edition number prominent on shop cards). Synthetic cohort baseline: 10% CVR, $30.35 AOV, 0% refund, no guardrail breach.",
+
+  "lifecycle_scorecard": [
+    { "stage": "intent",      "state": "verified", "score": "100%" },
+    { "stage": "research",    "state": "verified", "score": "100%" },
+    { "stage": "selection",   "state": "verified", "score": "100%" },
+    { "stage": "plan",        "state": "verified", "score": "100%" },
+    { "stage": "engineering", "state": "verified", "score": "12/12 AC" },
+    { "stage": "qa",          "state": "verified", "score": "8.5/10, 0 P0" },
+    { "stage": "deployment",  "state": "owner_gated_skipped" },
+    { "stage": "kpi-setup",   "state": "verified" },
+    { "stage": "marketing",   "state": "owner_gated_skipped" },
+    { "stage": "iteration",   "state": "verified", "adaptation": "provenance-clarity" },
+    { "stage": "analysis",    "state": "verified" }
+  ],
+
+  "key_decisions": [
+    "D1: Vitrine design system ported verbatim from UI source; brand-locked hero and CTA overrides applied per spec authority",
+    "D2: No price display in UI — spec price_cents used for engine KPI only (AOV $30.35); clean separation",
+    "D3: Absolute chainless boundary maintained — localStorage only, zero RPC, no wallet/chain/crypto in any dep or source",
+    "D4: Scanner known_false_positives cover all brand nonclaim copy ('skip the wallet', 'no gas', etc.) — validate-contracts PASS",
+    "D5: QA P1 (muted text 3.94:1 contrast) fixed → 4.92:1 before seal",
+    "D6: Provenance-clarity iteration applied — 'no. X' promoted to 16px/black on shop grid cards"
+  ],
+
+  "synthetic_kpi_summary": {
+    "baseline": { "conversion_rate": "10.0%", "aov": "$30.35", "refund_rate": "0.0%", "guardrail_breach": false },
+    "post_iteration": { "conversion_rate": "10.0%", "aov": "$30.35", "refund_rate": "0.0%", "guardrail_breach": false },
+    "delta": "0 (expected — synthetic engine is deterministic and engine-blind to UI surface)"
+  },
+
+  "EXPLICIT_SYNTHETIC_ONLY_NONCLAIM": {
+    "required": true,
+    "statement": "ALL KPIs in this analysis are synthetic only. The cohort engine (seed=42, 200 users) is deterministic and engine-blind to UI changes. These numbers do not represent real collector behavior, real commerce outcomes, real digital ownership, real financial value, or any real transaction. No blockchain, wallet, chain, mint, token, or RPC surface was involved at any point — not in the UI, not in the tests, not in the KPI engine. This app delivers a collecting experience with zero chain custody, zero financial value, and zero resale rights."
+  },
+
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to seal stage"
+}

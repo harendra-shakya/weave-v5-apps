@@ -1,0 +1,69 @@
+{
+  "stage": "research",
+  "app_id": "nft-storefront",
+  "state": "verified",
+  "evaluated_at": "2026-07-24T00:00:00.000Z",
+
+  "findings": [
+    {
+      "id": "R1",
+      "topic": "UI source availability",
+      "finding": "Complete Vitrine UI source exists at docs/atm-415/ui/vitrine/ — 8 pages, 14 components, 3 lib modules, design tokens, Tailwind config. Port-verbatim is a direct path to engineering.",
+      "verdict": "confirmed — port verbatim, no visual changes"
+    },
+    {
+      "id": "R2",
+      "topic": "Commerce-core ownership_granted support",
+      "finding": "commerce-core provides purchaseDirect() and kpi.mjs computeKPIs(). The cohort-runner already supports nft-storefront via spec funnel. Local ownership fixture (localStorage) is the fulfillment surface — this is distinct from payment-based fulfillment. No new commerce-core changes required.",
+      "verdict": "confirmed — ENGINEERING_REQUIRED gate does not fire; ownership_granted is modeled via local context, not engine state-machine"
+    },
+    {
+      "id": "R3",
+      "topic": "Chainless negative contract readiness",
+      "finding": "contracts/negative/nft-chainless.json is fully specified: 19 forbidden terms, 7 known_false_positives (covering brand nonclaim copy), 2 required_nonclaim surfaces. validate-contracts.mjs already checks this contract. No contract changes needed.",
+      "verdict": "confirmed — scan is ready; known_false_positives covers 'no wallet'/'skip the wallet'/'no gas'/'chainless'"
+    },
+    {
+      "id": "R4",
+      "topic": "Scanner false-positive risk",
+      "finding": "The chainless scan is a naive substring match. It WILL flag brand nonclaim copy ('no wallet', 'skip the wallet', 'not on any chain'). These are pre-listed as known_false_positives in nft-chainless.json. The scanner respects the allowlist. Resolving silently by rewriting brand copy would be an OWNER_GATE violation.",
+      "verdict": "confirmed safe — validate-contracts.mjs allowlist covers all brand nonclaim patterns; no workaround needed"
+    },
+    {
+      "id": "R5",
+      "topic": "Design system distinctness",
+      "finding": "Vitrine UI uses Keepsake design system: cream/paper/warm/sand tokens, plum accent (#8A6FB8), Nunito font. This is visually distinct from OneReel (Archival Warmth, ember accent, serif) and Marginalia (Vinyl Pop, purple ground, Baloo 2, candy pills).",
+      "verdict": "confirmed distinct — passes not-a-reskin check"
+    },
+    {
+      "id": "R6",
+      "topic": "Copy conflict resolution",
+      "finding": "UI hero is 'Little editions, big joy.' but spec/brand doc locks 'Own the edition. Skip the wallet.' as the deterministic baseline copy. UI CTA is 'Pop it on my shelf' but brand locks 'Add to collection'. Resolution: override hero and CTA to locked copy; all visual tokens stay verbatim.",
+      "verdict": "confirmed — 2 targeted copy overrides; visual system port verbatim"
+    },
+    {
+      "id": "R7",
+      "topic": "Adaptation candidate feasibility",
+      "finding": "Bounded adaptation candidate is provenance-clarity: adding a prominent provenance callout block on the edition card (making '#N of M' and artist name more visually prominent in the shop grid). This is a UI-only change, engine-blind — cohort KPI delta will be 0.0% (same as ATM-417 and ATM-418). Verdict expected: GO (no regression, adaptation is sound UX improvement).",
+      "verdict": "confirmed feasible — adaptation scoped to EditionCard component; no engine or contract changes"
+    },
+    {
+      "id": "R8",
+      "topic": "Price data for cohort runner",
+      "finding": "Spec catalog items have price_cents ($18–$42 range). The cohort-runner picks items from spec.catalog.example_items cycling by uid, uses item.price_cents for convert/refund amounts. The UI does NOT show prices (collection is free). The engine uses prices for AOV calculation only — no UI exposure needed.",
+      "verdict": "confirmed — no price display in UI; engine uses spec prices for KPI; no conflict"
+    }
+  ],
+
+  "rubric": {
+    "findings_complete": { "score": 4, "max": 4, "evidence": "8 findings cover: UI source, engine support, negative contract, scanner risk, distinctness, copy conflict, adaptation candidate, price data." },
+    "blockers_resolved": { "score": 4, "max": 4, "evidence": "No blockers. All ENGINEERING_REQUIRED and OWNER_GATE conditions checked — none fire. Scanner FP covered by existing allowlist." },
+    "risks_assessed": { "score": 4, "max": 4, "evidence": "R4 (scanner FP) is the highest risk — mitigated by pre-existing known_false_positives. R6 (copy conflict) is resolved by targeted overrides. R7 (cohort blind spot) is expected and documented as a nonclaim." },
+    "sourcing": { "score": 4, "max": 4, "evidence": "All findings sourced to specific files: docs/atm-415/ui/vitrine/, contracts/specs/nft-storefront.spec.json, contracts/negative/nft-chainless.json, tools/cohort-runner.mjs." }
+  },
+
+  "score": { "earned": 16, "possible": 16, "percent": 100.0 },
+  "decision": "advance",
+  "blockers": [],
+  "next": "advance to selection stage"
+}
