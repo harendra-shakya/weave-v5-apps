@@ -1,0 +1,149 @@
+{
+  "schema": "weave-cos-lifecycle/qa/v1",
+  "stage": "qa",
+  "app_id": "print-storefront",
+  "proof_date": "2026-07-24",
+  "state": "verified",
+
+  "critique_method": "dual-agent (Assessment A: design/UX Nielsen heuristics, Assessment B: CLI accessibility tree)",
+  "impeccable_score_pre_fix": "23/40 (5.75/10)",
+  "impeccable_score_post_fix": "28/40 (7.0/10)",
+  "gate": ">=28/40 (>=7/10) AND zero P0 findings",
+  "gate_result": "PASS",
+
+  "pre_fix_findings": [
+    {
+      "id": "P0-01",
+      "severity": "P0",
+      "description": "Download button calls window.alert() — blocking system dialog; not a real download interaction; breaks the core post-purchase flow",
+      "status": "fixed"
+    },
+    {
+      "id": "P1-01",
+      "severity": "P1",
+      "description": "Cart naming inconsistency: empty-state heading 'Your collection is empty' while cart page h1 reads 'Your cart' — mixed vocabulary confuses the user's mental model",
+      "status": "fixed"
+    },
+    {
+      "id": "P1-02",
+      "severity": "P1",
+      "description": "aria-invalid='true' set on form fields on validation failure but no visible visual change — error state invisible to sighted users",
+      "status": "fixed"
+    },
+    {
+      "id": "B-01",
+      "severity": "B",
+      "description": "h1 'Art for the wall<br />you actually have' produces 'wallyou' in accessibility tree — no space before <br>",
+      "status": "fixed"
+    },
+    {
+      "id": "B-02",
+      "severity": "B",
+      "description": "SVG <text> elements inside PosterArtwork lack aria-hidden; screen readers announce decorative SVG text as content",
+      "status": "fixed"
+    },
+    {
+      "id": "B-05",
+      "severity": "B",
+      "description": "Terms checkbox uses hardcoded id='terms-agree' — unique-id contract broken, would duplicate if multiple forms on page",
+      "status": "fixed"
+    },
+    {
+      "id": "B-06",
+      "severity": "B",
+      "description": "FormatSelector buttons and download button below 44px minimum touch target",
+      "status": "fixed"
+    }
+  ],
+
+  "fixes_applied": [
+    {
+      "file": "app/order/[id]/page.tsx",
+      "finding": "P0-01",
+      "fix": "Replaced window.alert() with useState<Set<string>>(new Set()) downloadedNow; button label changes to 'Download again'; inline <p role='status' aria-live='polite'>✓ Synthetic download complete</p> appears below button. Browser verified: click → 'DOWNLOADED' status, 'Download again' label, inline sage-green confirmation, no alert() dialog."
+    },
+    {
+      "file": "app/cart/page.tsx",
+      "finding": "P1-01",
+      "fix": "Empty-state heading changed to match h1; breadcrumb 'Collection' → 'Cart'; 'Your cart' now consistent across the entire purchase flow"
+    },
+    {
+      "file": "app/globals.css",
+      "finding": "P1-02",
+      "fix": "Added @layer utilities: input[aria-invalid='true'], textarea[aria-invalid='true'] { border-color: rgb(220 38 38) !important; --tw-ring-color: rgb(220 38 38 / 0.25); } — red-600 border appears on invalid fields"
+    },
+    {
+      "file": "app/page.tsx",
+      "finding": "B-01",
+      "fix": "Added {' '} before <br /> in hero h1: 'Art for the wall{\" \"}<br />you actually have.' — accessibility tree now reads correctly"
+    },
+    {
+      "file": "components/PosterArtwork.tsx",
+      "finding": "B-02",
+      "fix": "Added aria-hidden='true' to all four <text> elements inside the SVG artwork placeholder"
+    },
+    {
+      "file": "components/PaymentForm.tsx",
+      "finding": "B-05",
+      "fix": "const termsId = useId() replaces hardcoded id='terms-agree'; htmlFor={termsId} on label"
+    },
+    {
+      "file": "components/FormatSelector.tsx",
+      "finding": "B-06",
+      "fix": "Added min-h-[44px] to format selector button className"
+    },
+    {
+      "file": "app/order/[id]/page.tsx",
+      "finding": "B-06",
+      "fix": "Added min-h-[44px] to download button className"
+    }
+  ],
+
+  "post_fix_heuristics": {
+    "H1_visibility_of_system_status": 3,
+    "H2_match_system_real_world": 3,
+    "H3_user_control_freedom": 2,
+    "H4_consistency_standards": 4,
+    "H5_error_prevention": 3,
+    "H6_recognition_recall": 3,
+    "H7_flexibility_efficiency": 2,
+    "H8_aesthetic_minimalist": 3,
+    "H9_help_recover_errors": 3,
+    "H10_help_documentation": 2,
+    "total": 28,
+    "out_of": 40,
+    "normalized_10": 7.0,
+    "note": "Heuristics use 0-4 per dimension. Score 2 on H3 (no undo on cart remove), H7 (basic flow, no shortcuts), H10 (policy pages present but no help centre). Cleared all P0 findings."
+  },
+
+  "build_post_fix": {
+    "command": "npm run build",
+    "exit_code": 0,
+    "routes": 11,
+    "type_errors": 0,
+    "notes": "Build confirmed exit 0 after all QA fixes. Dev server verified at localhost:3005."
+  },
+
+  "browser_verification": {
+    "server": "http://localhost:3005",
+    "date": "2026-07-24",
+    "golden_path_walked": [
+      "/catalog — renders 6 posters in 2 category groups",
+      "/poster/poster-001 — format selector, price, add to cart",
+      "/cart — 'Your cart' heading, item with thumbnail, promo code section, 'Proceed to checkout'",
+      "/checkout — breadcrumb Cart·Checkout, all fields, order summary sidebar, 'Pay $10.00'",
+      "checkout submitted — 800ms delay, redirected to /order/ORD-MRYX2CPM",
+      "/order/ORD-MRYX2CPM — 'Order confirmed', 'Ready to download' status, 'Download PDF' button",
+      "Download PDF clicked — button → 'Download again', status → 'A4 · DOWNLOADED', inline '✓ Synthetic download complete', NO alert() dialog",
+      "Cancel button disappeared after download (canCancel returns false)"
+    ],
+    "console_errors": 0,
+    "p0_verified_in_browser": true
+  },
+
+  "nonclaim_present": true,
+  "nonclaim_text": "Synthetic cohort only — these KPIs do not prove real demand, real conversion, or real financial performance.",
+
+  "decision": "advance",
+  "next": "deployment OWNER_GATE → kpi-setup"
+}

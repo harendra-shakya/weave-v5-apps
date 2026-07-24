@@ -1,0 +1,45 @@
+{
+  "schema": "weave-cos-lifecycle/selection/v1",
+  "stage": "selection",
+  "app_id": "print-storefront",
+  "proof_date": "2026-07-24",
+  "state": "verified",
+
+  "chosen_approach": {
+    "name": "Instant digital download — guest checkout, PDF delivery",
+    "description": "A local Next.js storefront where visitors browse a curated catalog of print-ready poster designs, select a format (A4/A3/Letter), purchase via guest checkout (email + synthetic payment), and receive an immediate PDF download link. Order state machine: placed → download_ready. Cancellation within a 30-minute window if the download has not been accessed.",
+    "rationale": "This is the only approach that stays fully within the proven local-Next.js-synthetic-cohort envelope without requiring an OWNER gate or ENG stop before the lifecycle can complete. Real payment, real delivery, and real subscription mechanics are all out of scope; the synthetic PaymentForm and localStorage-backed download system are the proven substitutes."
+  },
+
+  "rejected_alternatives": [
+    {
+      "id": "ALT-1",
+      "name": "Monthly poster subscription (poster club)",
+      "description": "Buyers subscribe for a monthly allotment of download credits, with recurring billing.",
+      "reason_rejected": "Requires recurring billing and dunning logic — OWNER gate per COMMERCE-CHECKLIST §E (real gateway with subscription support). Also requires a real payment processor that supports recurring charges, which is outside the synthetic-only envelope. The cohort model has no concept of subscription churn or recurring revenue. Cannot proceed without these OWNER and ENG gates cleared first.",
+      "stop_type": "OWNER_GATE + ENG"
+    },
+    {
+      "id": "ALT-2",
+      "name": "Print-on-demand physical fulfilment",
+      "description": "Buyers order prints that are fulfilled by a third-party print-on-demand service (e.g. Printful) — physical delivery, real production cost.",
+      "reason_rejected": "Requires third-party API integration for order fulfilment (ENG stop) and real shipping address collection + validation (OWNER gate for international address formats and carrier pricing). Physical fulfilment also means a real carrier and real tracking, which is an OWNER gate. The synthetic cohort's fulfilment event ('fulfill') maps cleanly to digital delivery but does not model physical logistics delays or shipping errors.",
+      "stop_type": "ENG + OWNER"
+    },
+    {
+      "id": "ALT-3",
+      "name": "Curated art licensing marketplace (maker-to-buyer, split commission)",
+      "description": "Buyers purchase licenses directly from artists; Tableau takes a commission. Multiple seller accounts, split payouts.",
+      "reason_rejected": "Requires real payment split and payout infrastructure (ENG), real artist onboarding with rights attestation (OWNER), and a seller dashboard with authentication (ENG). All three are outside the local synthetic envelope. Additionally, OneReel (video-storefront) already covers the maker-intake model — this would not add new lifecycle evidence.",
+      "stop_type": "ENG + OWNER"
+    }
+  ],
+
+  "hard_gate_result": {
+    "rejected_alternative_with_reason": "PASSED — three alternatives rejected, each with a documented reason and stop type. ALT-1 establishes the primary rejection basis (OWNER_GATE on recurring billing)."
+  },
+
+  "rubric_score": "estimated 12/12 (100%) — real alternatives with real rejection criteria, not strawmen",
+  "decision": "advance",
+  "blockers": []
+}

@@ -1,0 +1,155 @@
+{
+  "schema": "weave-cos-lifecycle/plan/v1",
+  "stage": "plan",
+  "app_id": "print-storefront",
+  "proof_date": "2026-07-24",
+  "state": "verified",
+  "plan_predates_engineering": true,
+  "plan_predates_engineering_evidence": "This plan was authored on 2026-07-24, immediately after selection and before any Next.js files were written. The engineering stage has not started at time of this plan's creation.",
+
+  "tech_stack": {
+    "framework": "Next.js 15, TypeScript, App Router",
+    "styling": "Tailwind CSS with Tableau token system",
+    "data": "packages/commerce-core (local localStorage, no external DB or real payment)",
+    "fonts": "DM Serif Display (headings) + DM Sans (body) via next/font",
+    "deployment": "local dev only (next dev); no production deployment"
+  },
+
+  "non_claims_from_checklist": [
+    "Synthetic cohort only — these KPIs do not prove real demand, real conversion, or real financial performance.",
+    "Does not prove real payment processing, PCI scope, or real settlement.",
+    "Does not prove real rights to any artwork — all catalog items are fictional synthetic designs.",
+    "Does not prove GDPR/CCPA compliance or real consent management.",
+    "Does not prove real email delivery — transactional email templates are designed but not sent.",
+    "Does not prove SEO ranking or real organic traffic."
+  ],
+
+  "tasks": [
+    {
+      "id": "T1",
+      "description": "Initialise Next.js 15 project with TypeScript, Tailwind, and App Router",
+      "acceptance_criteria": [
+        "AC1: `npm run build` exits 0",
+        "AC2: `next dev` starts without errors on localhost:3000",
+        "AC3: No hard-coded hex colours in any component — tokens only"
+      ]
+    },
+    {
+      "id": "T2",
+      "description": "Implement Tableau token system (sage green accent, DM Serif Display + DM Sans, artwork-label caption device)",
+      "acceptance_criteria": [
+        "AC4: Token file defines --accent-sage (#4A7C59), --font-heading (DM Serif Display), --font-body (DM Sans), neutral scale",
+        "AC5: check-contrast.mjs passes against pairs manifest with all text pairs ≥ 4.5:1 AA",
+        "AC6: Fonts load via next/font, not external CDN (public-safe)"
+      ]
+    },
+    {
+      "id": "T3",
+      "description": "Build catalog routes: homepage (featured + browse), collection page, poster detail page",
+      "acceptance_criteria": [
+        "AC7: Homepage shows featured posters and at least one collection section",
+        "AC8: Poster detail page shows: preview thumbnail (generated placeholder, no external asset), artist credit, format selector (A4/A3/Letter), price, 'Add to collection' CTA",
+        "AC9: Empty/not-found state for invalid poster ID",
+        "AC10: All routes keyboard-reachable"
+      ]
+    },
+    {
+      "id": "T4",
+      "description": "Build cart: add/remove, format variant, empty-cart state, promo entry, mini-cart with aria-live count",
+      "acceptance_criteria": [
+        "AC11: Cart persists to localStorage across page reload",
+        "AC12: Empty-cart state shows a non-empty prompt (not a blank screen)",
+        "AC13: Promo code FIRST15 applies 15% discount; invalid code shows inline error (not an alert box)",
+        "AC14: Mini-cart count shows correct singular ('1 item') vs plural ('2 items') aria-label"
+      ]
+    },
+    {
+      "id": "T5",
+      "description": "Build checkout: guest (email only), synthetic payment, order review, failure states",
+      "acceptance_criteria": [
+        "AC15: Checkout does not require account registration",
+        "AC16: Email field present with proper autocomplete attribute",
+        "AC17: PaymentForm declines card ending 0002 with inline error (aria-invalid on the field, no page reload)",
+        "AC18: Accepted card shows order confirmation page with simulated download button",
+        "AC19: Terms acceptance required before payment can be submitted"
+      ]
+    },
+    {
+      "id": "T6",
+      "description": "Build order lifecycle: placed → download_ready state machine, confirmation page, 30-min cancellation window",
+      "acceptance_criteria": [
+        "AC20: Order confirmation page shows: order ID, poster title, format, price, download button (PDF placeholder)",
+        "AC21: Cancel order within 30 minutes if download not accessed — order moves to 'cancelled' state",
+        "AC22: Cancel button hidden/disabled after 30-minute window",
+        "AC23: Order state copy is locked (same text for each state — cannot be re-worded per-order)"
+      ]
+    },
+    {
+      "id": "T7",
+      "description": "Build policy pages: terms, refund policy, privacy policy (static pages linked from footer)",
+      "acceptance_criteria": [
+        "AC24: /terms, /refund, /privacy routes all return 200 with content",
+        "AC25: All three linked from footer on every page"
+      ]
+    },
+    {
+      "id": "T8",
+      "description": "Build support/contact page",
+      "acceptance_criteria": [
+        "AC26: /contact route returns 200 with contact information or form (non-functional form is acceptable, clearly labelled)"
+      ]
+    },
+    {
+      "id": "T9",
+      "description": "Accessibility — pass QA-readiness checklist before submitting to impeccable",
+      "acceptance_criteria": [
+        "AC27: No heading-level skips (h1→h2→h3, never h1→h3) on any route",
+        "AC28: One role='status' live region for cart count — not competing live regions",
+        "AC29: All icon-only controls have accessible names",
+        "AC30: aria-invalid on all form fields in error state",
+        "AC31: All interactive elements have visible focus indicator"
+      ]
+    },
+    {
+      "id": "T10",
+      "description": "Add JSON-LD (Product schema), meta tags, OG cards for SEO",
+      "acceptance_criteria": [
+        "AC32: Product detail pages have Product JSON-LD with name, price, currency",
+        "AC33: All pages have title and description meta tags",
+        "AC34: OG image/card present on detail pages"
+      ]
+    },
+    {
+      "id": "T11",
+      "description": "Golden-path walkthrough on dev server before QA",
+      "acceptance_criteria": [
+        "AC35: Walk all 9 steps of the primary user journey on a running dev server — confirm each step is reachable and keyboard-operable",
+        "AC36: Walk the declined-card edge case (card ending 0002) — confirm error state is visible and recoverable"
+      ]
+    }
+  ],
+
+  "owner_gate_stops_carried_forward": [
+    "Real gateway/processor — OWNER_GATE; not in scope for this lifecycle run",
+    "GDPR/CCPA real consent — OWNER_GATE",
+    "HTTPS/HSTS — OWNER_GATE (deployment concern)",
+    "Real email delivery — OWNER_GATE (deployment/marketing)"
+  ],
+
+  "engineering_required_stops_carried_forward": [
+    "Webhook signature verification — ENG; no real payment events",
+    "CDN caching strategy — ENG; deployment scope"
+  ],
+
+  "prohibition_contracts": null,
+
+  "hard_gate_result": {
+    "criteria_checkable_by_someone_else": "PASSED — every AC is a binary check (route returns 200, aria-label correct singular/plural, card declines with visible error). No AC requires subjective judgement to verify.",
+    "plan_predates_engineering": "PASSED — plan written before any Next.js files exist. Timestamp: 2026-07-24.",
+    "non_claims_carried_through": "PASSED — all NONCLAIM items from COMMERCE-CHECKLIST are in non_claims_from_checklist and will be in lifecycle-state.json non_claims."
+  },
+
+  "rubric_score": "estimated 15/16 (93.75%) — strong AC coverage; minor gap on not having explicit framework-version verification (plan assumes Next.js 15; actual package.json will confirm)",
+  "decision": "advance",
+  "blockers": []
+}

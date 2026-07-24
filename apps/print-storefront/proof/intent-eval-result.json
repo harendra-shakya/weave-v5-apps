@@ -1,0 +1,102 @@
+{
+  "schema": "weave-cos-lifecycle/intent/v1",
+  "stage": "intent",
+  "app_id": "print-storefront",
+  "brand": "Tableau",
+  "proof_date": "2026-07-24",
+  "state": "verified",
+
+  "goal": "Build a small local Next.js storefront (Tableau) that sells print-ready digital art posters as instant PDF downloads, targeted at design-savvy apartment renters who want original art at renter pricing ($8–$18). Prove the lifecycle gates can reach a validator-clean seal on this concept and record every point where engineering was required.",
+
+  "target_user": {
+    "persona": "The renter-decorator — 20s–30s, design-literate, apartment renting. Wants real art, not megastore reproductions, but cannot afford gallery originals.",
+    "frustration": "Good design is priced at two extremes: unaffordable originals or anonymous mass prints. No middle path exists to buy something craft-made, print it at a pharmacy or home printer, and hang it tonight.",
+    "buying_behaviour": "Discovers via browsing, decides on visual appeal + price, instant download, prints locally. Does not need an account for a single purchase."
+  },
+
+  "success_criteria": [
+    "A buyer can browse the catalog, select a poster and format (A4/A3/Letter), add to cart, complete guest checkout, and receive a download link — all without leaving localhost.",
+    "The synthetic cohort (seed=42, 200 users) runs twice with identical results, establishing a frozen baseline.",
+    "The QA critique scores ≥ 7/10 with zero P0 findings.",
+    "The validator exits 0 at seal."
+  ],
+
+  "primary_user_journey": [
+    "1. Land on homepage — see featured posters and collection browse",
+    "2. Click into a poster's detail page — preview thumbnail, artist credit, format options (A4/A3/Letter), price",
+    "3. Select format → 'Add to collection' CTA",
+    "4. View cart — line item with format, price; empty-cart state if cleared",
+    "5. Apply promo code (valid: FIRST15 for 15% off; invalid: shows inline error)",
+    "6. Proceed to checkout — email field only (digital delivery), synthetic payment fields",
+    "7. Submit order — confirmation page with download button (PDF placeholder); inline error on card decline",
+    "8. Access order in session-history — download again if within 30-min cancellation window",
+    "9. Cancel within 30-min window (if download not yet accessed) — order cancelled, refund shown as synthetic"
+  ],
+
+  "design_direction": {
+    "system": "Tableau",
+    "operator_checkpoint": "Checkpoint #2 — operator (Harendra) chose Direction 2 (Tableau) from three options presented on 2026-07-24. Options were: Placard (signal red, grotesque functional), Tableau (sage green, museum-shop), Blot (yellow, studio/zine).",
+    "accent": "#4A7C59",
+    "type_heading": "DM Serif Display",
+    "type_body": "DM Sans",
+    "signature_device": "Artwork-label captions: 'Medium: Digital print · Edition: Open · Format: A3'",
+    "distinct_from": "Archival Warmth (OneReel), Vinyl Pop (Marginalia), Keepsake (Vitrine) — different color temperature, type pairing, and presentation register from all three"
+  },
+
+  "commerce_checklist_decisions": {
+    "A_product_catalog":        { "decision": "BUILD",     "notes": "SKU/id, format variant (A4/A3/Letter), digital, price display USD, inventory state (digital=always available), product detail with artist credit, static cross-sell" },
+    "B_search_browse":          { "decision": "BUILD",     "notes": "Collection browse, sort, no-results state; NONCLAIM: personalized recommendations" },
+    "C_cart":                   { "decision": "BUILD",     "notes": "Add/remove/format, empty-cart, localStorage persistence, promo entry + invalid-code state, mini-cart aria-live count; NON-GOAL: login cart merge (guest only)" },
+    "D_checkout":               { "decision": "BUILD",     "notes": "Guest path, email-only (digital), order review + terms acceptance, validation + inline errors, failure states (declined card, network error); NONCLAIM: tax (synthetic/flat); NON-GOAL: shipping address, express wallets" },
+    "E_payments":               { "decision": "NONCLAIM",  "notes": "PaymentForm proves UI + failure path only; OWNER: real gateway; ENG: idempotency, webhooks, fraud" },
+    "F_orders_fulfilment":      { "decision": "BUILD",     "notes": "Order state machine: placed→download_ready; confirmation page + download button (PDF placeholder); 30-min cancellation window; NONCLAIM: inventory decrement (digital)" },
+    "G_returns_refunds":        { "decision": "BUILD",     "notes": "Cancel within 30-min window (if not downloaded); refund state reflected in UI; NONCLAIM: real refund money movement" },
+    "H_accounts_identity":      { "decision": "NON-GOAL",  "notes": "Guest checkout only; no account registration; NONCLAIM: wishlists (out of scope)" },
+    "I_trust_legal_compliance": { "decision": "BUILD+OWNER","notes": "Policy pages built (terms, refund, privacy); OWNER: PCI, GDPR, EU 14-day right of withdrawal; NONCLAIM: content rights (all art is synthetic/fictional)" },
+    "J_security_fraud":         { "decision": "BUILD+PORT", "notes": "Input validation/XSS/CSRF, no secrets in client; public-safe scan gate (portability wall on Windows — ENVELOPE gap 1); OWNER: HTTPS/HSTS (deployment)" },
+    "K_accessibility":          { "decision": "BUILD",     "notes": "WCAG AA, contrast check via check-contrast.mjs, accessibility-tree pass, keyboard operable, empty/error states for every route" },
+    "L_performance":            { "decision": "BUILD",     "notes": "Core Web Vitals discipline; ENG: caching/CDN (deployment)" },
+    "M_analytics":              { "decision": "BUILD",     "notes": "Event taxonomy view→engage→convert→fulfill→refund; synthetic cohort with hard nonclaim; NONCLAIM: cohort cannot rank UI changes" },
+    "N_seo":                    { "decision": "BUILD",     "notes": "JSON-LD, meta, OG cards, semantic headings; NONCLAIM: real ranking/traffic" },
+    "O_marketing_email":        { "decision": "BUILD+ENG",  "notes": "Transactional email templates designed (not sent); OWNER: real sends; ENG: deliverability (SPF/DKIM)" },
+    "P_internationalization":   { "decision": "BUILD",     "notes": "USD only, basic date/number formatting; NON-GOAL: multi-currency, regional tax" },
+    "Q_admin_backoffice":       { "decision": "NON-GOAL",  "notes": "No admin interface in MVP scope" },
+    "R_content_ux_states":      { "decision": "BUILD",     "notes": "All states: empty, loading, error, success, invalid-id, out-of-stock (digital); trust signals; mobile-first/responsive" },
+    "S_notifications":          { "decision": "BUILD",     "notes": "In-app confirmations (download ready, order placed); ENG: real email/SMS delivery" },
+    "T_testing_qa":             { "decision": "BUILD",     "notes": "Golden-path E2E on dev server; edge cases: declined card, invalid promo, expired session" },
+    "U_observability_support":  { "decision": "BUILD",     "notes": "Customer contact/support page; ENG: backups/DR" }
+  },
+
+  "non_goals": [
+    "Account registration, login, or session management (guest checkout only)",
+    "Admin or back-office interface",
+    "Multi-currency or regional tax calculation",
+    "Real email delivery (templates designed, not sent)",
+    "Real payment processing (synthetic PaymentForm only)",
+    "Personalized recommendations (static cross-sell only)"
+  ],
+
+  "owner_gate_stops_identified": [
+    "Real payment gateway selection and credentials",
+    "GDPR/CCPA real consent management and privacy policy publication",
+    "HTTPS/HSTS and security headers (deployment concern)",
+    "EU 14-day right of withdrawal compliance",
+    "Real artist licensing and content rights"
+  ],
+
+  "engineering_required_stops_identified": [
+    "Auth security rate-limiting and lockout (not in scope for synthetic local app)",
+    "Webhook signature verification and idempotency (no real payment events)",
+    "CDN caching strategy (deployment scope)",
+    "Real email deliverability (SPF/DKIM/DMARC)"
+  ],
+
+  "hard_gate_result": {
+    "primary_user_journey_as_walkable_steps": "PASSED — journey written as 9 concrete numbered steps that can be walked on a running dev server",
+    "design_direction_named": "PASSED — Tableau system named with accent, type, signature device"
+  },
+
+  "rubric_score": "16/16 (100%)",
+  "decision": "advance",
+  "blockers": []
+}

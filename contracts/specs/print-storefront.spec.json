@@ -1,0 +1,92 @@
+{
+  "schema": "weave-v5/app-spec/v1",
+  "app_id": "print-storefront",
+  "brand": "Tableau",
+  "locked_at": "2026-07-24",
+  "source": "ATM-422 fresh-operator run",
+  "persona": {
+    "name": "The renter-decorator",
+    "description": "Design-savvy apartment renters in their 20s–30s who want original art on their walls without collector pricing. They appreciate craft and visual intelligence, but cannot afford gallery originals and won't fill their home with megastore prints.",
+    "frustration": "Good design is priced for collectors or diluted for mass retail. There is no middle path: buy something beautiful, print it today, hang it tonight."
+  },
+  "problem": "Art has always been priced at two extremes — unaffordable originals or anonymous reproductions. Tableau closes that gap: original digital designs by real artists, sold as instant print-ready downloads at renter pricing.",
+  "positioning": "The museum shop that ships to your printer.",
+  "hero_line": "Art for the wall you actually have.",
+  "catalog": {
+    "domain": "print-ready digital art posters (A4 / A3 / US Letter PDF downloads)",
+    "item_type": "digital download",
+    "example_items": [
+      { "id": "poster-001", "title": "Morning Latitude", "artist": "C. Delmar", "price_cents": 1200, "currency": "USD", "category": "abstract", "metadata": { "format": "A3", "color_palette": "warm neutrals" } },
+      { "id": "poster-002", "title": "Broken Column Study", "artist": "M. Vasanta", "price_cents": 1000, "currency": "USD", "category": "drawing", "metadata": { "format": "A4", "color_palette": "monochrome" } },
+      { "id": "poster-003", "title": "Tide Charts of Lake Nowhere", "artist": "R. Osei", "price_cents": 1400, "currency": "USD", "category": "cartographic", "metadata": { "format": "A3", "color_palette": "blue-earth" } },
+      { "id": "poster-004", "title": "Interior with Houseplant I", "artist": "C. Delmar", "price_cents": 800, "currency": "USD", "category": "interior", "metadata": { "format": "A4", "color_palette": "sage-cream" } },
+      { "id": "poster-005", "title": "Atlas of Small Continents", "artist": "L. Pryce", "price_cents": 1800, "currency": "USD", "category": "cartographic", "metadata": { "format": "Letter", "color_palette": "ochre-navy" } },
+      { "id": "poster-006", "title": "Three Colour Study", "artist": "M. Vasanta", "price_cents": 1000, "currency": "USD", "category": "abstract", "metadata": { "format": "A4", "color_palette": "primary-trio" } }
+    ]
+  },
+  "commerce_behavior": {
+    "cart": "single-format per item (A4 / A3 / Letter selected at add-to-cart)",
+    "checkout": "guest checkout — email only, no account required",
+    "fulfillment": "digital — PDF download link available immediately on payment confirmation",
+    "cancellation_window": "30 minutes if download not yet accessed",
+    "cta": "Add to collection"
+  },
+  "design_direction": {
+    "system": "Tableau",
+    "accent": "#4A7C59",
+    "accent_name": "Sage",
+    "type_heading": "DM Serif Display",
+    "type_body": "DM Sans",
+    "signature_device": "artwork-label captions: 'Medium: Digital print · Edition: Open · Format: A3'",
+    "mood": "museum-shop restraint — cool white walls, sage CTA only, considered whitespace"
+  },
+  "rights_provenance": {
+    "note": "Sandbox only — no real artist rights. All catalog items are fictional.",
+    "artist_names": "Fictional — not real persons",
+    "media": "Placeholder assets only — no real artwork committed to repo"
+  },
+  "architecture": {
+    "stack": "Next.js 15, TypeScript, Tailwind CSS",
+    "data_layer": "packages/commerce-core (local deterministic engine, no external DB or payment)",
+    "ui_source": "Built per starter-kit port method — no pre-existing prepared source for this app",
+    "path": "apps/print-storefront",
+    "licenses": ["MIT (Next.js)", "Apache-2.0 (Tailwind)"]
+  },
+  "kpi_assumptions": {
+    "primary_kpi": "conversion_rate",
+    "secondary_kpi": "aov",
+    "guardrail": "refund_rate < 0.15",
+    "baseline_cohort": { "seed": 42, "user_count": 200 },
+    "funnel": [
+      { "event": "view",    "prob": 1.00 },
+      { "event": "engage",  "prob": 0.52 },
+      { "event": "convert", "prob": 0.26 },
+      { "event": "fulfill", "prob": 0.97 },
+      { "event": "refund",  "prob": 0.04 }
+    ],
+    "nonclaim": "Synthetic cohort only. Numbers do not predict or reflect real buyer behaviour."
+  },
+  "risks": [
+    { "id": "R1", "description": "No prepared UI source exists for this app — engineering must build from starter-kit method rather than porting a ready source", "mitigation": "starter-kit component inventory and token system used as reference; every engineering decision logged in INTERVENTION_LEDGER.md" },
+    { "id": "R2", "description": "Synthetic buyer behaviour may differ from real poster-buyer behaviour", "mitigation": "Synthetic-only nonclaim recorded in every iteration verdict" },
+    { "id": "R3", "description": "Format-variant selection (A4/A3/Letter) adds checkout complexity not present in simpler single-format apps", "mitigation": "Format selection handled at add-to-cart; stored in cart as variant field" }
+  ],
+  "nonclaims": [
+    "does not prove real payment processing or real settlement",
+    "does not prove real artist rights or licensing agreements",
+    "does not prove GDPR/CCPA compliance or real consent management",
+    "does not prove real email delivery or transactional email performance",
+    "synthetic cohort only — not real traffic or buyer behaviour",
+    "no claim of live deployment or production traffic"
+  ],
+  "stop_conditions": {
+    "ENGINEERING_REQUIRED": "If a required adapter, schema, or behavioral invariant is missing from commerce-core and blocks the build; if producing a working Next.js app requires code the lifecycle docs do not teach",
+    "OWNER_GATE": "Any change to frozen contracts/seeds/KPI after baseline; any real payment, deployment, user contact, or real artist licensing"
+  },
+  "bounded_adaptation_candidate": {
+    "description": "Price-point test: lower the entry-price tier from $8 to $6 for the two lowest-priced items — does price-floor reduction move conversion_rate?",
+    "stage": "iteration",
+    "measure": "conversion_rate delta, same seed 42 cohort",
+    "note": "CAVEAT: per ENVELOPE.md gap 3, cohort cannot measure UI changes. Price is represented in catalog item price_cents, which the cohort DOES read for AOV calculation. However, the funnel probability is fixed — so conversion_rate will still return zero delta. This candidate is therefore structurally uninformative on conversion_rate, but will produce a measurable AOV delta. This is the Gap 3 constraint in practice."
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "weave-cos-lifecycle/v0.1",
+  "app_id": "print-storefront",
+  "current_stage": "qa",
+  "mode": "loop",
+
+  "deployment_gates": {
+    "blocked_by_provider_access": true,
+    "launch_allowed": false,
+    "local_progress_allowed": true,
+    "state": "deployment_blocked_until_provider_access_validated",
+    "non_claims": [
+      "does not prove provider account access",
+      "does not prove deployment target access",
+      "does not prove DNS or domain authority",
+      "does not request or store raw API keys, cookies, private keys, session values, or other raw secrets"
+    ]
+  },
+
+  "stages": [
+    { "stage": "intent",      "state": "verified", "proof_ref": "proof/intent-eval-result.json" },
+    { "stage": "research",    "state": "verified", "proof_ref": "proof/research-eval-result.json" },
+    { "stage": "selection",   "state": "verified", "proof_ref": "proof/selection-eval-result.json" },
+    { "stage": "plan",        "state": "verified", "proof_ref": "proof/plan-eval-result.json" },
+    { "stage": "engineering", "state": "verified", "proof_ref": "proof/engineering-eval-result.json" },
+    { "stage": "qa",          "state": "in_progress" },
+    { "stage": "deployment",  "state": "not_started" },
+    { "stage": "kpi-setup",   "state": "not_started" },
+    { "stage": "marketing",   "state": "not_started" },
+    { "stage": "iteration",   "state": "not_started" },
+    { "stage": "analysis",    "state": "not_started" }
+  ],
+
+  "non_claims": [
+    "Synthetic cohort only — these KPIs do not prove real demand, real conversion, or real financial performance.",
+    "Does not prove real payment processing, PCI scope, or real settlement.",
+    "Does not prove real rights to any artwork — all catalog items are fictional synthetic designs.",
+    "Does not prove GDPR/CCPA compliance or real consent management.",
+    "Does not prove real email delivery — transactional email templates are designed but not sent.",
+    "Does not prove SEO ranking or real organic traffic."
+  ],
+
+  "updated_at": "2026-07-24T12:00:00.000Z"
+}

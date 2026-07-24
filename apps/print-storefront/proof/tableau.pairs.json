@@ -1,0 +1,18 @@
+{
+  "aa_normal": 4.5,
+  "aa_large": 3.0,
+  "checks": [
+    { "fg": "--color-ink",      "bg": "--color-surface", "label": "ink (heading/body) on white surface",    "size": "normal" },
+    { "fg": "--color-ink",      "bg": "--color-white",   "label": "ink (heading/body) on off-white",        "size": "normal" },
+    { "fg": "--color-ink-soft", "bg": "--color-surface", "label": "ink-soft (description) on white surface","size": "normal" },
+    { "fg": "--color-ink-soft", "bg": "--color-white",   "label": "ink-soft (description) on off-white",    "size": "normal" },
+    { "fg": "--color-ink-muted","bg": "--color-surface", "label": "ink-muted (caption) on white surface",   "size": "normal" },
+    { "fg": "--color-ink-muted","bg": "--color-white",   "label": "ink-muted (caption) on off-white",       "size": "normal" },
+    { "fg": "--color-sage",     "bg": "--color-surface", "label": "sage (link/success) on white surface",   "size": "normal" },
+    { "fg": "--color-sage",     "bg": "--color-white",   "label": "sage (link/success) on off-white",       "size": "normal" },
+    { "fg": "--color-sage-deep","bg": "--color-surface", "label": "sage-deep (CTA text) on white surface",  "size": "normal" },
+    { "fg": "250 250 249",      "bg": "--color-sage-deep","label": "off-white text on sage-deep button",    "size": "large"  },
+    { "fg": "255 255 255",      "bg": "--color-sage-deep","label": "white text on sage-deep button",        "size": "large"  },
+    { "fg": "255 255 255",      "bg": "--color-sage",    "label": "white text on sage hover",               "size": "large"  }
+  ]
+}

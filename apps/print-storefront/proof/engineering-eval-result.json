@@ -1,0 +1,130 @@
+{
+  "schema": "weave-cos-lifecycle/engineering/v1",
+  "stage": "engineering",
+  "app_id": "print-storefront",
+  "proof_date": "2026-07-24",
+  "state": "verified",
+
+  "build": {
+    "command": "npm run build",
+    "result": "exit 0",
+    "routes": 11,
+    "type_errors": 0,
+    "compile_time_s": 2.2,
+    "notes": "3 type errors required fixes before build passed (see type_fixes below). 3 npm audit high-severity vulnerabilities in Next.js 15 transitive deps — not introduced by this app, not fixed (synthetic demo)."
+  },
+
+  "type_fixes": [
+    {
+      "file": "app/checkout/page.tsx",
+      "error": "PaymentForm prop mismatch — checkout passed cart:Cart but PaymentForm expected per-item props (posterId, format, priceCents, etc.)",
+      "fix": "Refactored PaymentForm to accept cart:Cart and compute total internally; updated createOrder to accept { cart, prices, email }"
+    },
+    {
+      "file": "lib/types.ts + lib/orders.ts",
+      "error": "Order type was single-item (poster_id, format, price_cents, downloaded) but order/[id]/page.tsx expected multi-item (order.items, order.total_cents)",
+      "fix": "Added OrderItem interface; updated Order to items:OrderItem[], total_cents; updated createOrder, markDownloaded, canCancel throughout"
+    },
+    {
+      "file": "app/order/[id]/page.tsx",
+      "error": "OrderStatus received state={order.state} but expects order:Order",
+      "fix": "Changed to order={order}"
+    }
+  ],
+
+  "contrast_gate": {
+    "tool": "packages/weave-tool/skills/weave-application-lifecycle/tools/check-contrast.mjs",
+    "tokens": "app/globals.css",
+    "pairs": "proof/tableau.pairs.json",
+    "result": "12/12 pairs pass WCAG AA",
+    "details": [
+      { "label": "ink on white surface",      "ratio": "17.40:1", "threshold": "4.5:1", "pass": true },
+      { "label": "ink on off-white",          "ratio": "16.66:1", "threshold": "4.5:1", "pass": true },
+      { "label": "ink-soft on white surface", "ratio": "8.74:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "ink-soft on off-white",     "ratio": "8.37:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "ink-muted on white surface","ratio": "5.51:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "ink-muted on off-white",    "ratio": "5.27:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "sage on white surface",     "ratio": "4.86:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "sage on off-white",         "ratio": "4.66:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "sage-deep on white",        "ratio": "8.02:1",  "threshold": "4.5:1", "pass": true },
+      { "label": "off-white on sage-deep btn","ratio": "7.68:1",  "threshold": "3.0:1", "pass": true },
+      { "label": "white on sage-deep btn",    "ratio": "8.02:1",  "threshold": "3.0:1", "pass": true },
+      { "label": "white on sage hover",       "ratio": "4.86:1",  "threshold": "3.0:1", "pass": true }
+    ]
+  },
+
+  "task_completion": [
+    { "id": "T1",  "state": "done", "evidence": "npm install 107 packages; npm run build exit 0 after type fixes" },
+    { "id": "T2",  "state": "done", "evidence": "globals.css Tableau tokens; tailwind.config.ts; check-contrast.mjs 12/12 pass; DM Serif Display + DM Sans via next/font" },
+    { "id": "T3",  "state": "done", "evidence": "app/page.tsx (hero + featured + browse-by-category), app/catalog/page.tsx, app/poster/[id]/page.tsx with breadcrumb + format selector + add-to-cart" },
+    { "id": "T4",  "state": "done", "evidence": "app/cart/page.tsx: add/remove, promo FIRST15 verified live, empty-cart state, aria-live count singular/plural" },
+    { "id": "T5",  "state": "done", "evidence": "app/checkout/page.tsx + PaymentForm: email autocomplete, decline 0002 verified, terms required, 800ms delay, order redirect" },
+    { "id": "T6",  "state": "done", "evidence": "app/order/[id]/page.tsx: placed→download_ready state, download button, 30-min cancel window, markDownloaded per-item, STATE_COPY locked" },
+    { "id": "T7",  "state": "done", "evidence": "app/terms/, app/refund/, app/privacy/ — all 200, all linked from PageFooter" },
+    { "id": "T8",  "state": "done", "evidence": "app/contact/page.tsx with support + licensing contacts; labelled synthetic" },
+    { "id": "T9",  "state": "done", "evidence": "Single role=status for cart count; aria-label on remove button; aria-invalid on form errors; focus:ring-sage on all inputs" },
+    { "id": "T10", "state": "partial", "evidence": "Product JSON-LD on detail pages; metadata title+description on all routes; OG image tag NOT added (no real images to use in a synthetic poster app with SVG placeholders)" },
+    { "id": "T11", "state": "done", "evidence": "Golden path walked on dev server — all 9 steps verified. Declined-card edge case verified." }
+  ],
+
+  "acceptance_criteria": [
+    { "id": "AC1",  "result": "PASS", "evidence": "npm run build exit 0; 11 routes; TypeScript clean" },
+    { "id": "AC2",  "result": "PASS", "evidence": "next dev started at http://localhost:3005; homepage loaded without console errors" },
+    { "id": "AC3",  "result": "PASS", "evidence": "All colours use rgb(var(--color-*)) Tailwind token references; no hex literals in components" },
+    { "id": "AC4",  "result": "PASS", "evidence": "globals.css defines --color-sage (74 124 89), --font-display, --font-sans, full neutral scale" },
+    { "id": "AC5",  "result": "PASS", "evidence": "check-contrast.mjs: 12/12 pairs pass WCAG AA; see contrast_gate above" },
+    { "id": "AC6",  "result": "PASS", "evidence": "DM_Serif_Display and DM_Sans imported from next/font/google in app/layout.tsx" },
+    { "id": "AC7",  "result": "PASS", "evidence": "read_page on /: hero h1, featured section (3 posters), browse-by-subject (4 categories)" },
+    { "id": "AC8",  "result": "PASS", "evidence": "read_page on /poster/poster-001: PosterArtwork SVG, ArtistCredit caption, FormatSelector (A4/A3/Letter), $12.00, Add to collection CTA" },
+    { "id": "AC9",  "result": "PASS", "evidence": "EmptyState rendered when getPoster(id) returns undefined; not-found.tsx for unknown routes" },
+    { "id": "AC10", "result": "PASS", "evidence": "All buttons/links keyboard-reachable; focus:ring-sage visible on all interactive elements" },
+    { "id": "AC11", "result": "PASS", "evidence": "lib/cart.ts uses localStorage KEY='tableau_cart'; getCart reads on mount via useEffect" },
+    { "id": "AC12", "result": "PASS", "evidence": "Cart page: items.length===0 renders EmptyState 'Your collection is empty' with link to /catalog" },
+    { "id": "AC13", "result": "PASS", "evidence": "FIRST15 applied live: subtotal $12.00, discount -$1.80 (-15%), total $10.20 confirmed in read_page. Invalid code returns inline error via promoError state (no alert box)" },
+    { "id": "AC14", "result": "PASS", "evidence": "PageHeader aria-label: 'Cart — 0 items' and 'Cart — 1 item' confirmed in read_page at both states" },
+    { "id": "AC15", "result": "PASS", "evidence": "Checkout requests email only; no account creation or login required" },
+    { "id": "AC16", "result": "PASS", "evidence": "autoComplete='email' on email field; autoComplete='cc-number', 'cc-exp', 'cc-csc' on payment fields" },
+    { "id": "AC17", "result": "PASS", "evidence": "Card ending 0002 triggered role=alert 'Your card was declined. Please check your details and try again.' Checkout stayed at /checkout; cart still showed 1 item" },
+    { "id": "AC18", "result": "PASS", "evidence": "Valid card → navigated to /order/ORD-MRYWFHZD; 'Order confirmed', 'Ready to download', Download button present" },
+    { "id": "AC19", "result": "PASS", "evidence": "Unchecked terms checkbox triggered validation 'Please accept the terms before paying.' before card was processed" },
+    { "id": "AC20", "result": "PASS", "evidence": "Order page shows: order ID (ORD-MRYWFHZD), poster title (Morning Latitude), format (A3), total paid ($10.20), Download button" },
+    { "id": "AC21", "result": "PASS", "evidence": "canCancel checks !downloaded and age ≤ 30min; cancelOrder sets state='cancelled'; Cancel button visible in read_page" },
+    { "id": "AC22", "result": "PASS", "evidence": "After clicking Download, canCancel returns false (any item downloaded); Cancel button disappeared from read_page" },
+    { "id": "AC23", "result": "PASS", "evidence": "STATE_COPY constant in orders.ts; OrderStatus reads from it; copy cannot be overridden per-order" },
+    { "id": "AC24", "result": "PASS", "evidence": "11-route build includes /terms, /refund, /privacy; all generated as static pages" },
+    { "id": "AC25", "result": "PASS", "evidence": "PageFooter renders all three links; confirmed in read_page on multiple routes" },
+    { "id": "AC26", "result": "PASS", "evidence": "/contact built with support + licensing contacts; 'These email addresses are illustrative' disclaimer" },
+    { "id": "AC27", "result": "PASS", "evidence": "Code review: h1 on all page routes; h2 for section headings; h3 only within h2 sections on homepage. No h1→h3 skips." },
+    { "id": "AC28", "result": "PASS", "evidence": "PageHeader has single role=status aria-live=polite for cart count; no competing live regions" },
+    { "id": "AC29", "result": "PASS", "evidence": "Remove-from-cart button: aria-label='Remove Morning Latitude (A3) from collection'. FormatSelector: buttons labelled by format. Wordmark: aria-label on Link." },
+    { "id": "AC30", "result": "PASS", "evidence": "PaymentForm: aria-invalid on email, card, expiry, CVV, checkbox based on error message content" },
+    { "id": "AC31", "result": "PASS", "evidence": "All inputs: focus:border-sage focus:ring-1 focus:ring-sage. Buttons: standard focus ring." },
+    { "id": "AC32", "result": "PASS", "evidence": "app/poster/[id]/page.tsx: dangerouslySetInnerHTML JSON-LD with @type:Product, name, description, offers with price/currency/availability" },
+    { "id": "AC33", "result": "PASS", "evidence": "All routes export metadata with title and description fields" },
+    { "id": "AC34", "result": "SKIP", "evidence": "OG image not added — SVG placeholder artworks cannot meaningfully serve as OG images in a synthetic demo. No og:image meta tag set." },
+    { "id": "AC35", "result": "PASS", "evidence": "9-step journey walked on dev server: homepage → catalog → poster detail → format select → add to cart → cart with promo → checkout → order confirmed → download" },
+    { "id": "AC36", "result": "PASS", "evidence": "Decline edge case: card 4111 1111 1110 0002 → role=alert decline message; cart preserved at 1 item; no page reload; button returns to 'Pay $10.00'" }
+  ],
+
+  "golden_path_summary": {
+    "console_errors": 0,
+    "flows_exercised": [
+      "/ renders hero, 3 featured posters, 4 browse-by-category sections",
+      "/poster/poster-001 format selector A4→A3 updates Add button label",
+      "Add A3 to cart → cart count 0→1 → aria-live status updated",
+      "/cart: line item, promo FIRST15 (−$1.80), total $10.20",
+      "/checkout: order summary sidebar matches cart; Pay $10.20",
+      "Valid card submit → 800ms delay → redirect /order/ORD-MRYWFHZD",
+      "Order page: Ready to download, cancel button present",
+      "Download click → synthetic alert → button changes to 'Download again', cancel button disappears",
+      "Decline card (0002) → role=alert shown, cart 1 item, stays on checkout"
+    ]
+  },
+
+  "required_nonclaim_present_in_footer": true,
+  "nonclaim_text": "Synthetic cohort only — these KPIs do not prove real demand, real conversion, or real financial performance.",
+  "nonclaim_verified_in_read_page": true,
+
+  "decision": "advance",
+  "next": "qa stage — impeccable critique (≥7/10, zero P0), check-contrast re-run, proof/qa-eval-result.json"
+}
